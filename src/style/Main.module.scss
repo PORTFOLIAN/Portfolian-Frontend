@@ -13,13 +13,16 @@ div.container {
   max-width: 62rem;
 }
 
-div.tagSelect {
-  margin-top: 34px;
-  max-width: 100%;
-  width: 100%;
+div.order {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 0.5rem;
+  flex-wrap: wrap;
+}
+
+div.showFilter {
+  cursor: pointer;
 }
 
 div.radioSelector {

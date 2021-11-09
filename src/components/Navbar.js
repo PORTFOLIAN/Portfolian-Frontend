@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import style from './style/Navbar.module.scss'
+import GoogleButton from './GoogleButton'
+import style from '../style/Navbar.module.scss'
 
 function Navbar() {
+  let [login, setLigin] = useState(false)
   return (
     <div className={style.container}>
       <div className={style.navBody}>
@@ -9,10 +11,14 @@ function Navbar() {
           <img  alt="LOGO" src="img/logo520.svg" />
         </div>
         <div className={style.contents}>
-          <div>검색창</div>
-          <div>프로필</div>
-          <div>메신저</div>
-          <div>알람자리임요~</div>
+          {
+          !login
+          ? <button >로그인</button>
+          : <><div>검색창</div>
+            <div>프로필</div>
+            <div>메신저</div>
+            <div>알람자리임요~</div></>
+          }
         </div>
       </div>
     </div>

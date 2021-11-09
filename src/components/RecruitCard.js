@@ -1,34 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MakeTagDiv from './MakeTagDiv';
-import style from './style/RecruitCard.module.scss'
-
-
-
-// let [recruitList, setRecruitList] = useState([
-//   {
-//     projectIdx: 0,
-//     title: '리액트로 어쩌구',
-//     stakList: ['Front-end', 'Back-end', 'React'],
-//     description: '리액트를 이용한 카카오 로그인 구현요',
-//     capaity: 4,
-//     view: 123,
-//     bookMark: false,
-//     status: 0,
-//   },
-//   {
-//     projectIdx: 0,
-//     title: '리액트로 어쩌구',
-//     stakList: ['Front-end', 'Back-end', 'React'],
-//     description: '리액트를 이용한 카카오 로그인 구현요',
-//     capaity: 4,
-//     view: 123,
-//     bookMark: true,
-//     status: 0,
-//   },
-// ]);
+import style from '../style/RecruitCard.module.scss'
 
 function RecruitCard(props) {
+
+
   return (
     <div className={style.cardContents}>
 
