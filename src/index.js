@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import { BrowserRouter } from 'react-router-dom';
-
 import {Provider} from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+// import stackListReducer from './store/stackList'
 
 let stackList = [
   {name: 'Front-end', color: '#AACFF2'},
@@ -40,7 +39,7 @@ let stackList = [
   {name: 'Sketch', color: '#FFF9C3'},
   {name: 'AdobeXD', color: '#FFB7F8'},
   {name: 'Photoshop', color: '#C9E3FB'},
-  {name: 'illustrator', color: '#CFC3AC'},
+  {name: 'Illustrator', color: '#CFC3AC'},
   {name: 'ect', color: '#5C5C5C'},
 ]
 
@@ -79,7 +78,7 @@ let recruitList = [
     status: 0,
   },
   {
-    projectIdx: 2,
+    projectIdx: 3,
     title: '[서울]오프라인 스터디',
     stackList: ['Front-end', 'Typescript', 'Javascript', 'HTML/CSS'],
     description: `    가족같은 분위기. 4대 보험 미가입. 연봉 협약없음. 다쳐도 우리 알바는 아님`,
@@ -89,6 +88,18 @@ let recruitList = [
     status: 0,
   },
     ]
+
+let initialCard={
+  projectIdx: '',
+  title:'',
+  stackList: [],
+  description: '',
+  capacity: '',
+  view: 0,
+  bookMark: false,
+  statis: 0,
+}
+let idxCard = 4;
 
 function reducer() {
   return stackList
@@ -101,6 +112,17 @@ function reducer2(state = recruitList, Action) {
     let copy = [...state];
     copy[idx].bookMark = !copy[idx].bookMark
     return copy;
+  }
+  if (Action.type === 'Register') {
+    const input = Action.data.inputs;
+    let setCard = {...initialCard};
+    setCard.projectIdx= idxCard;
+    setCard.title= input.title;
+    setCard.stackList = input.stackList;
+    setCard.description = input.subjectDiscription;
+    setCard.capacity = input.capacity;
+    idxCard ++;
+    recruitList.push(setCard);
   }
   return state;
 }
