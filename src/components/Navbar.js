@@ -3,7 +3,8 @@ import GoogleButton from './GoogleButton'
 import style from '../style/Navbar.module.scss'
 
 function Navbar() {
-  let [login, setLigin] = useState(false)
+  let [login, setLigin] = useState(false);
+  let [openModal, setOpenModal] = useState(false);
   return (
     <div className={style.container}>
       <div className={style.navBody}>
@@ -13,7 +14,7 @@ function Navbar() {
         <div className={style.contents}>
           {
           !login
-          ? <button >로그인</button>
+          ? <button onClick={setOpenMadal(true)}>로그인</button>
           : <><div>검색창</div>
             <div>프로필</div>
             <div>메신저</div>

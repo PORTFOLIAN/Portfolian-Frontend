@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Route path="/main">
+      <Route path="/main" path="/">
         <Main />
       </Route>
       <Route path="/write">
