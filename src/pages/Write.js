@@ -23,7 +23,7 @@ let Content = styled.div`
 function Write(props) {
   // editorRef = React.createRef();
   // let [contents, setContents] = useState()
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   let history = useHistory();
   let stack = useSelector((state)=>state.reducer);
   let project = useSelector((state)=>state.reducer2);
@@ -65,7 +65,7 @@ function Write(props) {
       ...inputs,
       stackList: stackArr
     });
-    props.dispatch({type: 'Register', data: {inputs: inputs}});
+    dispatch({type: 'Register', data: {inputs: inputs}});
 
   }
 
