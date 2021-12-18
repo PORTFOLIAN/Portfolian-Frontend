@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react'
-import style from '../style/Write.module.scss'
+import style from './Write.module.scss'
 import styled from 'styled-components'
 import TextareaAutosize from 'react-textarea-autosize';
 import { useDispatch, useSelector } from 'react-redux';
 // import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
-import MakeStackButton from '../components/MakeStackButton';
+import MakeStackButton from '../../components/MakeStackButton';
 import { useHistory } from 'react-router';
 
 let Text = styled.div`
@@ -120,7 +120,7 @@ function Write(props) {
         <button className={style.save} onClick={ 
           clickSubmission
         }>등록하기</button>
-        {console.log(project)}
+        {/* {console.log(project)} */}
       </div>
     </div>
   )

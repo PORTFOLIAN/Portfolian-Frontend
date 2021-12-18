@@ -1,6 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = [
+const wholeStack = [
   {name: 'Front-end', color: '#AACFF2'},
   {name: 'Back-end', color: '#FFE58A'},
   {name: 'Design', color: '#FBE1F8'},
@@ -35,16 +33,4 @@ const initialState = [
   {name: 'ect', color: '#5C5C5C'},
 ];
 
-const stackListSlice = createSlice({
-  name: "stackList",
-  initialState,
-  reducers: {
-    addStack: (state, action) => {
-      state.push(action.payload);
-    },
-    initStack: () => initialState,
-  }
-});
-
-export const { addStack, initStack} = stackListSlice.actions;
-export default stackListSlice.reducer;
+export default wholeStack;
