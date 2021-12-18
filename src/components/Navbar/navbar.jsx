@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import GoogleButton from './GoogleButton'
-import style from '../style/Navbar.module.scss'
-import LoginModal from './LoginModal';
+// import GoogleButton from './GoogleButton'
+import style from './Navbar.module.scss'
+import { Link } from 'react-router-dom';
+import Modal from '../Modal/modal';
+import LoginModal from '../LoginModal/loginModal';
+
 
 function Navbar() {
-  let [login, setLigin] = useState(false);
+  const status = localStorage.getItem("token") === null ? false:true;
+  let [isLogin, setIsLogin] = useState(status);
   let [openModal, setOpenModal] = useState(false);
 
   const showModal = () => {
@@ -18,12 +22,12 @@ function Navbar() {
     <>
       <div className={style.container}>
         <div className={style.navBody}>
-          <div className={style.logo}>
+          <Link to="/" className={style.logo}>
             <img  alt="LOGO" src="img/logo520.svg" />
-          </div>
+          </Link>
           <div className={style.contents}>
             {
-            !login
+            !isLogin
             ? <button className={style.loginButton} onClick={showModal}>로그인</button>
             : <><div>검색창</div>W
               <div>프로필</div>
@@ -34,9 +38,9 @@ function Navbar() {
         </div>
       </div>
       {
-        openModal && <LoginModal visible={openModal} showModal={showModal} closeModal={closeModal} />
-        
+        openModal && <Modal closeModal={closeModal}> <LoginModal></LoginModal> </Modal>
       }
+      {/* <Modal width="100px" height="200px" component={com()}></Modal> */}
     </>
   )
 }

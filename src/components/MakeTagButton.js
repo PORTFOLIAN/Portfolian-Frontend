@@ -32,8 +32,8 @@ function MakeTagButton({tagSelect, setTagSelect, trueList, setTrueList}) {
     let copyArr;
     let copyObj;
 
-    if (trueList.length===32 && check === 0) {
-      wholeControl(0);
+    if (trueList.length===32 && check === 0) { //체크가 0이면? 전체선택상태, ㅁ
+      wholeControl(0); //이게 무슨함수냐면 전체선택 전체취소해주는거 -> 파라미터가 0이면 전체 취소 만들어줌
       copyObj = tagSelect.map((elem) => {
         let temp = elem;
         if (temp.name === name) {
@@ -42,9 +42,9 @@ function MakeTagButton({tagSelect, setTagSelect, trueList, setTrueList}) {
         return temp;
       })
       setTagSelect(copyObj);
-      setCheck(1);
+      setCheck(1); //wholeControl에서 전체취소 만들어줬으니까 check를 1로 바꿔서 담번엔 전체선택으로 만들어줘야해
     }
-    else {
+    else { //몇개만 선택됐을때 혹은 아무것도 선택 안됐을 때
       copyObj = tagSelect.map((elem) => {
         let temp = elem;
         if (temp.name === name) {
@@ -59,9 +59,9 @@ function MakeTagButton({tagSelect, setTagSelect, trueList, setTrueList}) {
   }
 
   let wholeControl = (n) => {
-    let copyObj;
-    let copyArr;
-    if (n === 1){
+    let copyObj; //여기에 뭐가들어가냐면 스택명+선택유무 값 업데이트 된 객체배열
+    let copyArr; //여기에 뭐가들어가냐면 선택된 값만 들어있는 스트링 배열
+    if (n === 1){ //n==1이면 check가 1인상태인데.. 전체취소에서 전체선택으로
       copyObj = tagSelect.map((elem) => {
         if (elem.select === false) {
           elem.select = true;
@@ -71,7 +71,7 @@ function MakeTagButton({tagSelect, setTagSelect, trueList, setTrueList}) {
       setTagSelect(copyObj);
       copyArr = tagSelect.map(elem => elem.name);
       setTrueList(copyArr);
-    } else {
+    } else { //n==1이면 선택선택상태에서 전체취소로
       copyObj = tagSelect.map((elem) => {
         if (elem.select === true) {
           elem.select = false;
