@@ -11,6 +11,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from 'redux-persist/lib/storage';
 import stackListReducer from './modules/stackList';
+import userReducer from './modules/user'
+import { configureStore, } from '@reduxjs/toolkit';
+import loginStepReducer from './modules/loginStep';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 // import recruitListReducer from './modules/recruitList'
 
 
@@ -97,19 +102,26 @@ import stackListReducer from './modules/stackList';
 
 
 const persistConfig = {
-  key: "root",
+  key: "user",
   storage: storage,
   whitelist: ["user"],
 }
 
 const rootReducer = combineReducers({
   stackList: stackListReducer,
-  // user: userReducer,
+  user: userReducer,
+  loginStep: loginStepReducer,
 })
 
-const persistReducers = persistReducer(persistConfig, rootReducer)
+const persistReducers = persistReducer(persistConfig, rootReducer);
 
-const store = createStore( persistReducers );
+
+const store = configureStore ({
+  reducer: persistReducers,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
+})
 const persistor = persistStore(store);
 
 ReactDOM.render(
@@ -118,6 +130,15 @@ ReactDOM.render(
       <Provider store={ store }> {/* redux사용을 위한 셋팅 */}
         <PersistGate loading={null} persistor={persistor}>
           <App />
+          <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable/>
         </PersistGate>
       </Provider>
     </BrowserRouter>
