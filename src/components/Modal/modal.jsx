@@ -54,9 +54,6 @@ function Modal({width, height, closeModal, children}) {
     <ModalOverlay onClick={closeModal}>
       <ModalWrapper>
         <ModalInner width={width} height={height} onClick={e=>e.stopPropagation()}>
-          <CloseBar>
-            <CloseBtn alt="닫기" src="/img/close.svg" onClick={closeModal} ></CloseBtn>
-          </CloseBar>
           {children}
         </ModalInner>
       </ModalWrapper>

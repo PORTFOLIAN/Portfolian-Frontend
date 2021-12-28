@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
+import { update } from '../../modules/recruitList';
+import recruit from '../../service/recruit_service';
 
 const RadioSelector = styled.div`
   font-size: 14px;
@@ -22,11 +26,25 @@ const RadioImg = styled.img`
 
 
 function SortRadioBtn() {
-  let radioValue = ['최신순', '조회순', '북마크'];
+  const dispatch = useDispatch();
+  const recruitList = useSelector((state) => state.recruitList);
+  const radioValue = ['최신순', '조회순', '북마크'];
   const [radioState, setRadioState] = useState('최신순');
   const handleClickRadio = (name) => {
+  let val = "";
     setRadioState(name);
+    if (radioState === "최신순") val = "defualt";
+    else if (radioState === "조회순") val = "view";
+    else val = "bookMark";
+    dispatch(update({key: "sort", value: val}));
   }
+
+  useEffect(() => {
+    recruit.getList(recruitList).then((response) => {
+      // console.log("radio response:",response.data);
+      dispatch(update({key: "recruit", value: response.data.articleList}))
+    })
+  }, [radioState]);
 
   return (
     <RadioSelector>

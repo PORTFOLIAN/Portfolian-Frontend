@@ -10,26 +10,26 @@ class User {
   }
 
   //id를 이용해서 사용자 정보를 조회한다.
-  getUserInfo = async(id) => {
+  getUserInfo = async(userId) => {
     try {
-      const user = await this.user.get(`users/${id}`);
+      const user = await this.user.get(`users/${userId}/info`);
       return user;
     } catch(error) {
       console.log(error);
     }
   };
 
-  //user nickname 중복검사 (포트폴리안은 중복 허용)
-  checkNickname = async(id, nickName) => {
-    try {
-      const response = await this.user.get(
-        `users/$(id)/exists?nickName=${nickName}`
-      );
-      return response.datal
-    } catch(error){
-      console.log(error);
-    }
-  };
+  // //user nickname 중복검사 (포트폴리안은 중복 허용)
+  // checkNickname = async(id, nickName) => {
+  //   try {
+  //     const response = await this.user.get(
+  //       `users/$(id)/exists?nickName=${nickName}`
+  //     );
+  //     return response.datal
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // };
 
   //닉네임을 이용해 사용자 정보를 조회한다.
   getUserInfoByNickName = async (nickName) => {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import wholeStack from './wholeStack';
+import { wholeStack } from './wholeStack';
 // 메인페이지에서 유저가 선택한 스택을 관리하는 리덕스 모듈입니다.
 
 
