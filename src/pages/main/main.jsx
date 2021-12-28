@@ -6,6 +6,9 @@ import MakeTagButton from '../../components/MakeTagButton';
 import RecruitCard from '../../components/RecruitCard';
 import SortRadioBtn from '../../components/SortRadioBtn/SortRadioBtn';
 import StackTagSelection from '../../components/StackTagSelection/stackTagSelection';
+import RecruitList from '../../components/RecruitList/recruitList';
+import { useDispatch } from 'react-redux';
+import { update } from '../../modules/recruitList';
 
 function Main(props) {
   // let stack = useSelector((state)=>state.reducer);
@@ -15,9 +18,12 @@ function Main(props) {
   // let [tagSelect, setTagSelect] = useState([]);
   // let [trueList, setTrueList] = useState([])
   let [more, setMore] = useState(false);
+  const dispatch = useDispatch;
+  const stackList = useSelector((state) => state.stackList);
   // const handleClickRadio = (name) => {
   //   setRadioState(name);
   // }
+
 
   // useEffect(()=> {
   //   //리덕스 돌면서 name:, true: 값 채워주는 함수
@@ -53,6 +59,7 @@ function Main(props) {
           : (null)
         }
         <div className={style.recruitList}>
+          <RecruitList></RecruitList>
           {/* {
             project.map((a)=>{
               return (

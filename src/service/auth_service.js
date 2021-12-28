@@ -20,7 +20,7 @@ class Auth {
 //아마 완성(?)
   logout = async () => {
     try {
-      const res = await this.auth.post("logout");
+      const res = await this.auth.patch("oauth/logout");
       return res;
     }catch (error) {
       console.error(error);
@@ -29,9 +29,12 @@ class Auth {
 
   /* page refresh시 cookie에 남아있는 http-only refresh token을 이용해
    유저 정보를 얻어 옵니다. */
-  getUserInfo = async () => {
+  getUserInfo = async (userData, refreshToken) => { //refreshToken 쿠키로 아직 안바꿔줌
     try {
-      const userInfo = await this.auth.get("auth");
+      const userInfo = await this.auth.post("/oauth/refresh", {
+        userId: userData.userId,
+        refreshToken: userData.refreshToken,
+      });
       return userInfo;
     } catch(error) {
       console.error(error);

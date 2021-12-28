@@ -26,6 +26,7 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.43.4",
     "styled-components": "^5.3.3",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

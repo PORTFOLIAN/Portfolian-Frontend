@@ -2,8 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { update } from '../../modules/recruitList';
 import { addStack, clearStack, initStack, removeStack } from '../../modules/stackList';
-import wholeStack from '../../modules/wholeStack';
+import { wholeStack } from '../../modules/wholeStack';
+import recruit from '../../service/recruit_service';
 import StackTagBtn from '../StackTagBtn/stackTagBtn';
 
 const Button = styled.button`
@@ -27,19 +29,12 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-// 홀스택 리스트에서 스택들 가져와
-// 홀스택s 돌면서 버튼 만들어줘
-// 버튼에 이벤트 달아줘 (클릭하면 true로 바꿔주기(색깔변경때문에)-> 트루인 스택 관리하는 배열도 필요함) (클릭하면 리덕스의 스택관련한거 관리해주기)
-// 수정 전 컴포넌트에서 트루리스트는 길이 재는걸로만 사용했ㄷ으니까 그거는 filter나 reduce로 바궈주자
-// 선택된 태그는 리크루잇리스트 리덕스로 넣어주기
-// 리크루잇 리스트 리덕스에서 api통신하는 게시글 조회수정어쩌고 관리 모듈 호출해주기
-// 그러면 그 api통신 관리 모듈도 만들어야겟지~?
 
 const StackTagSelection = React.memo(() => {
-  // let stateTag = useSelector((state)=>state.reducer);
   const wholeStacks = wholeStack; //일단 얘는 필요해(화면에 출력시켜야하니까) -> 얘로 맵함수 돌리면서 리덕스에 있는 요소만 색깔 칠해줄까? -> 그럼 일단 밑에 state 주석처리하고 테스트해봐
   // const [selectStacks, setSelectStacks] = useState(); //근데 선택된 스택 어차피 리듀서로 관리할껀데 이거 해줄 필요있나? -> 없음 -> 리듀서 만들고오자 -> 만들고옴
   const selectStacks = useSelector((state)=>state.stackList);
+  const recruitList = useSelector((state) => state.recruitList);
   const dispatch = useDispatch();
 
 
@@ -59,7 +54,19 @@ const StackTagSelection = React.memo(() => {
       if (!selected) dispatch(addStack(stackName));
       else dispatch(removeStack(stackName));
     }
-  },[dispatch, selectStacks.length]); //useCallback과 두번째 파라미터의 의미 찾기
+    dispatch(update({key: "stack", value: selectStacks}));
+  },[dispatch, selectStacks]); //useCallback과 두번째 파라미터의 의미 찾기
+
+  useEffect(() => {
+    recruit.getList(recruitList).then((response) => {
+      dispatch(update({key: "recruit", value: response.data.articleList}))
+      // console.log("recruitList.stack: ", recruitList.stack);
+    })
+  }, [dispatch, selectStacks]);
+
+  // useEffect(() => {
+  //   dispatch(update({key: "stack", value: selectStacks}));
+  // }, [])
 
   //클릭된 스택과 안된 스택 관리하는 setSelectStacks 초기값 true로 모두 장전, 종료될 때 선택값 리셋(이거맞아?)->테스트해보고 와..!
   // useEffect(() => {

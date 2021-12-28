@@ -69,6 +69,7 @@ function SetNickName() {
     }
   }
   const handleSignUp = async() => {
+    const beforeNickName = nickName.replace(/ /gi, "");
     if (nickName.length === 0) {
       toast.info("닉네임을 입력해주세요!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -78,6 +79,16 @@ function SetNickName() {
       });
       return;
     }
+    if (beforeNickName.length !== nickName.length) {
+      toast.info("닉네임에 공백이 들어갈 수 없습니다.", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: 'light',
+        autoClose: 3000,
+        icon: "😐"
+      });
+      return ;
+    }
+    
     const userId = loginStep.userId;
     
     dispatch(setSignUpUser({key: "nickName", value: nickName}));

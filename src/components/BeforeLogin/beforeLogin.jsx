@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import KakaoButton from '../KakaoButton/kakaoButton';
 import GoogleLogin from 'react-google-login';
-import user, { fetchUserById } from "../../modules/user";
+import user, { fetchUserById, fetchUserByRefreshToken, setUserInfo } from "../../modules/user";
 import { nextStep, setSignUpUser } from "../../modules/loginStep"
 import { useSelector } from 'react-redux';
 
@@ -44,10 +44,11 @@ function BeforeLogin({ closeModal }) {
     // console.log(accessToken);
     await dispatch(fetchUserById(userData)).then((response)=>{ 
     //   //fetchUserById에서 온 결과가 response로 들어감
-    //   //response: 
+    //   //response: 유저아이디, refreshtoken, accesstoken
       const userId = response.payload.userId;
-      // console.log("userId: ", userId);
-      if (response.payload.isNew === false && user.nickName) {
+      console.log("userId: ", userId);
+      if (response.payload.isNew === false) { //지금은 로컬에 저장안댐(?)
+        dispatch(setUserInfo(userId));
         closeModal();
       } //유저 존재, 닉넴설정한 유저라는거 어떻게 알 수 있을까...
       else { //첫로그인

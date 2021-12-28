@@ -26,10 +26,6 @@ const loginstepSlice = createSlice({
       ...state,
       currentStep: state.currentStep - 1,
     }),
-    nextTowStep: (state, action) => ({
-      ...state,
-      currentStep: state.currentStep + 2,
-    }),
     clearStep: ()=>initialState,
     setSignUpUser: (state, {payload: {key, value} }) => ({
       ...state,

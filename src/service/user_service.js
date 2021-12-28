@@ -10,9 +10,9 @@ class User {
   }
 
   //id를 이용해서 사용자 정보를 조회한다.
-  getUserInfo = async(id) => {
+  getUserInfo = async(userId) => {
     try {
-      const user = await this.user.get(`users/${id}`);
+      const user = await this.user.get(`users/${userId}/info`);
       return user;
     } catch(error) {
       console.log(error);

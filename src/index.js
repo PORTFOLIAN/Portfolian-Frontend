@@ -14,56 +14,13 @@ import stackListReducer from './modules/stackList';
 import userReducer from './modules/user'
 import { configureStore, } from '@reduxjs/toolkit';
 import loginStepReducer from './modules/loginStep';
+import recruitListReducer from './modules/recruitList';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 // import recruitListReducer from './modules/recruitList'
 
 
 
-// let recruitList = [
-//   {
-//     projectIdx: 0,
-//     title: 'React를 활용한 간단한 로그인 기능 구현하기',
-//     stackList: ['Front-end', 'Back-end', 'React'],
-//     description: '리액트를 이용한 카카오 로그인 구현요',
-//     capacity: 4,
-//     view: 123,
-//     bookMark: false,
-//     status: 0,
-//   },
-//   {
-//     projectIdx: 1,
-//     title: '리액트로 저쩌구 어떤걸 할지는 나중에 정하는 그런 프로젝트 개발자 구해요 어쩌구저쩌구 잘되나요',
-//     stackList: ['Front-end', 'Spring', 'Back-end', 'Typescript', 'Javascript', 'HTML/CSS', 'Android'],
-//     description: `가장 기본적인 리액트를 활용한 로그인 구현을 구현하고자 합니다. 우리 팀에서는 협업을 해본 개발자가 필요합니다. 현재 프로젝트 구현에 필요한 기본적인 구현들은 제작이 완료되었으며
-//     가족같은 분위기. 4대 보험 미가입. 연봉 협약없음. 다쳐도 우리 알바는 아님.가장 기본적인 리액트를 활용한 로그인 구현을 구현하고자 합니다. 우리 팀에서는 협업을 해본 개발자가 필요합니다. 현재 프로젝트 구현에 필요한 기본적인 구현들은 제작이 완료되었으며
-//     가족같은 분위기. 4대 보험 미가입. 연봉 협약없음. 다쳐도 우리 알바는 아님`,
-//     capacity: 4,
-//     view: 1,
-//     bookMark: true,
-//     status: 0,
-//   },
-//   {
-//     projectIdx: 2,
-//     title: '스터디원 구해요',
-//     stackList: ['Spring', 'Back-end'],
-//     description: ``,
-//     capacity: 4,
-//     view: 12,
-//     bookMark: true,
-//     status: 0,
-//   },
-//   {
-//     projectIdx: 3,
-//     title: '[서울]오프라인 스터디',
-//     stackList: ['Front-end', 'Typescript', 'Javascript', 'HTML/CSS'],
-//     description: `    가족같은 분위기. 4대 보험 미가입. 연봉 협약없음. 다쳐도 우리 알바는 아님`,
-//     capacity: 10,
-//     view: 1,
-//     bookMark: false,
-//     status: 0,
-//   },
-//     ]
 
 // let initialCard={
 //   projectIdx: '',
@@ -103,7 +60,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const persistConfig = {
   key: "user",
-  storage: storage,
+  storage,
   whitelist: ["user"],
 }
 
@@ -111,6 +68,7 @@ const rootReducer = combineReducers({
   stackList: stackListReducer,
   user: userReducer,
   loginStep: loginStepReducer,
+  recruitList: recruitListReducer,
 })
 
 const persistReducers = persistReducer(persistConfig, rootReducer);

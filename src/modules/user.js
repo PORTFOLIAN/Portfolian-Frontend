@@ -9,6 +9,7 @@ const FETCH_USESR_BY_ID = createAction("user/FETCH_USESR_BY_ID");
 const FETCH_USER_BY_REFRESHTOKEN = createAction("user/FETCH_USER_BY_REFRESHTOKEN");
 const ADD_USER_NICKNAME = createAction("user/ADD_USER_NICKNAME");
 const MODIFY_USER_INFO = createAction("user/MODIFY_USER_INFO");
+const SET_USER_INFO = createAction("user/SET_USER_INFO");
 
 /*
 createAsyncThunk (액션타입문자열, 프로미스를 반환하는 비동기함수, 추가옵션)
@@ -26,7 +27,7 @@ const fetchUserById = createAsyncThunk(
     // const response = await httpClient.get("projects?keyword=default&stack=default&sort=default"); 
     // 3.36.84.11:3000/projects?keyword=default&stack=default&sort=default
     //카카오로그인이면 social: kakao, code: tokenId
-    console.log(await httpClient.get(`users/${response.data.userId}/info`));
+    // console.log(await httpClient.get(`users/${response.data.userId}/info`));
     // console.log("response: ", response);
     const accessToken = response.data.accessToken;
 
@@ -34,8 +35,45 @@ const fetchUserById = createAsyncThunk(
     httpClient.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
+    return response.data;
+  }
+)
+
+const fetchUserByRefreshToken = createAsyncThunk(
+  FETCH_USER_BY_REFRESHTOKEN,
+  async (userData, thunkAPI) => {
+    const response = await authService.getUserInfo(userData);
+
+    const accessToken = response.data.accessToken;
+
+    httpClient.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${accessToken}`;
+
+    console.log("fetchRefresh안에서 reponse: ",response);
 
     return response.data;
+    // const userInfo = {
+    //   nickName: response.data.name, //이거 nickName으로 바꿔준댔음
+    //   id: response.data._id,
+    //   image: response.data.profile,
+    // };
+
+
+    // return userInfo;
+  }
+)
+
+const setUserInfo = createAsyncThunk(
+  SET_USER_INFO,
+  async (userId, thunkAPI) => {
+    const response = await userService.getUserInfo(userId);
+    const userInfo = {
+      nickName: response.data.nickName,
+      id: response.data._id,
+      imageUrl: response.data.photo,
+    };
+    return userInfo;
   }
 )
 
@@ -43,7 +81,7 @@ const fetchUserById = createAsyncThunk(
 const addUserNickName = createAsyncThunk(
   ADD_USER_NICKNAME,
   async (userInfo, thunkAPI) => {
-    const response = await authService.setNickName(userInfo); //"service/auth_service"
+    const response = await authService.setNickName(userInfo); //코드랑 메시지만 옴
     
     // const accessToken = response.data.accessToken; //
 
@@ -58,7 +96,8 @@ const addUserNickName = createAsyncThunk(
 const initialState = {
   nickName: undefined,
   id: undefined,
-  // imageUrl: undefined,
+  imageUrl: undefined,
+  refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
 };
 
 const userSlice = createSlice({
@@ -76,22 +115,33 @@ const userSlice = createSlice({
       ...state,
       nickName: payload.nickName,
       id: payload._id,
+      imageUrl: payload.image,
+      refreshToken: payload.refreshToken,
     }),
 
-    // [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
-    //   ...state,
-    //   nickName: payload.nickName,
-    //   id: payload.id,
-    //   imageUrl: defaultPath + payload.image,
-    //   likeLanguages: payload.likeLanguages,
-    // }),
+    [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
+      ...state,
+      nickName: payload.nickName,
+      id: payload._id,
+      imageUrl: payload.image,
+      refreshToken: payload.refreshToken,
+    }),
+
+    [setUserInfo.fulfilled]: (state, { payload }) => ({
+      ...state,
+      nickName: payload.nickName,
+      userId: payload.id,
+      imageUrl: payload.imageUrl,
+      refreshToken: payload.refreshToken,
+    }),
 
     [addUserNickName.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
       userId: payload.userId,
+      imageUrl: payload.image,
+      refreshToken: payload.refreshToken,
       // imageUrl: defaultPath + payload.image,
-      // likeLanguages: payload.likeLanguages,
     }),
 
     // [modifyUserInfo.fulfilled]: (state, { payload }) => ({
@@ -114,5 +164,7 @@ export const { setUser, clearUser } = userSlice.actions;
 export {
   fetchUserById,
   addUserNickName,
+  fetchUserByRefreshToken,
+  setUserInfo,
 };
 export default userSlice.reducer;
