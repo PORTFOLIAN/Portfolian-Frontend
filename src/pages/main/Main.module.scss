@@ -5,7 +5,7 @@ div.banner {
 
   font-size: 3rem;
   text-align: center;
-  }
+}
 
 div.container {
   width: 100%;
@@ -16,32 +16,13 @@ div.container {
 div.order {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: baseline;
   margin: 0 0.5rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
 }
 
 div.showFilter {
   cursor: pointer;
-}
-
-div.radioSelector {
-  font-size: 14px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-top: 22px;
-}
-
-div.radioElem{
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  img {
-    width: 12px;
-    margin: 0 5px 0 20px;
-  }
 }
 
 div.recruitList {
@@ -51,5 +32,17 @@ div.recruitList {
 @media screen and (max-width: 966px) {
   div.tagSelect {
     justify-content: center;
+  }
+  div.showFilter {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 966px) {
+  // div.tagSelect {
+  //   justify-content: center;
+  // }
+  div.showFilter {
+    margin-top: 16px;
   }
 }

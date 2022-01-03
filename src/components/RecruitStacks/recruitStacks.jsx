@@ -20,8 +20,9 @@ export default RecruitStacks
 const StackListContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
+  /* width: 100%; */
   @media screen and (max-width: 966px){
     justify-content: center;
+
   }
 `

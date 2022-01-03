@@ -19,7 +19,8 @@ div .navBody {
   align-items: center;
 }
 
-div .logo {
+.logo {
+  text-decoration: none;
   img {
     height: 28px;
     padding: 0 4px;
@@ -27,27 +28,22 @@ div .logo {
   }
 }
 
-.loginButton{
+.loginButton {
   background-color: #fff;
   border: 0.5px solid #a3aab1;
   border-radius: 4px;
   height: 2rem;
   width: 4.875rem;
-  font-size: 1rem
+  font-size: 1rem;
 }
 
 div .contents {
   display: flex;
-
-  div {
-    // border: 1px solid black;
-    padding: 0 5px;
-    margin: 0 5px;
-    border-radius: 16px;
-  }
+  align-items: center;
 }
 
 @media screen and (max-width: 767px) {
-  .navBody {
+  div .logo img {
+    height: 20px;
   }
 }

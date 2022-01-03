@@ -67,13 +67,15 @@ const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 2rem 3.5rem 2rem 2rem;
-  margin: 0 8px 32px 8px;
+  margin: 16px 48px 32px 48px;
   border-radius: 16px;
   cursor: pointer;
   box-shadow: 0px 0px 8px 0px rgba(207, 207, 207, 0.507);
   // border: 1px solid #EAEAEA;
   transform: scale(1);
   transition: all 0.3s ease-in-out;
+  overflow: auto;
+
   &:hover {
     transform: scale(1.01);
   }
@@ -88,7 +90,7 @@ const CardContents = styled.div`
   display: flex;
   flex: 10;
   justify-content: space-between;
-  align-items: center; //나중에 제목 길이 길게 테스
+  align-items: center; //나중에 제목 길이 길게 테스트해보고 문제있으면 flex-end로 바꿔
   flex-wrap: wrap;
   // flex-shrink: 1;
   @media screen and (max-width: 966px){

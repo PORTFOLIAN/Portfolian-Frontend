@@ -31,7 +31,7 @@ function SortRadioBtn() {
   const radioValue = ['최신순', '조회순', '북마크'];
   const [radioState, setRadioState] = useState('최신순');
   const handleClickRadio = (name) => {
-  let val = "";
+    let val = "";
     setRadioState(name);
     if (radioState === "최신순") val = "defualt";
     else if (radioState === "조회순") val = "view";

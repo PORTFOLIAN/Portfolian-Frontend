@@ -60,13 +60,6 @@ function Main(props) {
         }
         <div className={style.recruitList}>
           <RecruitList></RecruitList>
-          {/* {
-            project.map((a)=>{
-              return (
-                <RecruitCard a={a}/>
-              )
-            })
-          } */}
         </div>
       </div>
     </div>
