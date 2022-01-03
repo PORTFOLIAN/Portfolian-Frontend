@@ -1,27 +1,15 @@
-div.container {
-  box-sizing: border-box;
+div.writeContainer {
+  // box-sizing: border-box;
   max-width: 1200px;
-  margin: auto;
+  // margin: auto;
   padding: 106px 102px 0 102px;
 }
 
-
-div.capacity {
-  display: flex;
-  align-items: center;
-  input {
-    height: 2rem;
-    width: 4.8rem;
-    margin-left: 24px;
-    font-size: 18px;
-  }
-}
-
-
-input, textarea {
+input,
+textarea {
   outline: none;
   border: none;
-  border-bottom: 0.5px solid #EAEAEA;
+  border-bottom: 0.5px solid #eaeaea;
 }
 
 div {
@@ -39,28 +27,6 @@ div {
   }
 }
 
-.title {
-  width: 100%;
-  border: 0px;
-  font-size: 2.25rem;
-  font-weight: bold;
-  outline: none;
-  white-space: pre-wrap;
-  word-break:break-all;
-}
-
-input.title::placeholder {
-  color: #909090;
-}
-
-div.line {
-  height: 0.5rem;
-  background-color: #909090;
-  width: 11.25rem;
-  margin-top: 0.5rem;
-  margin-bottom: 2.25rem;
-}
-
 div.btnContainer {
   margin: 16px 0;
   display: flex;
@@ -73,12 +39,18 @@ div.btnContainer {
   }
 
   button.temp {
-    background-color: #CACACA;
-    color: #343A40;
+    background-color: #cacaca;
+    color: #343a40;
   }
 
   button.save {
-    background-color: #6F9ACD;
+    background-color: #6f9acd;
     color: #fff;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  div.writeContainer {
+    padding: 1rem;
   }
 }

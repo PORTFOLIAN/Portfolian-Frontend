@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as BookMarkTrue} from "../asset/bookmark_true.svg";
 import { ReactComponent as BookMarkFalse} from "../asset/bookmark_false.svg";
-import RecruitStacks from '../RecruitStacks/recruitStacks';
 import UnitInfo from '../UnitInfo/unitInfo';
 import recruit from '../../service/recruit_service';
+import RecruitStacksView from '../RecruitStacksView/recruitStacksView';
 
 
 
@@ -23,7 +23,7 @@ function recruitCard({ key, recruitElem }) {
       <CardContents>
         <Details>
           <Title>{recruitElem.title}</Title>
-          <RecruitStacks stackList={recruitElem.stackList}></RecruitStacks>
+          <RecruitStacksView stackList={recruitElem.stackList}></RecruitStacksView>
           <Description>{recruitElem.description}</Description>
         </Details>
         <UnitInfo capacity={recruitElem.capacity} view={recruitElem.view} >

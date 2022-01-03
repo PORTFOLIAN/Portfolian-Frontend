@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { wholeStack } from '../../modules/wholeStack'
 import StackTagDiv from '../StackTagDiv/stackTagDiv'
 
-function RecruitStacks({ stackList }) {
+function RecruitStacksView({ stackList }) {
   return (
     <StackListContainer>
       {
@@ -15,7 +15,7 @@ function RecruitStacks({ stackList }) {
   )
 }
 
-export default RecruitStacks
+export default RecruitStacksView
 
 const StackListContainer = styled.div`
   display: flex;
