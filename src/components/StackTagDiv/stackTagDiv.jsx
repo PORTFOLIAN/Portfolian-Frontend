@@ -22,4 +22,5 @@ let TagDiv = styled.div`
   border-radius: 16px;
   border: 0;
   white-space:nowrap;
+
 `;
