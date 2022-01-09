@@ -53,7 +53,7 @@ function Navbar() {
   //       console.log("fetchUserByRefeshToken response: ", response);
   //     })
   //   }
-  // }, [dispatch, history, user.nickName, user]);
+  // }, [dispatch, user.nickName, user]);
 
   return (
     <>

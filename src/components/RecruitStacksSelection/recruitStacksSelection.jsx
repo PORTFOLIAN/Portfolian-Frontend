@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import styled from 'styled-components'
 import { wholeStack } from '../../modules/wholeStack'
+import { changeStacks } from '../../modules/write';
 import StackTagBtn from '../StackTagBtn/stackTagBtn'
 
-function RecruitStacksSelection() {
+function RecruitStacksSelection({ stackList}) {
   const [wholeStacks, setWholeStacks] = useState([]);
   const [selectCnt, setSelectCnt] = useState(0);
-  const [selectList, setSelectList] = useState([]);
+  // const {stackList} = useSelector((state)=>state.write.stackList);
+  const [selectList, setSelectList] = useState(stackList);
+  const dispatch = useDispatch();
+
+  const handleStackDispatch = ()=> {
+    dispatch(changeStacks({key: "stackList", value: selectList}));
+  }
+
   const handleStackClick = (tag, select)=>{
     const tempWholeStacks = wholeStacks.map((stack, i) => {
       if (stack.name === tag.name) {
@@ -42,6 +51,8 @@ function RecruitStacksSelection() {
       return ({tagName: stack.tagName, name: stack.name, color: stack.color, select: false});
     })
     setWholeStacks(stacks);
+    setSelectCnt(0);
+    setSelectList([]);
   }
 
   useEffect(() => {
@@ -49,9 +60,8 @@ function RecruitStacksSelection() {
   }, [])
 
   useEffect(()=>{
-    console.log(selectCnt);
-    console.log(selectList);
-  }, [selectCnt, selectList])
+    handleStackDispatch();
+  }, [selectList])
 
   return (
     <div>

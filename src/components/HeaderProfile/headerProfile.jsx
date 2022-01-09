@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import {ReactComponent as Triangle} from "../asset/triangle.svg"
 import DropDown from '../DropDown/dropDown';
 
-function HeaderProfile() {
+function HeaderProfile({handleLogout}) {
   const user = useSelector((state)=>state.user);
   const [DropDownSwitch, setDropDownSwitch] = useState(false);
   const DropDownRef = useRef();
@@ -34,7 +34,7 @@ function HeaderProfile() {
         <UserPhoto alt="UserImg" src="img/DefaultUser.svg"></UserPhoto>
         <UserNickName>{user.nickName}</UserNickName>
         <Triangle/>
-        {DropDownSwitch && <DropDown/>}
+        {DropDownSwitch && <DropDown handleLogout={handleLogout}/>}
       </UserContainer>
     </>
   )

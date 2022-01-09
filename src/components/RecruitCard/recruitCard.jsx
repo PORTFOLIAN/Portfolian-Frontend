@@ -93,7 +93,7 @@ const CardContents = styled.div`
   align-items: center; //나중에 제목 길이 길게 테스트해보고 문제있으면 flex-end로 바꿔
   flex-wrap: wrap;
   // flex-shrink: 1;
-  @media screen and (max-width: 966px){
+  @media screen and (max-width: 991px){
     flex-direction: column;
     align-items: center;
   }
@@ -103,7 +103,7 @@ const Details = styled.div`
   argin-right: 8px;
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 966px){
+  @media screen and (max-width: 991px){
     align-items: center;
   }
 `;
@@ -119,13 +119,13 @@ const Title = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  @media screen and (max-width: 966px){
+  @media screen and (max-width: 991px){
     align-items: center;
   }
 `;
 
 const Description = styled.div`
-  max-width: 600px;
+  max-width: 594px;
   margin: 8px 0 0 0;
   font-size: 14px;
   display: -webkit-box;
@@ -135,8 +135,9 @@ const Description = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  @media screen and (max-width: 966px){
+  @media screen and (max-width: 991px){
     align-items: center;
+    text-align: center;
   }
 `
 

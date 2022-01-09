@@ -28,10 +28,9 @@ const fetchUserById = createAsyncThunk(
     // 3.36.84.11:3000/projects?keyword=default&stack=default&sort=default
     //카카오로그인이면 social: kakao, code: tokenId
     // console.log(await httpClient.get(`users/${response.data.userId}/info`));
-    // console.log("response: ", response);
+    console.log("response: ", response);
     const accessToken = response.data.accessToken;
 
-    //이게뭘까(?)
     httpClient.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
@@ -70,7 +69,7 @@ const setUserInfo = createAsyncThunk(
     const response = await userService.getUserInfo(userId);
     const userInfo = {
       nickName: response.data.nickName,
-      id: response.data._id,
+      id: response.data.userId,
       imageUrl: response.data.photo,
     };
     return userInfo;
@@ -83,11 +82,11 @@ const addUserNickName = createAsyncThunk(
   async (userInfo, thunkAPI) => {
     const response = await authService.setNickName(userInfo); //코드랑 메시지만 옴
     
-    // const accessToken = response.data.accessToken; //
+    const accessToken = response.data.accessToken; //
 
-    // httpClient.defaults.headers.common[
-    //   "Authorization"
-    // ] = `Bearer ${accessToken}`;
+    httpClient.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${accessToken}`;
 
     return userInfo;
   }
@@ -95,7 +94,7 @@ const addUserNickName = createAsyncThunk(
 
 const initialState = {
   nickName: undefined,
-  id: undefined,
+  userId: undefined,
   imageUrl: undefined,
   refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
 };
@@ -114,7 +113,7 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      id: payload._id,
+      userId: payload._id,
       imageUrl: payload.image,
       refreshToken: payload.refreshToken,
     }),
@@ -122,7 +121,7 @@ const userSlice = createSlice({
     [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      id: payload._id,
+      userId: payload._id,
       imageUrl: payload.image,
       refreshToken: payload.refreshToken,
     }),

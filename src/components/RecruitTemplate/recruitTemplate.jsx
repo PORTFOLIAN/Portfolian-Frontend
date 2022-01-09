@@ -1,60 +1,78 @@
 import { Editor } from '@toast-ui/react-editor';
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import TextareaAutosize from 'react-autosize-textarea/lib'
 import styled from 'styled-components'
 import RecruitStacksSelection from '../RecruitStacksSelection/recruitStacksSelection';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeContents,clearContents } from '../../modules/write';
 
-function RecruitTemplate({inputs, setInputs}) {
+function RecruitTemplate() {
   const editorRef = useRef();
+  const titleRef = useRef();
+  const dispatch = useDispatch();
+  const {title, stackList, subjectDescription, projectTime, condition, progress, capacity, description} 
+  = useSelector(({write}) => ({
+    title: write.title,
+    stackList: write.stackList,
+    subjectDescription: write.subjectDescription,
+    projectTime: write.projectTime,
+    condition: write.condition,
+    progress: write.progress,
+    capacity: write.capacity,
+    description: write.description,
+  }));
  
-  const handleOnChange = (e) => {
-    const {value, name} = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value
-    });
+  const handleOnChangeContents = (e) => {
+    let {value, name} = e.target;
+    dispatch(changeContents({key: name, value: e.target.value}));
   }
 
   const handleOnchangeEditor = (e) => {
     const editorInstance = editorRef.current.getInstance();
     const getContent_md = editorInstance.getMarkdown();
-    setInputs({
-      ...inputs,
-      detail: getContent_md,
-    });
+    dispatch(changeContents({key: "description", value: getContent_md}));
   }
+  
+  useEffect(() => {
+    titleRef.current.focus();
+    // return () => {
+    //   dispatch(clearContents());
+    // };
+  }, []);
+
   return (
     <TemplateContainer>
-      <TitleTextarea placeholder="제목을 입력하세요." maxLength="64"  name="title" value={inputs.title} onChange={ handleOnChange } />
+      <TitleTextarea placeholder="제목을 입력하세요." maxLength="64"  name="title" value={title} ref={titleRef} onChange={ handleOnChangeContents } />
       <Line></Line>
-      <RecruitStacksSelection></RecruitStacksSelection>
+      <RecruitStacksSelection stackList={stackList}></RecruitStacksSelection>
       <Capacity>
         <ContentTextDiv>모집인원</ContentTextDiv>
-        <CapacityInput type="number" max="16" name="capacity" value={inputs.capacity} onChange={ handleOnChange }/>
+        <CapacityInput type="number" max="16" name="capacity" value={capacity} onChange={ handleOnChangeContents }/>
       </Capacity>
       <Contents>
         <ContentTextDiv>프로젝트 기간</ContentTextDiv>
-        <TextareaAutosize placeholder="예시) 3개월, 2021.09~0201.11, ..." name="projectTime" value={inputs.projectTime} onChange={ handleOnChange }/>
+        <TextareaAutosize placeholder="예시) 3개월, 2022.02~2022.04, ..." name="projectTime" value={projectTime} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 주제 설명</ContentTextDiv>
-        <TextareaAutosize placeholder="프로젝트의 주제에 대한 간단한 설명을 적어주세요." name="subjectDiscription" value={inputs.subjectDiscription} onChange={ handleOnChange }/>
+        <TextareaAutosize placeholder="프로젝트의 주제에 대한 간단한 설명을 적어주세요." name="subjectDescription" value={subjectDescription} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>모집 조건</ContentTextDiv>
-        <TextareaAutosize placeholder="구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분" name="recruitCondition" value={inputs.recruitCondition} onChange={ handleOnChange }/>
+        <TextareaAutosize placeholder="구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분" name="condition" value={condition} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 진행 방식</ContentTextDiv>
-        <TextareaAutosize placeholder="예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정" name="progress" value={inputs.progress} onChange={ handleOnChange }/>
+        <TextareaAutosize placeholder="예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정" name="progress" value={progress} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 상세(선택)</ContentTextDiv>
         <Editor 
         height= "500px"
-        initialValue= ""
+        initialValue= {description}
         initialEditType= "wysiwyg"
+        autofocus={false}
         placeholder="지원자에게 전달하고자 하는 정보를 자유롭게 적어주세요 :)" ref={editorRef} onChange={handleOnchangeEditor}/>
       </Contents>
     </TemplateContainer>

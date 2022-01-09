@@ -16,7 +16,7 @@ class Recruit {
       //   stack = "default";
       // }
       // console.log(stackList);
-      const recruit_list = await this.recruit.get(`projects?keyword=${recruitList.keyword}?stack=${recruitList.stackList}?sort=${recruitList.sort}`);
+      const recruit_list = await this.recruit.get(`projects?keyword=${recruitList.keyword}&stack=${recruitList.stackList}&sort=${recruitList.sort}`);
       // console.log(recruitList.data.articleList);
       return recruit_list;
     } catch(error) {

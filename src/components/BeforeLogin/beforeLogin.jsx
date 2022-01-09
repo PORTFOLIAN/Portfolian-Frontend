@@ -46,7 +46,8 @@ function BeforeLogin({ closeModal }) {
     //   //fetchUserById에서 온 결과가 response로 들어감
     //   //response: 유저아이디, refreshtoken, accesstoken
       const userId = response.payload.userId;
-      console.log("userId: ", userId);
+      // console.log("userId: ", userId);
+      // console.log("isNew: ", response.payload.isNew);
       if (response.payload.isNew === false) { //지금은 로컬에 저장안댐(?)
         dispatch(setUserInfo(userId));
         closeModal();

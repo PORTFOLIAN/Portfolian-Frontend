@@ -15,7 +15,7 @@ function UserOn({handleLogout}) {
 
   return (
     <Container>
-      <HeaderProfile/>
+      <HeaderProfile handleLogout={handleLogout}/>
       <Chatting style={{marginRight:"16px",cursor:"pointer"}}/>
       <Alert width="1.3rem" height="1.3rem" style={{cursor:"pointer"}}/>
       {/* <button onClick={handleLogout} >로그아웃임시</button> */}
