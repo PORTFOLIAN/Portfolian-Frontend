@@ -31,7 +31,6 @@ const fetchUserById = createAsyncThunk(
     // console.log("response: ", response);
     const accessToken = response.data.accessToken;
 
-    //이게뭘까(?)
     httpClient.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
@@ -67,10 +66,10 @@ const fetchUserByRefreshToken = createAsyncThunk(
 const setUserInfo = createAsyncThunk(
   SET_USER_INFO,
   async (userId, thunkAPI) => {
-    const response = await userService.getUserInfo(userId);
+    const response = await userService.getUserInfo(userId.userId);
     const userInfo = {
       nickName: response.data.nickName,
-      id: response.data._id,
+      userId: response.data.userId,
       imageUrl: response.data.photo,
     };
     return userInfo;
@@ -81,13 +80,15 @@ const setUserInfo = createAsyncThunk(
 const addUserNickName = createAsyncThunk(
   ADD_USER_NICKNAME,
   async (userInfo, thunkAPI) => {
-    const response = await authService.setNickName(userInfo); //코드랑 메시지만 옴
+    console.log(userInfo);
+    const response = await authService.setNickName(userInfo);
+    console.log("addUserNickName response: ", response);
     
-    // const accessToken = response.data.accessToken; //
+    const accessToken = response.data.accessToken; //
 
-    // httpClient.defaults.headers.common[
-    //   "Authorization"
-    // ] = `Bearer ${accessToken}`;
+    httpClient.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${accessToken}`;
 
     return userInfo;
   }
@@ -95,7 +96,7 @@ const addUserNickName = createAsyncThunk(
 
 const initialState = {
   nickName: undefined,
-  id: undefined,
+  userId: undefined,
   imageUrl: undefined,
   refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
 };
@@ -114,7 +115,7 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      id: payload._id,
+      userId: payload._id,
       imageUrl: payload.image,
       refreshToken: payload.refreshToken,
     }),
@@ -122,7 +123,7 @@ const userSlice = createSlice({
     [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      id: payload._id,
+      userId: payload._id,
       imageUrl: payload.image,
       refreshToken: payload.refreshToken,
     }),
@@ -130,9 +131,9 @@ const userSlice = createSlice({
     [setUserInfo.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      userId: payload.id,
+      userId: payload.userId,
       imageUrl: payload.imageUrl,
-      refreshToken: payload.refreshToken,
+      // refreshToken: payload.refreshToken,
     }),
 
     [addUserNickName.fulfilled]: (state, { payload }) => ({

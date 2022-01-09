@@ -12,11 +12,13 @@ import persistReducer from "redux-persist/es/persistReducer";
 import storage from 'redux-persist/lib/storage';
 import stackListReducer from './modules/stackList';
 import userReducer from './modules/user'
+import writeReducer from './modules/write'
 import { configureStore, } from '@reduxjs/toolkit';
 import loginStepReducer from './modules/loginStep';
 import recruitListReducer from './modules/recruitList';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+// import ScrollToTop from './components/ScrollToTop/scrollToTop';
 // import recruitListReducer from './modules/recruitList'
 
 
@@ -69,6 +71,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   loginStep: loginStepReducer,
   recruitList: recruitListReducer,
+  write: writeReducer,
 })
 
 const persistReducers = persistReducer(persistConfig, rootReducer);

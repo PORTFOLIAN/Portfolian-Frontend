@@ -3,7 +3,7 @@ import { stackNames } from "./wholeStack";
 
 const initialState = {
   stack: stackNames,
-  keyworld: "default",
+  keyword: "default",
   sort: "default",
   recruit: [],
 };

@@ -40,6 +40,7 @@ const SET_NICKNAME = 2;
 
 function LoginModal({closeModal}) {
   const loginStep = useSelector((state) => state.loginStep.currentStep);
+  const userIdInLoginStep = useSelector((state)=>state.loginStep.userId);
   const renderByLoginStep = (loginStep) => {
     switch (loginStep) {
       case BEFORE_LOGIN:
@@ -47,6 +48,7 @@ function LoginModal({closeModal}) {
           <BeforeLogin closeModal={closeModal}> </BeforeLogin>
         );
       case SET_NICKNAME:
+        console.log(userIdInLoginStep);
         return <SetNickName></SetNickName>;
       default:
         closeModal();
@@ -60,17 +62,10 @@ function LoginModal({closeModal}) {
         <CloseBtn alt="닫기" src="/img/close.svg" onClick={closeModal} ></CloseBtn>
       </CloseBar>
       <LoginContainer>
-              <Logo>
-                <LogoImg alt="로고" src="/img/logo520.svg"></LogoImg>
-              </Logo>
-              {renderByLoginStep(loginStep)}
-              {/* 이 아래부분을 따로 빼삼, 왜냐면 로그인 단계에 따라서 다른 화면 보여줘야하니까~ */}
-              {/* <StartTxt>팀원 모집부터 프로젝트 관리까지<br/>포트폴리안에서 시작해보세요!</StartTxt>
-              <LoginTxt>소셜 계정으로 시작하기</LoginTxt>
-              <LoginBtn>
-                <GoogleBtn alt="구글로그인" src="/img/google.svg" onClick={ () => {} }></GoogleBtn>
-                <KakaoButton></KakaoButton>
-              </LoginBtn> */}
+        <Logo>
+          <LogoImg alt="로고" src="/img/logo520.svg"></LogoImg>
+        </Logo>
+        {renderByLoginStep(loginStep)}
       </LoginContainer>
       </>
   )

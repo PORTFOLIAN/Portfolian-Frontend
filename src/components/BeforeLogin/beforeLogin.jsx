@@ -45,14 +45,15 @@ function BeforeLogin({ closeModal }) {
     await dispatch(fetchUserById(userData)).then((response)=>{ 
     //   //fetchUserById에서 온 결과가 response로 들어감
     //   //response: 유저아이디, refreshtoken, accesstoken
-      const userId = response.payload.userId;
-      console.log("userId: ", userId);
-      if (response.payload.isNew === false) { //지금은 로컬에 저장안댐(?)
-        dispatch(setUserInfo(userId));
+      const userInfo = response.payload;
+      // console.log("userInfo: ", userInfo);
+      if (response.payload.isNew === false) {
+        dispatch(setUserInfo(userInfo)); //이건 user.js
         closeModal();
       } //유저 존재, 닉넴설정한 유저라는거 어떻게 알 수 있을까...
       else { //첫로그인
-        dispatch(setSignUpUser({ key: "userId", value: userId}));
+        // console.log(userInfo);
+        dispatch(setSignUpUser({ key: "userId", value: response.payload.userId}));
         dispatch(nextStep());
       }
     })

@@ -12,8 +12,7 @@ border: 0;
 cursor: pointer;
 white-space:nowrap;
 `;
-const StackTagBtn = React.memo(({stack, selected,  handleStackClick}) => {
-
+const StackTagBtn = React.memo(({stack, selected,  handleStackClick}) => { //메모 왜썼지?? 하 ㅠ
   return (
     <Button color={stack.color} name={stack.name} selected={selected} onClick={()=>handleStackClick(stack, selected)}>{stack.tagName}</Button>
   )
