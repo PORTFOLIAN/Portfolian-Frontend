@@ -11,36 +11,11 @@ import { useDispatch } from 'react-redux';
 import { update } from '../../modules/recruitList';
 
 function Main(props) {
-  // let stack = useSelector((state)=>state.reducer);
-  // let project = useSelector((state)=>state.reducer2);
-  // let [radioValue, setRadioValue] = useState(['최신순', '조회순', '북마크'])
-  // let [radioState, setRadioState] = useState('최신순');
-  // let [tagSelect, setTagSelect] = useState([]);
-  // let [trueList, setTrueList] = useState([])
   let [more, setMore] = useState(false);
   const dispatch = useDispatch;
   const stackList = useSelector((state) => state.stackList);
-  // const handleClickRadio = (name) => {
-  //   setRadioState(name);
-  // }
 
 
-  // useEffect(()=> {
-  //   //리덕스 돌면서 name:, true: 값 채워주는 함수
-  //   stack.map((tag)=>{
-  //     let tempObj = {name: tag.name, select: true}
-  //     setTagSelect(tagSelect => [...tagSelect, tempObj]);
-  //     setTrueList(trueList => [...trueList, tag.name]);
-  //   })
-  //   return ()=> {
-  //     setTagSelect([]);
-  //     setTrueList([])
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-
-  // }, [more]);
 
   return (
     <div>
