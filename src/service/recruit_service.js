@@ -17,7 +17,7 @@ class Recruit {
       // }
       // console.log(stackList);
       const recruit_list = await this.recruit.get(`projects?keyword=${recruitList.keyword}&stack=${recruitList.stack}&sort=${recruitList.sort}`);
-      console.log(recruit_list);
+      // console.log(recruit_list);
       return recruit_list;
     } catch(error) {
       console.error(error);

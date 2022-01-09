@@ -91,12 +91,12 @@ function SetNickName() {
     
     const userId = loginStep.userId;
     
-    dispatch(setSignUpUser({key: "nickName", value: nickName}));
-    dispatch(addUserNickName({
+    dispatch(setSignUpUser({key: "nickName", value: nickName})); //이건 로그인스텝
+    dispatch(addUserNickName({ //이건 유저
       userId,
       nickName,
     }))
-    dispatch(nextStep());
+    dispatch(nextStep()); //이건 로그인스텝
     
   }
 
