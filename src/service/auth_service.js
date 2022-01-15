@@ -52,7 +52,7 @@ class Auth {
   };
 
   resetToken = () => {
-    this.auth.defaults.headers.common["Authorization"] = ".";
+    this.auth.defaults.headers.common["Authorization"] = "";
   };
 }
 

@@ -6,11 +6,13 @@ import Modal from '../Modal/modal';
 import LoginModal from '../LoginModal/loginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import authService from '../../service/auth_service';
-import { clearUser, fetchUserByRefreshToken } from '../../modules/user';
+import { clearUser, fetchUserByRefreshToken, setUserInfo } from '../../modules/user';
 import { clearStep } from '../../modules/loginStep';
 import UserOn from '../UserOn/userOn';
 import SearchBar from '../SearchBar/searchBar';
 import InputMoblie from '../InputMoblie/inputMoblie';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { toast } from 'react-toastify';
 
 
 
@@ -18,6 +20,7 @@ function Navbar() {
   const dispatch = useDispatch();
   // const status = localStorage.getItem("token") === null ? false:true;
   const user = useSelector((state) => state.user);
+  const history = useHistory();
   const [openModal, setOpenModal] = useState(false);
   const [inputMoblie, setInputMoblie] = useState(false);
   const [keyword, setKeyword] = useState("");
@@ -45,15 +48,23 @@ function Navbar() {
     setKeyword(e.target.value)
   }
 
-  //지금은 리프레시토큰이 저장안돼있는구조라서 일단 주석처리~
-  // useEffect(()=>{
-  //   if(user.nickName) {
-  //     dispatch(fetchUserByRefreshToken(user)).then((response) => {
-  //       //안에 내용 적어주~
-  //       console.log("fetchUserByRefeshToken response: ", response);
-  //     })
-  //   }
-  // }, [dispatch, user.nickName, user]);
+  useEffect(()=>{
+    if(user.nickName) {
+      dispatch(fetchUserByRefreshToken(user)).then((response) => {
+        //안에 내용 적어주~
+        if (response.payload.code !== 1) {
+          history.push('/');
+          dispatch(clearUser());
+          toast.error("로그인이 만료되었습니다.", {
+            position: "top-center",
+            autoClose: 3000,
+          })
+        }
+        console.log("fetchUserByRefeshToken response: ", response);
+        dispatch(setUserInfo(response.meta.arg));
+      })
+    }
+  }, []);
 
   return (
     <>

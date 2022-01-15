@@ -49,7 +49,7 @@ const fetchUserByRefreshToken = createAsyncThunk(
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    console.log("fetchRefresh안에서 reponse: ",response);
+    // console.log("fetchRefresh안에서 reponse: ",response);
 
     return response.data;
     // const userInfo = {
@@ -80,9 +80,9 @@ const setUserInfo = createAsyncThunk(
 const addUserNickName = createAsyncThunk(
   ADD_USER_NICKNAME,
   async (userInfo, thunkAPI) => {
-    console.log(userInfo);
+    // console.log(userInfo);
     const response = await authService.setNickName(userInfo);
-    console.log("addUserNickName response: ", response);
+    // console.log("addUserNickName response: ", response);
     
     const accessToken = response.data.accessToken; //
 
@@ -125,7 +125,7 @@ const userSlice = createSlice({
       nickName: payload.nickName,
       userId: payload._id,
       imageUrl: payload.image,
-      refreshToken: payload.refreshToken,
+      // refreshToken: payload.refreshToken,
     }),
 
     [setUserInfo.fulfilled]: (state, { payload }) => ({
@@ -141,7 +141,7 @@ const userSlice = createSlice({
       nickName: payload.nickName,
       userId: payload.userId,
       imageUrl: payload.image,
-      refreshToken: payload.refreshToken,
+      // refreshToken: payload.refreshToken,
       // imageUrl: defaultPath + payload.image,
     }),
 

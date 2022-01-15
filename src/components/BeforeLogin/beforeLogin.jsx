@@ -50,7 +50,7 @@ function BeforeLogin({ closeModal }) {
       if (response.payload.isNew === false) {
         dispatch(setUserInfo(userInfo)); //이건 user.js
         closeModal();
-      } //유저 존재, 닉넴설정한 유저라는거 어떻게 알 수 있을까...
+      }
       else { //첫로그인
         // console.log(userInfo);
         dispatch(setSignUpUser({ key: "userId", value: response.payload.userId}));
