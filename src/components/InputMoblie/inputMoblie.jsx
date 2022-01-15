@@ -65,6 +65,13 @@ const Input = styled.input`
   border: none;
   width: 90%;
   overflow: auto;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: #bbb6b6;
+  }
+  :-ms-input-placeholder {
+    color: #bbb6b6;
+  }
   /* margin-left: 8px; */
 `
 

@@ -16,7 +16,7 @@ function RecruitList() {
   return (
     <>
       {
-        recruit_list.recruit.map((elem, i) => {
+        recruit_list.recruit && recruit_list.recruit.map((elem, i) => {
           return (
             // 카드컴포넌트
             <RecruitCard key={i} recruitElem={elem}></RecruitCard>

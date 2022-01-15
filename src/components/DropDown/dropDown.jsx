@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-function DropDown() {
+
+function DropDown({handleLogout}) {
+
   return (
     <DropDownContainer>
       <ListContainer>
@@ -15,7 +17,7 @@ function DropDown() {
         <ListItems>
           <Linkitems to="/" style={{ display: "inline-block", textDecoration: 'none' }}>내 지원현황</Linkitems>
         </ListItems>
-        <ListItems>
+        <ListItems onClick={handleLogout}>
           로그아웃
         </ListItems>
       </ListContainer>

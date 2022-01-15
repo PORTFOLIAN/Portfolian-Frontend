@@ -36,6 +36,10 @@ const ModalInner = styled.div`
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+  }
 `;
 
 const   CloseBar = styled.div`
