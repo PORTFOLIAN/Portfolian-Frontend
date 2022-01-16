@@ -95,7 +95,7 @@ const initialState = {
   nickName: undefined,
   userId: undefined,
   imageUrl: undefined,
-  refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
+  // refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
 };
 
 const userSlice = createSlice({
@@ -114,7 +114,7 @@ const userSlice = createSlice({
       nickName: payload.nickName,
       userId: payload._id,
       imageUrl: payload.image,
-      refreshToken: payload.refreshToken,
+      // refreshToken: payload.refreshToken,
     }),
 
     [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
