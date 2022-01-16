@@ -63,8 +63,8 @@ function Navbar() {
         // }
         console.log("fetchUserByRefeshToken response: ", response);
         // dispatch(setUserInfo(response.meta.arg));
-      // })
-    }
+      })
+    // }
   }, [user.nickName]);
 
   return (
