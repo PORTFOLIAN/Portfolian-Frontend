@@ -37,8 +37,8 @@ const fetchUserById = createAsyncThunk(
 
 const fetchUserByRefreshToken = createAsyncThunk(
   FETCH_USER_BY_REFRESHTOKEN,
-  async (userData, thunkAPI) => {
-    const response = await authService.getUserInfo(userData);
+  async (thunkAPI) => {
+    const response = await authService.getUserInfo();
 
     const accessToken = response.data.accessToken;
 

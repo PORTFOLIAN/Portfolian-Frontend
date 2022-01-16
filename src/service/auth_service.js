@@ -33,8 +33,8 @@ class Auth {
     try {
       const userInfo = await this.auth.post("/oauth/refresh", {
         userId: userData.userId,
-        refreshToken: userData.refreshToken,
       });
+      console.log("auth service getUserInfo userInfo: ", userInfo);
       return userInfo;
     } catch(error) {
       console.error(error);
