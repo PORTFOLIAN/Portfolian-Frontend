@@ -50,7 +50,7 @@ function Navbar() {
 
   useEffect(()=>{
     // console.log("nabvar useEffect user.nickName: ", user.nickName);
-    // if(user.nickName) {
+    if(user.nickName) {
       dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
         //안에 내용 적어주~
         // if (response.payload.code !== 1) {
@@ -62,9 +62,8 @@ function Navbar() {
         //   })
         // }
         console.log("fetchUserByRefeshToken response: ", response);
-        // dispatch(setUserInfo(response.meta.arg));
       })
-    // }
+    }
   }, []);
 
   return (
