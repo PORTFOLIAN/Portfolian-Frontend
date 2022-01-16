@@ -108,12 +108,13 @@ function Write() {
       }
       else {
         dispatch(writePost({ article,  ownerStack })).then((response)=> {
+          console.log(response);
           toast.success("글 작성이 완료되었어요!", {
             position: "top-right",
             autoClose: 4000,
           });
         });
-        history.push('/')
+        // history.push('/')
       }
     }
     
