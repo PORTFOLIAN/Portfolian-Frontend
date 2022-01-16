@@ -49,6 +49,7 @@ function Navbar() {
   }
 
   useEffect(()=>{
+    console.log("nabvar useEffect user.nickName: ", user.nickName);
     if(user.nickName) {
       dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
         //안에 내용 적어주~
