@@ -48,23 +48,23 @@ function Navbar() {
     setKeyword(e.target.value)
   }
 
-  useEffect(()=>{
-    // console.log("nabvar useEffect user.nickName: ", user.nickName);
-    if(user.nickName) {
-      dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
-        //안에 내용 적어주~
-        // if (response.payload.code !== 1) {
-        //   history.push('/');
-        //   dispatch(clearUser());
-        //   toast.error("로그인이 만료되었습니다.", {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //   })
-        // }
-        console.log("fetchUserByRefeshToken response: ", response);
-      })
-    }
-  }, []);
+  // useEffect(()=>{
+  //   // console.log("nabvar useEffect user.nickName: ", user.nickName);
+  //   if(user.nickName) {
+  //     dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
+  //       //안에 내용 적어주~
+  //       // if (response.payload.code !== 1) {
+  //       //   history.push('/');
+  //       //   dispatch(clearUser());
+  //       //   toast.error("로그인이 만료되었습니다.", {
+  //       //     position: "top-center",
+  //       //     autoClose: 3000,
+  //       //   })
+  //       // }
+  //       console.log("fetchUserByRefeshToken response: ", response);
+  //     })
+  //   }
+  // }, []);
 
   return (
     <>
