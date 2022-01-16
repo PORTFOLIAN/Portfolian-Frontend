@@ -135,13 +135,17 @@ function Write() {
     };
   }, []);
 
+  const onCancel = () => {
+    history.goBack();
+  };
+
   //작성자님이 사용할 기술을 골라주세요!(1개)
   return (
     <>
       <div className={style.writeContainer} modal={ownerStackModal}>
         <RecruitTemplate></RecruitTemplate>
         <div className={style.btnContainer}>
-          <button>취&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</button>
+          <button onClick={onCancel}>취&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</button>
           <div>
             <button className={style.temp}>임시저장</button>
             <button className={style.save} onClick={handleOwnerStackModal}>다&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;음</button>
