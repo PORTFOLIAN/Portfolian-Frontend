@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { clearContents, writePost } from '../../modules/write';
+import Navbar from '../../components/Navbar/navbar';
 
 function Write() {
   const user = useSelector((state)=> state.user);
@@ -120,7 +121,7 @@ function Write() {
 
   useEffect(()=> {
     //유저정보 없으면 로그인하라고 알려주고 홈으로 가기
-    if (user.userId === undefined) {
+    if (!user.userId) {
       toast.error("로그인이 필요한 페이지입니다.", {
         position: "top-right",
         autoClose: 3000,
@@ -138,6 +139,7 @@ function Write() {
   //작성자님이 사용할 기술을 골라주세요!(1개)
   return (
     <>
+      <Navbar />
       <div className={style.writeContainer} modal={ownerStackModal}>
         <RecruitTemplate></RecruitTemplate>
         <div className={style.btnContainer}>

@@ -14,9 +14,6 @@ function DropDown({handleLogout}) {
         <ListItems>
           <Linkitems to="/write" style={{ display: "inline-block", textDecoration: 'none' }}>모집공고 생성</Linkitems>
         </ListItems>
-        <ListItems>
-          <Linkitems to="/" style={{ display: "inline-block", textDecoration: 'none' }}>내 지원현황</Linkitems>
-        </ListItems>
         <ListItems onClick={handleLogout}>
           로그아웃
         </ListItems>
