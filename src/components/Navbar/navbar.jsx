@@ -64,7 +64,7 @@ function Navbar() {
         // dispatch(setUserInfo(response.meta.arg));
       })
     }
-  }, []);
+  }, [user.nickName]);
 
   return (
     <>
