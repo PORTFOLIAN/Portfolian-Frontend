@@ -41,7 +41,7 @@ function BeforeLogin({ closeModal }) {
   const kakaoOnSuccess = async (response) => {
     const accessToken = response.response.access_token;
     const userData = { code: accessToken, social: "kakao" };
-    // console.log(accessToken);
+    console.log("kakao access Token: ", accessToken);
     await dispatch(fetchUserById(userData)).then((response)=>{ 
     //   //fetchUserById에서 온 결과가 response로 들어감
     //   //response: 유저아이디, refreshtoken, accesstoken
