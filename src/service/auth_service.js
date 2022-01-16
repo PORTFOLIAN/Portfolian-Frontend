@@ -32,7 +32,7 @@ class Auth {
   getUserInfo = async (userData, refreshToken) => { //refreshToken 쿠키로 아직 안바꿔줌
     try {
       const userInfo = await this.auth.post("/oauth/refresh", {
-        userId: userData.userId,
+        userId: userData,
       });
       console.log("auth service getUserInfo userInfo: ", userInfo);
       return userInfo;

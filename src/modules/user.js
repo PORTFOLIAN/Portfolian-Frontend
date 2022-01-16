@@ -38,8 +38,8 @@ const fetchUserById = createAsyncThunk(
 const fetchUserByRefreshToken = createAsyncThunk(
   FETCH_USER_BY_REFRESHTOKEN,
   async (userId, thunkAPI) => {
-    const response = await authService.getUserInfo(userId);
     console.log("gjdghakfjq");
+    const response = await authService.getUserInfo(userId);
     const accessToken = response.data.accessToken;
 
     httpClient.defaults.headers.common[
@@ -48,15 +48,15 @@ const fetchUserByRefreshToken = createAsyncThunk(
 
     console.log("fetchRefresh안에서 reponse: ",response);
 
-    // return response.data;
-    const userInfo = {
-      nickName: response.data.nickName, //이거 nickName으로 바꿔준댔음
-      id: response.data.userId,
-      imageUrl: response.data.photo,
-    };
+    return response.data;
+    // const userInfo = {
+    //   nickName: response.data.nickName, //이거 nickName으로 바꿔준댔음
+    //   id: response.data.userId,
+    //   imageUrl: response.data.photo,
+    // };
 
 
-    return userInfo;
+    // return userInfo;
   }
 )
 
