@@ -25,7 +25,7 @@ const fetchUserById = createAsyncThunk(
   async (userData, thunkAPI) => {
     const response = await authService.login(userData.social, userData.code); 
     //카카오로그인이면 social: kakao, code: tokenId
-    // console.log("fetchUserById response: ", response);
+    console.log("fetchUserById response: ", response);
     const accessToken = response.data.accessToken;
 
     httpClient.defaults.headers.common[
@@ -63,6 +63,7 @@ const setUserInfo = createAsyncThunk(
   SET_USER_INFO,
   async (userId, thunkAPI) => {
     const response = await userService.getUserInfo(userId.userId);
+    console.log("setUserInfo response: ", response);
     const userInfo = {
       nickName: response.data.nickName,
       userId: response.data.userId,
@@ -111,8 +112,8 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, { payload }) => ({
       ...state,
       nickName: payload.nickName,
-      userId: payload._id,
-      imageUrl: payload.image,
+      userId: payload.Userid,
+      imageUrl: payload.photo,
       // refreshToken: payload.refreshToken,
     }),
 
@@ -136,7 +137,7 @@ const userSlice = createSlice({
       ...state,
       nickName: payload.nickName,
       userId: payload.userId,
-      imageUrl: payload.image,
+      imageUrl: payload.photo,
       // refreshToken: payload.refreshToken,
       // imageUrl: defaultPath + payload.image,
     }),
