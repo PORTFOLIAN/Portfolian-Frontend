@@ -24,11 +24,8 @@ const fetchUserById = createAsyncThunk(
   FETCH_USESR_BY_ID,
   async (userData, thunkAPI) => {
     const response = await authService.login(userData.social, userData.code); 
-    // const response = await httpClient.get("projects?keyword=default&stack=default&sort=default"); 
-    // 3.36.84.11:3000/projects?keyword=default&stack=default&sort=default
     //카카오로그인이면 social: kakao, code: tokenId
-    // console.log(await httpClient.get(`users/${response.data.userId}/info`));
-    // console.log("response: ", response);
+    console.log("fetchUserById response: ", response);
     const accessToken = response.data.accessToken;
 
     httpClient.defaults.headers.common[
@@ -51,15 +48,15 @@ const fetchUserByRefreshToken = createAsyncThunk(
 
     // console.log("fetchRefresh안에서 reponse: ",response);
 
-    return response.data;
-    // const userInfo = {
-    //   nickName: response.data.name, //이거 nickName으로 바꿔준댔음
-    //   id: response.data._id,
-    //   image: response.data.profile,
-    // };
+    // return response.data;
+    const userInfo = {
+      nickName: response.data.nickName, //이거 nickName으로 바꿔준댔음
+      id: response.data.userId,
+      imageUrl: response.data.photo,
+    };
 
 
-    // return userInfo;
+    return userInfo;
   }
 )
 
