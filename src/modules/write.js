@@ -8,7 +8,6 @@ const writePost = createAsyncThunk(
   WRITE_POST_ACTION,
   async({article, ownerStack}, thunkAPI)=> {
     //유저가 저장누르면 서버로 내용 보내는거를 project-service에 구현하고 그거 호출하는 api 작성해주기!
-    console.log("writePost article, ownerstack: ", article, ownerStack);
     const response = await projectService.post({
       article, ownerStack,
     });
