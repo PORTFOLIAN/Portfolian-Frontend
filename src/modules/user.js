@@ -46,7 +46,7 @@ const fetchUserByRefreshToken = createAsyncThunk(
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    // console.log("fetchRefresh안에서 reponse: ",response);
+    console.log("fetchRefresh안에서 reponse: ",response);
 
     // return response.data;
     const userInfo = {
