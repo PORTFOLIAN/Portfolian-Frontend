@@ -50,7 +50,7 @@ function Navbar() {
 
   useEffect(()=>{
     if(user.nickName) {
-      dispatch(fetchUserByRefreshToken()).then((response) => {
+      dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
         //안에 내용 적어주~
         // if (response.payload.code !== 1) {
         //   history.push('/');
