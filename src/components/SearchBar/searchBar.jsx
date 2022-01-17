@@ -57,6 +57,7 @@ const Input = styled.input`
   color: #696969;
   font-size: 12px;
   margin-right: 8px;
+  background-color: transparent;
   -webkit-appearance: none;
   overflow: auto;
   ::placeholder ::-webkit-input-placeholder{

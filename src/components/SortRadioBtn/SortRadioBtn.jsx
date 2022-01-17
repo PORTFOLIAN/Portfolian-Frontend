@@ -41,8 +41,8 @@ function SortRadioBtn() {
 
   useEffect(() => {
     recruit.getList(recruitList).then((response) => {
-      // console.log("radio response:",response.data);
-      dispatch(update({key: "recruit", value: response.data.articleList}))
+      // console.log("radio response:",response);
+       dispatch(update({key: "recruit", value: response.data.articleList}))
     })
   }, [radioState]);
 
