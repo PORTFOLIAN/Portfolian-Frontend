@@ -20,6 +20,7 @@ export default RecruitStacksView
 const StackListContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
+  max-width: 600px;
   /* width: 100%; */
   @media screen and (max-width: 966px){
     justify-content: center;

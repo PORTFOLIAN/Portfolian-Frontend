@@ -22,6 +22,7 @@ function Main(props) {
     <div>
       <Navbar />
       <div className={style.banner}>
+        배너 만들~~~
       </div>
       <div className={style.container}>
         <div className={style.order}>

@@ -30,7 +30,7 @@ function recruitCard({ key, recruitElem }) {
           <ApplyBtn status={recruitElem.status}>
             {
             recruitElem.status === 0 
-            ? '지원하기'
+            ? '지원하기' //이거 클릭하면 채팅하겠냐는 창 띄우고 채팅열어주기
             : '모집종료'
             }
           </ApplyBtn>
@@ -103,6 +103,7 @@ const Details = styled.div`
   argin-right: 8px;
   display: flex;
   flex-direction: column;
+  max-width: 580px;
   @media screen and (max-width: 991px){
     align-items: center;
   }
@@ -116,7 +117,7 @@ const Title = styled.div`
   white-space: normal;
   display: -webkit-box;
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   @media screen and (max-width: 991px){
@@ -130,9 +131,9 @@ const Description = styled.div`
   font-size: 14px;
   display: -webkit-box;
   white-space: normal;
-  height: 40px;
+  height: 20px;
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   @media screen and (max-width: 991px){

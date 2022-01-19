@@ -46,6 +46,7 @@ const StackTagSelection = React.memo(() => {
     //유즈이팩트도 필요없을 것 같음
     if (selectStacks.length === 32) {
       dispatch(clearStack());
+      // console.log("addStacks하기 전 stackName형태확인: ", stackName);
       dispatch(addStack(stackName));
     } else if (selectStacks.length === 1) {
       if (!selected) dispatch(addStack(stackName));
@@ -54,11 +55,12 @@ const StackTagSelection = React.memo(() => {
       if (!selected) dispatch(addStack(stackName));
       else dispatch(removeStack(stackName));
     }
-    dispatch(update({key: "stack", value: selectStacks}));
-  },[dispatch, selectStacks]); //useCallback과 두번째 파라미터의 의미 찾기
+    dispatch(update({key: "stack", value: selectStacks.map(a => a.name)})); //이걸 맨 마지막에 실행되도록 하는 방법은?
+  },[dispatch, selectStacks]);
 
   useEffect(() => {
     recruit.getList(recruitList).then((response) => {
+      // console.log("recruit.getList response: ",response);
       dispatch(update({key: "recruit", value: response.data.articleList}))
       // console.log("recruitList.stack: ", recruitList.stack);
     })
@@ -85,7 +87,7 @@ const StackTagSelection = React.memo(() => {
         wholeStacks.map((stack, i) => {
           let selected = selectStacks.includes(stack); //stack이 선택리스트에 포함되어있으면 true 아니면 false
           return (
-            <StackTagBtn stack={stack} selected={selected} key={i} handleStackClick={handleStackClick}></StackTagBtn> //키값을 넘겨주는 이유는 뭘까?
+            <StackTagBtn stack={stack} selected={selected} key={i} handleStackClick={handleStackClick}></StackTagBtn>
           );
         })
       }

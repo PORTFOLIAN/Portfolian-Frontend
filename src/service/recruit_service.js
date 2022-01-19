@@ -16,7 +16,13 @@ class Recruit {
       //   stack = "default";
       // }
       // console.log(stackList);
-      const recruit_list = await this.recruit.get(`projects?keyword=${recruitList.keyword}&stack=${recruitList.stack}&sort=${recruitList.sort}`);
+      // console.log("recruitList.stack: ", recruitList.stack);
+      let stackReq="";
+      recruitList.stack.map((stack, i) => {
+        stackReq = stackReq.concat("&stack="+stack);
+      })
+      // console.log("stackReq: ",stackReq);
+      const recruit_list = await this.recruit.get(`projects?keyword=${recruitList.keyword}${stackReq}&sort=${recruitList.sort}`);
       // console.log(recruit_list);
       return recruit_list;
     } catch(error) {

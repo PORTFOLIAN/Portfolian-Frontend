@@ -25,7 +25,7 @@ const fetchUserById = createAsyncThunk(
   async (userData, thunkAPI) => {
     const response = await authService.login(userData.social, userData.code); 
     //카카오로그인이면 social: kakao, code: tokenId
-    console.log("fetchUserById response: ", response);
+    // console.log("fetchUserById response: ", response);
     const accessToken = response.data.accessToken;
 
     httpClient.defaults.headers.common[
@@ -45,7 +45,7 @@ const fetchUserByRefreshToken = createAsyncThunk(
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    console.log("fetchRefresh안에서 reponse: ",response);
+    // console.log("fetchRefresh안에서 reponse: ",response);
 
     return response.data;
     // const userInfo = {
@@ -63,7 +63,7 @@ const setUserInfo = createAsyncThunk(
   SET_USER_INFO,
   async (userId, thunkAPI) => {
     const response = await userService.getUserInfo(userId.userId);
-    console.log("setUserInfo response: ", response);
+    // console.log("setUserInfo response: ", response);
     const userInfo = {
       nickName: response.data.nickName,
       userId: response.data.userId,

@@ -9,7 +9,7 @@ const stackListSlice = createSlice({
   name: "stackList",
   initialState,
   reducers: {
-    addStack: (state, action) => { // 선택 스택 추가
+    addStack: (state, action) => { // 선택 스택 추가 (오브젝트형식)
       state.push(action.payload);
     },
     removeStack: (state, action) => { //선택 취소

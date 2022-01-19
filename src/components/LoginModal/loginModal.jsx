@@ -48,7 +48,6 @@ function LoginModal({closeModal}) {
           <BeforeLogin closeModal={closeModal}> </BeforeLogin>
         );
       case SET_NICKNAME:
-        console.log(userIdInLoginStep);
         return <SetNickName></SetNickName>;
       default:
         closeModal();

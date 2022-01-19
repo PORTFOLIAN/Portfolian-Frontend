@@ -34,7 +34,7 @@ class Auth {
       const userInfo = await this.auth.post("/oauth/refresh", {
         userId: userData,
       }, {withCredentials: true});
-      console.log("auth service getUserInfo userInfo: ", userInfo);
+      // console.log("auth service getUserInfo userInfo: ", userInfo);
       return userInfo;
     } catch(error) {
       console.error(error);

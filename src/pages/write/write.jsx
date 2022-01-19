@@ -114,7 +114,7 @@ function Write() {
             autoClose: 4000,
           });
         });
-        // history.push('/')
+        history.push('/')
       }
     }
     
