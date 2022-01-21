@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { update } from '../../modules/recruitList';
+import recruit from '../../service/recruit_service';
 import {ReactComponent as SearchIcon} from '../asset/search.svg' 
 
 
 function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
   const dispatch = useDispatch();
-  
+  const recruitList = useSelector((state) => state.recruitList);
   const handleOnClickSearch = () => {
+    console.log("hi");
     dispatch(update({key: "keyword", value: keyword}));
-    
   }
 
   const handleOnKeypress = (e) => {
@@ -19,10 +20,20 @@ function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
     }
   }
 
+  useEffect(() => {
+    recruit.getList(recruitList).then((response) => {
+       dispatch(update({key: "recruit", value: response.data.articleList}))
+    })
+    // return () => {
+    //   dispatch(update({key: "keyword", value: "default"}));
+    // };
+  }, [recruitList.keyword]);
+  
+
   return (
     <>
       <InputContainer>
-        <Input type="text" placeholder="모집글 검색하기" onChange={(e)=>handleInputKeyword(e)} onKeypress={handleOnKeypress} value={keyword}></Input>
+        <Input type="text" placeholder="모집글 검색하기" onChange={(e)=>handleInputKeyword(e)} onKeyPress={handleOnKeypress} value={keyword}></Input>
         <SearchIcon onClick={handleOnClickSearch} style={{cursor:"pointer"}}/>
       </InputContainer>
       {/* <InputContainerMoblie>

@@ -55,7 +55,7 @@ const StackTagSelection = React.memo(() => {
       if (!selected) dispatch(addStack(stackName));
       else dispatch(removeStack(stackName));
     }
-    dispatch(update({key: "stack", value: selectStacks.map(a => a.name)})); //이걸 맨 마지막에 실행되도록 하는 방법은?
+     //이걸 맨 마지막에 실행되도록 하는 방법은?
   },[dispatch, selectStacks]);
 
   useEffect(() => {
@@ -64,7 +64,11 @@ const StackTagSelection = React.memo(() => {
       dispatch(update({key: "recruit", value: response.data.articleList}))
       // console.log("recruitList.stack: ", recruitList.stack);
     })
-  }, [dispatch, selectStacks]);
+  }, [recruitList.stack]);
+
+  useEffect(()=> {
+    dispatch(update({key: "stack", value: selectStacks.map(a => a.name)}));
+  }, [selectStacks])
 
   // useEffect(() => {
   //   dispatch(update({key: "stack", value: selectStacks}));

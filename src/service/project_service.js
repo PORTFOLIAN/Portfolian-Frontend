@@ -16,19 +16,6 @@ class Project {
       console.error(error);
     }
   }
-
-  // register = async ({ title, content, language }) => {
-  //   try {
-  //     const response = await this.study.post('studies', {
-  //       title,
-  //       content,
-  //       language,
-  //     });
-  //     return response;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 }
 
 const projectService = new Project(httpClient);

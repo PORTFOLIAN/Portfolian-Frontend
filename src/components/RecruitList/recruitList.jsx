@@ -19,7 +19,7 @@ function RecruitList() {
         recruit_list.recruit && recruit_list.recruit.map((elem, i) => {
           return (
             // 카드컴포넌트
-            <RecruitCard key={i} recruitElem={elem}></RecruitCard>
+            <RecruitCard recruitElem={elem} key={elem.projectId}></RecruitCard>
           )
         })
       }

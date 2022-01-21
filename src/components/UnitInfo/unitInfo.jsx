@@ -27,7 +27,7 @@ export default UnitInfo
 
 const UnitContainer = styled.div`
   @media screen and (max-width: 991px){
-      margin-top: 4px;
+      margin-top: 16px;
     }
   /* margin-top: 16px; */
 `

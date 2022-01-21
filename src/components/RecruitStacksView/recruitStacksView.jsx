@@ -22,7 +22,7 @@ const StackListContainer = styled.div`
   flex-flow: row wrap;
   max-width: 600px;
   /* width: 100%; */
-  @media screen and (max-width: 966px){
+  @media screen and (max-width: 991px){
     justify-content: center;
 
   }

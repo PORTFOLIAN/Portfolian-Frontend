@@ -32,26 +32,27 @@ function SortRadioBtn() {
   const [radioState, setRadioState] = useState('최신순');
   const handleClickRadio = (name) => {
     let val = "";
-    setRadioState(name);
-    if (radioState === "최신순") val = "defualt";
-    else if (radioState === "조회순") val = "view";
+    // console.log("click name: ", name);
+    if (name === "최신순") val = "defualt";
+    else if (name === "조회순") val = "view";
     else val = "bookMark";
     dispatch(update({key: "sort", value: val}));
+    setRadioState(name);
   }
 
   useEffect(() => {
+    // console.log("recruitList.sort: ", recruitList.sort)
     recruit.getList(recruitList).then((response) => {
-      // console.log("radio response:",response);
        dispatch(update({key: "recruit", value: response.data.articleList}))
     })
-  }, [radioState]);
+  }, [recruitList.sort]);
 
   return (
     <RadioSelector>
           {
-            radioValue.map(function(name){
+            radioValue.map(function(name, i){
             return (
-              <RadioElem onClick={()=>handleClickRadio(name)}>
+              <RadioElem onClick={()=>handleClickRadio(name)} key={i}>
                 {
                 radioState === name
                 ?<RadioImg alt="LOGO" src="img/circle.svg"></RadioImg>
