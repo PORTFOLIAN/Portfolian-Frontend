@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { update } from '../../modules/recruitList';
 import { addStack, clearStack, initStack, removeStack } from '../../modules/stackList';
 import { wholeStack } from '../../modules/wholeStack';
-import recruit from '../../service/recruit_service';
+import project from '../../service/project_service';
 import StackTagBtn from '../StackTagBtn/stackTagBtn';
 
 const Button = styled.button`
@@ -59,7 +59,7 @@ const StackTagSelection = React.memo(() => {
   },[dispatch, selectStacks]);
 
   useEffect(() => {
-    recruit.getList(recruitList).then((response) => {
+    project.getList(recruitList).then((response) => {
       // console.log("recruit.getList response: ",response);
       dispatch(update({key: "recruit", value: response.data.articleList}))
       // console.log("recruitList.stack: ", recruitList.stack);

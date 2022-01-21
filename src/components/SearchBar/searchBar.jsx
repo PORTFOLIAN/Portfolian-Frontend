@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { update } from '../../modules/recruitList';
-import recruit from '../../service/recruit_service';
+import project from '../../service/project_service';
 import {ReactComponent as SearchIcon} from '../asset/search.svg' 
 
 
@@ -21,7 +21,7 @@ function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
   }
 
   useEffect(() => {
-    recruit.getList(recruitList).then((response) => {
+    project.getList(recruitList).then((response) => {
        dispatch(update({key: "recruit", value: response.data.articleList}))
     })
     // return () => {

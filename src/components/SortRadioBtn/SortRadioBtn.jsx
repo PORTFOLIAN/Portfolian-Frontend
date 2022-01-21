@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
 import { update } from '../../modules/recruitList';
-import recruit from '../../service/recruit_service';
+import project from '../../service/project_service';
 
 const RadioSelector = styled.div`
   font-size: 14px;
@@ -42,7 +42,7 @@ function SortRadioBtn() {
 
   useEffect(() => {
     // console.log("recruitList.sort: ", recruitList.sort)
-    recruit.getList(recruitList).then((response) => {
+    project.getList(recruitList).then((response) => {
        dispatch(update({key: "recruit", value: response.data.articleList}))
     })
   }, [recruitList.sort]);

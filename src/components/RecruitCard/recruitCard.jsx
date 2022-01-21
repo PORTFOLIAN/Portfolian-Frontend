@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { ReactComponent as BookMarkTrue} from "../asset/bookmark_true.svg";
 import { ReactComponent as BookMarkFalse} from "../asset/bookmark_false.svg";
 import UnitInfo from '../UnitInfo/unitInfo';
-import recruit from '../../service/recruit_service';
 import RecruitStacksView from '../RecruitStacksView/recruitStacksView';
 import { useHistory } from 'react-router-dom';
 
