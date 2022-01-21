@@ -6,7 +6,7 @@ import { Route, Router, Switch } from 'react-router-dom';
 // import KaKaoLogin from './components/KaKaoLogin';
 import Main from './pages/main/main';
 import Write from './pages/write/write';
-import Navbar from './components/Navbar/navbar';
+import Project from './pages/project/project';
 
 function App() {
   return (
@@ -18,6 +18,9 @@ function App() {
           </Route>
           <Route path="/write">
             <Write />
+          </Route>
+          <Route path="/projects">
+            <Project />
           </Route>
 
         </Switch>

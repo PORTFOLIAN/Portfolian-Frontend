@@ -3,14 +3,19 @@ import styled from 'styled-components'
 import { ReactComponent as BookMarkTrue} from "../asset/bookmark_true.svg";
 import { ReactComponent as BookMarkFalse} from "../asset/bookmark_false.svg";
 import UnitInfo from '../UnitInfo/unitInfo';
-import recruit from '../../service/recruit_service';
 import RecruitStacksView from '../RecruitStacksView/recruitStacksView';
+import { useHistory } from 'react-router-dom';
 
 
+function RecruitCard({recruitElem}) {
+  const history = useHistory();
 
-function recruitCard({ key, recruitElem }) {
+  const handleOnClick = () => {
+    history.push(`/projects/${recruitElem.projectId}`)
+  }
+  
   return (
-    <CardContainer>
+    <CardContainer onClick={handleOnClick}>
       <BookMarkIcon 
       // onClick={ 북마크 설정하는 api통신}
       >
@@ -155,4 +160,4 @@ const ApplyBtn = styled.button`
   margin-top: 4px;
 `;
 
-export default recruitCard
+export default RecruitCard

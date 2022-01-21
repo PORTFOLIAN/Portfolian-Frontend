@@ -70,9 +70,9 @@ function Navbar() {
     <>
       <div className={style.container}>
         <div className={style.navBody}>
-          <Link to="/" className={style.logo}>
-            <img  alt="LOGO" src="img/logo520.png"/>
-          </Link>
+          <a href="/" className={style.logo}>
+            <img  alt="LOGO" src="/img/logo520.svg"/>
+          </a>
           <div className={style.contents}>
             <SearchBar handleInputMoblie={handleInputMoblie} keyword={keyword} handleInputKeyword={handleInputKeyword}/>
             {

@@ -4,7 +4,7 @@ import style from './Main.module.scss';
 import { useSelector } from 'react-redux';
 // import MakeTagButton from '../../components/MakeTagButton';
 // import RecruitCard from '../../components/RecruitCard';
-import SortRadioBtn from '../../components/SortRadioBtn/SortRadioBtn';
+import SortRadioBtn from '../../components/SortRadioBtn/sortRadioBtn';
 import StackTagSelection from '../../components/StackTagSelection/stackTagSelection';
 import RecruitList from '../../components/RecruitList/recruitList';
 import { useDispatch } from 'react-redux';

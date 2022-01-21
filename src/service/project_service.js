@@ -5,6 +5,19 @@ class Project {
     this.project = httpClient;
   }
 
+  getList = async (recruitList) => {
+    try {
+      let stackReq="";
+      recruitList.stack.map((stack, i) => {
+        stackReq = stackReq.concat("&stack="+stack);
+      })
+      const recruit_list = await this.project.get(`projects?keyword=${recruitList.keyword}${stackReq}&sort=${recruitList.sort}`);
+      return recruit_list;
+    } catch(error) {
+      console.error(error);
+    }
+  };
+
   post = async({article, ownerStack}) => {
     try {
       const response = await this.project.post('projects', {
@@ -16,19 +29,6 @@ class Project {
       console.error(error);
     }
   }
-
-  // register = async ({ title, content, language }) => {
-  //   try {
-  //     const response = await this.study.post('studies', {
-  //       title,
-  //       content,
-  //       language,
-  //     });
-  //     return response;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 }
 
 const projectService = new Project(httpClient);

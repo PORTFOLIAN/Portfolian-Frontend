@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
 import { update } from '../../modules/recruitList';
-import recruit from '../../service/recruit_service';
+import project from '../../service/project_service';
 
 const RadioSelector = styled.div`
   font-size: 14px;
@@ -32,26 +32,27 @@ function SortRadioBtn() {
   const [radioState, setRadioState] = useState('최신순');
   const handleClickRadio = (name) => {
     let val = "";
-    setRadioState(name);
-    if (radioState === "최신순") val = "defualt";
-    else if (radioState === "조회순") val = "view";
+    // console.log("click name: ", name);
+    if (name === "최신순") val = "defualt";
+    else if (name === "조회순") val = "view";
     else val = "bookMark";
     dispatch(update({key: "sort", value: val}));
+    setRadioState(name);
   }
 
   useEffect(() => {
-    recruit.getList(recruitList).then((response) => {
-      // console.log("radio response:",response);
+    // console.log("recruitList.sort: ", recruitList.sort)
+    project.getList(recruitList).then((response) => {
        dispatch(update({key: "recruit", value: response.data.articleList}))
     })
-  }, [radioState]);
+  }, [recruitList.sort]);
 
   return (
     <RadioSelector>
           {
-            radioValue.map(function(name){
+            radioValue.map(function(name, i){
             return (
-              <RadioElem onClick={()=>handleClickRadio(name)}>
+              <RadioElem onClick={()=>handleClickRadio(name)} key={i}>
                 {
                 radioState === name
                 ?<RadioImg alt="LOGO" src="img/circle.svg"></RadioImg>
