@@ -105,7 +105,7 @@ const CardContents = styled.div`
 `;
 
 const Details = styled.div`
-  argin-right: 8px;
+  align-right: 8px;
   display: flex;
   flex-direction: column;
   max-width: 580px;
@@ -132,7 +132,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   max-width: 594px;
-  margin: 8px 0 0 0;
+  margin: 16px 0 0 0;
   font-size: 14px;
   display: -webkit-box;
   white-space: normal;

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { clearContents, writePost } from '../../modules/write';
+import { clearContents, modifyPost, writePost } from '../../modules/write';
 import Navbar from '../../components/Navbar/navbar';
 
 function Write() {
@@ -103,8 +103,16 @@ function Write() {
         capacity: write.capacity,
       }
       const ownerStack = write.ownerStack
-      if (write.postId) {
+      if (write.projectId) {
         // 수정하는 상황
+        const projectId = write.projectId;
+        dispatch(modifyPost({projectId, article, ownerStack})).then((response)=> {
+          toast.success("글 수정이 완료되었어요!", {
+            position: "top-right",
+            autoClose: 4000,
+          });
+        });
+        history.goBack();
       }
       else {
         dispatch(writePost({ article,  ownerStack })).then((response)=> {

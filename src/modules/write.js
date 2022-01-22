@@ -16,20 +16,16 @@ const writePost = createAsyncThunk(
   }
 )
 
-// 나중에 지우라이~~
-// const writePost = createAsyncThunk(
-//   writePostAction,
-//   async ({ title, content, language }, thunkAPI) => {
-//     const newLanguages = language.map((item) => item.value);
-//     const response = await studyService.register({
-//       title,
-//       content,
-//       language: newLanguages,
-//     });
+const modifyPost = createAsyncThunk(
+  MODIFY_POST_ACTION,
+  async({projectId, article, ownerStack}, thunkAPI) => {
+    const response = await projectService.modify({
+      projectId, article, ownerStack,
+    })
+    return response.data;
+  }
+)
 
-//     return response.status;
-//   }
-// );
 
 
 const initialState = {
@@ -43,8 +39,6 @@ const initialState = {
   capacity: undefined,
   ownerStack: '',
   projectId: undefined,
-  postCode: undefined,
-  postError: undefined
 }
 
 const writeSlice = createSlice({
@@ -62,6 +56,20 @@ const writeSlice = createSlice({
     }),
 
     clearContents: (state)=> initialState,
+
+    setContents: (state, {payload: project}) => ({
+      ...state,
+      title: project.title,
+      stackList: project.stackList,
+      subjectDescription: project.contents.subjectDescription,
+      projectTime: project.contents.projectTime,
+      condition: project.contents.recruitmentCondition,
+      progress: project.contents.progress,
+      description: project.contents.description,
+      capacity: project.capacity,
+      ownerStack: project.leader.stack,
+      projectId: project.projectId,
+    })
   },
   extraReducers: {
     [writePost.fulfilled]: (state, { payload }) => {
@@ -76,9 +84,12 @@ const writeSlice = createSlice({
     //     state.postError = "failed"; // post 정보 담음
     //   }
     // },
+    [modifyPost.fulfilled]: (state, {payload}) => {
+
+    }
   }
 })
 
-export const {changeContents, changeStacks, clearContents} = writeSlice.actions;
-export {writePost};
+export const {changeContents, changeStacks, clearContents, setContents} = writeSlice.actions;
+export {writePost, modifyPost};
 export default writeSlice.reducer;

@@ -59,6 +59,17 @@ function OwnerStackSelection({ handleSetStacks }) {
 
   useEffect(() => {
     resetStackTags();
+    if (ownerStack.length > 0) {
+      const stacks = wholeStack.map((stack, i) => {
+        if (ownerStack === stack.name) {
+          setSelectStack({...stack, select: true});
+          return ({...stack, select: true});
+        }
+        return ({...stack, select: false});
+      })
+      setWholeStacks(stacks);
+      setSelectCnt(selectCnt+1);
+    }
   }, [])
 
   useEffect(()=> {

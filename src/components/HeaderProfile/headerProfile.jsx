@@ -45,8 +45,8 @@ export default HeaderProfile
 const UserContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 50px;
-  margin-right: 30px;
+  margin-left: 8px;
+  margin-right: 20px;
   cursor: pointer;
   @media screen and (max-width: 767px) {
     margin-left: 1rem;
@@ -68,6 +68,7 @@ const UserPhoto = styled.img`
 `
 const UserNickName = styled.div`
   margin-right: 4px;
+  font-weight: 500;
   @media screen and (max-width: 767px) {
     display: none;
   }

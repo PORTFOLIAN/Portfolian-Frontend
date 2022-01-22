@@ -30,7 +30,7 @@ const wholeStack = [
   {tagName: 'AdobeXD', color: '#FCCAEE', name: 'adobeXD'},
   {tagName: 'Photoshop', color: '#C9E3FB', name: 'photoshop'},
   {tagName: 'Illustrator', color: '#CFC3AC', name: 'illustrator'},
-  {tagName: 'ect', color: '#5C5C5C', name: 'ect'},
+  {tagName: 'etc', color: '#5C5C5C', name: 'etc'},
 ];
 
 const stackNames = wholeStack.map(a => a.name);
