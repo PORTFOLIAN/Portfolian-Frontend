@@ -16,48 +16,9 @@ import writeReducer from './modules/write'
 import { configureStore, } from '@reduxjs/toolkit';
 import loginStepReducer from './modules/loginStep';
 import recruitListReducer from './modules/recruitList';
+import projectReadReducer from './modules/projectRead'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-// import ScrollToTop from './components/ScrollToTop/scrollToTop';
-// import recruitListReducer from './modules/recruitList'
-
-
-
-
-// let initialCard={
-//   projectIdx: '',
-//   title:'',
-//   stackList: [],
-//   description: '',
-//   capacity: '',
-//   view: 0,
-//   bookMark: false,
-//   statis: 0,
-// }
-// let idxCard = 4;
-
-
-// function reducer2(state = recruitList, Action) {
-//   if (Action.type === 'bookMark') {
-//     let idx = state.findIndex( (a)=> {return a.projectIdx === Action.data.id})
-
-//     let copy = [...state];
-//     copy[idx].bookMark = !copy[idx].bookMark
-//     return copy;
-//   }
-//   if (Action.type === 'Register') {
-//     const input = Action.data.inputs;
-//     let setCard = {...initialCard};
-//     setCard.projectIdx= idxCard;
-//     setCard.title= input.title;
-//     setCard.stackList = input.stackList;
-//     setCard.description = input.subjectDiscription;
-//     setCard.capacity = input.capacity;
-//     idxCard ++;
-//     recruitList.push(setCard);
-//   }
-//   return state;
-// }
 
 
 const persistConfig = {
@@ -72,6 +33,7 @@ const rootReducer = combineReducers({
   loginStep: loginStepReducer,
   recruitList: recruitListReducer,
   write: writeReducer,
+  projectRead: projectReadReducer,
 })
 
 const persistReducers = persistReducer(persistConfig, rootReducer);

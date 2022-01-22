@@ -29,6 +29,28 @@ class Project {
       console.error(error);
     }
   }
+
+  getDetail = async(projectId) => {
+    try {
+      const response = await this.project.get(`projects/${projectId}`);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  modify = async({projectId, article, ownerStack}) => {
+    try {
+      const response = await this.project.put(`projects/${projectId}`, {
+        article: article,
+        ownerStack: ownerStack,
+      });
+      console.log("modify response: ", response);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 const projectService = new Project(httpClient);

@@ -52,23 +52,23 @@ function RecruitTemplate() {
       </Capacity>
       <Contents>
         <ContentTextDiv>프로젝트 기간</ContentTextDiv>
-        <TextareaAutosize placeholder="예시) 3개월, 2022.02~2022.04, ..." name="projectTime" value={projectTime} onChange={ handleOnChangeContents }/>
+        <ContentsInputs placeholder="예시) 3개월, 2022.02~2022.04, ..." name="projectTime" value={projectTime} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 주제 설명</ContentTextDiv>
-        <TextareaAutosize placeholder="프로젝트의 주제에 대한 간단한 설명을 적어주세요." name="subjectDescription" value={subjectDescription} onChange={ handleOnChangeContents }/>
+        <ContentsInputs placeholder="프로젝트의 주제에 대한 간단한 설명을 적어주세요." name="subjectDescription" value={subjectDescription} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>모집 조건</ContentTextDiv>
-        <TextareaAutosize placeholder="구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분" name="condition" value={condition} onChange={ handleOnChangeContents }/>
+        <ContentsInputs placeholder="구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분" name="condition" value={condition} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 진행 방식</ContentTextDiv>
-        <TextareaAutosize placeholder="예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정" name="progress" value={progress} onChange={ handleOnChangeContents }/>
+        <ContentsInputs placeholder="예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정" name="progress" value={progress} onChange={ handleOnChangeContents }/>
       </Contents>
       <Contents>
         <ContentTextDiv>프로젝트 상세(선택)</ContentTextDiv>
-        <Editor 
+        <Editor
         height= "500px"
         initialValue= {description}
         initialEditType= "wysiwyg"
@@ -137,4 +137,8 @@ const CapacityInput = styled.input`
   width: 4.8rem;
   margin-left: 24px;
   font-size: 18px;
+`
+
+const ContentsInputs = styled(TextareaAutosize)`
+  font-size: 16px;
 `

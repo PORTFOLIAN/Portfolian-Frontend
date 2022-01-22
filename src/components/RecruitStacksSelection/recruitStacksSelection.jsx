@@ -7,7 +7,7 @@ import { wholeStack } from '../../modules/wholeStack'
 import { changeStacks } from '../../modules/write';
 import StackTagBtn from '../StackTagBtn/stackTagBtn'
 
-function RecruitStacksSelection({ stackList}) {
+function RecruitStacksSelection({ stackList }) {
   const [wholeStacks, setWholeStacks] = useState([]);
   const [selectCnt, setSelectCnt] = useState(0);
   // const {stackList} = useSelector((state)=>state.write.stackList);
@@ -19,6 +19,7 @@ function RecruitStacksSelection({ stackList}) {
   }
 
   const handleStackClick = (tag, select)=>{
+    console.log(tag);
     const tempWholeStacks = wholeStacks.map((stack, i) => {
       if (stack.name === tag.name) {
         if (stack.select === false ) {
@@ -45,18 +46,17 @@ function RecruitStacksSelection({ stackList}) {
     })
     setWholeStacks(tempWholeStacks);
   }
-  
-  const resetStackTags = ()=> {
-    const stacks= wholeStack.map((stack, i)=>{
-      return ({tagName: stack.tagName, name: stack.name, color: stack.color, select: false});
-    })
-    setWholeStacks(stacks);
-    setSelectCnt(0);
-    setSelectList([]);
-  }
 
   useEffect(() => {
-    resetStackTags();
+    const stacks = wholeStack.map((elem, i) => {
+      if(stackList.includes(elem.name)) {
+        return {...elem, select: true};
+      }
+      return {...elem, select: false};
+    });
+    setWholeStacks(stacks);
+    setSelectCnt(stackList.length);
+    setSelectList(stackList);
   }, [])
 
   useEffect(()=>{

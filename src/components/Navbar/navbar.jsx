@@ -52,7 +52,7 @@ function Navbar() {
     // console.log("nabvar useEffect user.nickName: ", user.nickName);
     if(user.nickName) {
       dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
-        //안에 내용 적어주~
+        //안에 내용 적어주~(리프레시토큰 만료됐을 때 메인페이지로 넘겨주는거~~)
         // if (response.payload.code !== 1) {
         //   history.push('/');
         //   dispatch(clearUser());

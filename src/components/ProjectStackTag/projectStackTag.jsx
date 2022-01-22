@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { wholeStack } from '../../modules/wholeStack';
 
-function StackTagDiv({ tagName }) {
+function ProjectStackTag({tagName}) {
   return (
     <TagDiv name={tagName} color={(wholeStack.find((elem) => elem.name === tagName)).color}>
        {(wholeStack.find((elem) => elem.name === tagName)).tagName}
     </TagDiv>
-  )
+  );
 }
 
-export default StackTagDiv
+export default ProjectStackTag;
 
 let TagDiv = styled.div`
-  font-size: 12px;
+  font-size: 1rem;
   color: ${ props=>(props.name === 'etc' ? '#EAEAEA' : '#343A40')};
   background-color: ${ props => props.color };
   padding: 2px 16px; 
