@@ -33,7 +33,7 @@ function SortRadioBtn() {
   const handleClickRadio = (name) => {
     let val = "";
     // console.log("click name: ", name);
-    if (name === "최신순") val = "defualt";
+    if (name === "최신순") val = "default";
     else if (name === "조회순") val = "view";
     else val = "bookMark";
     dispatch(update({key: "sort", value: val}));

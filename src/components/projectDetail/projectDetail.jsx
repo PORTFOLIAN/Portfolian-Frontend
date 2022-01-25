@@ -8,6 +8,7 @@ import ProjectStackList from '../ProjectStackList/projectStackList';
 import ProjectTemplate from '../ProjectTemplate/projectTemplate';
 import {useMediaQuery} from 'react-responsive'
 
+
 function ProjectDetail({ projectId }) {
   const projectRead = useSelector((state)=>state.projectRead);
   const isMobile = useMediaQuery({query: '(max-width: 768px)'})
