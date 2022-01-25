@@ -39,7 +39,7 @@ const InputMoblieContainer = styled.div`
   border-top: 0.5px solid #EAEAEA;
   height: 2.5rem;
   padding: 4px 0;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 769px){
     display: none;
   }
 `

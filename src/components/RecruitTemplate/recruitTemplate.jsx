@@ -104,7 +104,7 @@ const TitleTextarea = styled(TextareaAutosize) `
   :-ms-input-placeholder {
     color: #909090;
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     font-size: 1.5rem;
   }
 `

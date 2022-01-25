@@ -19,7 +19,6 @@ function RecruitStacksSelection({ stackList }) {
   }
 
   const handleStackClick = (tag, select)=>{
-    console.log(tag);
     const tempWholeStacks = wholeStacks.map((stack, i) => {
       if (stack.name === tag.name) {
         if (stack.select === false ) {
