@@ -37,7 +37,7 @@ const ModalInner = styled.div`
   transform: translateY(-50%);
   margin: 0 auto;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     max-width: 280px;
   }
 `;

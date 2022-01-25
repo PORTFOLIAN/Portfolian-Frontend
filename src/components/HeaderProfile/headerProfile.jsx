@@ -48,7 +48,7 @@ const UserContainer = styled.div`
   margin-left: 8px;
   margin-right: 20px;
   cursor: pointer;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -59,7 +59,7 @@ const UserPhoto = styled.img`
   height: 2rem;
   width: 2rem;
   border-radius: 100%;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     margin-left: 0;
     height: 1.8rem;
     width: 1.8rem;
@@ -69,7 +69,7 @@ const UserPhoto = styled.img`
 const UserNickName = styled.div`
   margin-right: 4px;
   font-weight: 500;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `

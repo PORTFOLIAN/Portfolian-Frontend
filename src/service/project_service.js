@@ -45,7 +45,6 @@ class Project {
         article: article,
         ownerStack: ownerStack,
       });
-      console.log("modify response: ", response);
       return response;
     } catch (error) {
       console.error(error);

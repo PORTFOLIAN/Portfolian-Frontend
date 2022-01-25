@@ -10,7 +10,6 @@ function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
   const dispatch = useDispatch();
   const recruitList = useSelector((state) => state.recruitList);
   const handleOnClickSearch = () => {
-    console.log("hi");
     dispatch(update({key: "keyword", value: keyword}));
   }
 
@@ -57,7 +56,7 @@ const InputContainer = styled.div`
   &:focus {
     border: 1px solid #6F9ACD;
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `
@@ -77,7 +76,7 @@ const Input = styled.input`
 `
 const InputContainerMoblie = styled.div`
   display: none;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: flex;
   }
 `
