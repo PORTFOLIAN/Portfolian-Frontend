@@ -40,12 +40,10 @@ const fetchUserByRefreshToken = createAsyncThunk(
   async (userId, thunkAPI) => {
     const response = await authService.getUserInfo(userId);
     const accessToken = response.data.accessToken;
-
     httpClient.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    // console.log("fetchRefresh안에서 reponse: ",response);
 
     return response.data;
     // const userInfo = {
@@ -95,7 +93,6 @@ const initialState = {
   nickName: undefined,
   userId: undefined,
   imageUrl: undefined,
-  // refreshToken: undefined, //이거 나중에 쿠키로 빼주삼
 };
 
 const userSlice = createSlice({

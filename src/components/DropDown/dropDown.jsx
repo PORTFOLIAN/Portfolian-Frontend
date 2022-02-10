@@ -1,15 +1,21 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
-function DropDown({handleLogout}) {
+function DropDown({userId, handleLogout}) {
+  const history = useHistory();
+  const onClickProfile = ()=> {
+    history.push(`/users/${userId}/info`)
+  }
 
   return (
     <DropDownContainer>
       <ListContainer>
         <ListTop>
-          <Linkitems to="/" style={{ display: "inline-block", textDecoration: 'none'}}>마이페이지</Linkitems>
+          <ListItems onClick={onClickProfile}>마이페이지</ListItems>
+          {/* <Linkitems to={`/users/${userId}/info`}>마이페이지</Linkitems> */}
         </ListTop>
         <ListItems>
           <AItem href="/write" style={{ display: "inline-block", textDecoration: 'none' }}>모집공고 생성</AItem>
@@ -41,7 +47,7 @@ const ListContainer = styled.ul`
   font-weight: 500;
 `
 
-const ListItems = styled.li`
+const ListItems = styled.div`
   margin: 1rem 0;
   &:hover {
     color: #6F9ACD;

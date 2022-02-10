@@ -137,7 +137,7 @@ const SelectStackText = styled.div`
 
 const SelectStackSpan = styled.span`
   font-size: 14px;
-  color: ${(props)=> props.name=== 'ect' ? '#EAEAEA':'#343A40'};
+  color: ${(props)=> props.name=== 'etc' ? '#EAEAEA':'#343A40'};
   background-color: ${ props =>  props.color};
   padding: 2px 16px; 
   border-radius: 16px;

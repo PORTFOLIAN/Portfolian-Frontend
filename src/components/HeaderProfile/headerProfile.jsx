@@ -34,7 +34,7 @@ function HeaderProfile({handleLogout}) {
         <UserPhoto alt="UserImg" src={user.imageUrl}></UserPhoto>
         <UserNickName>{user.nickName}</UserNickName>
         <Triangle/>
-        {DropDownSwitch && <DropDown handleLogout={handleLogout}/>}
+        {DropDownSwitch && <DropDown handleLogout={handleLogout} userId={user.userId}/>}
       </UserContainer>
     </>
   )

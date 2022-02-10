@@ -17,6 +17,7 @@ import { configureStore, } from '@reduxjs/toolkit';
 import loginStepReducer from './modules/loginStep';
 import recruitListReducer from './modules/recruitList';
 import projectReadReducer from './modules/projectRead'
+import profileReadReducer from './modules/profileRead'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   recruitList: recruitListReducer,
   write: writeReducer,
   projectRead: projectReadReducer,
+  profileRead: profileReadReducer,
 })
 
 const persistReducers = persistReducer(persistConfig, rootReducer);
