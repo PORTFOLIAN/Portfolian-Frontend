@@ -18,8 +18,9 @@ export default Footer
 const FooterContainer = styled.footer`
   /* box-sizing: border-box; */
   height: 140px;
-  background-color: #f5f5f5;
+  background-color: #eeeeee53;
   width: 100%;
+  margin-top: 5rem;
 `
 const FooterContents = styled.div`
   margin: 0 auto;

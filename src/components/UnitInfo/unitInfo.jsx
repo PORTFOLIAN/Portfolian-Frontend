@@ -9,9 +9,7 @@ function UnitInfo({capacity, view, children}) {
         <span>모집인원</span>
         <span>
           { capacity }
-          <IconDiv>
-            <CapacityIcon height="0.8rem"></CapacityIcon>
-          </IconDiv>
+          <CapacityIcon height="0.8rem" style={{marginLeft: "4px"}}></CapacityIcon>
         </span>
       </UnitContent>
       <UnitContent >
@@ -40,6 +38,3 @@ const UnitContent = styled.div`
   margin: 0 4px;
 `
 
-const IconDiv = styled.span`
-  margin-left: 4px;
-`

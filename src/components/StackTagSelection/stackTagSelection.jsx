@@ -27,6 +27,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-bottom: 2rem;
 `;
 
 

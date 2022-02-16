@@ -30,7 +30,7 @@ function ProfileDetail({userId}) {
       <ProfileContents>
         <ProjectStackList stackList={stacks}/>
         <NickNameText>{ profileRead.nickName }</NickNameText>
-        <DescriptionText>{profileRead.description} 프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁</DescriptionText>
+        <DescriptionText>{profileRead.description} 프로필 소개 입력 부탁</DescriptionText>
         <IconCentainer>
           <GithubIcon/>
           <MailIcon/>

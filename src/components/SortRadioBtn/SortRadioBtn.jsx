@@ -11,6 +11,7 @@ const RadioSelector = styled.div`
   justify-content: end;
   align-items: center;
   margin-top: 22px;
+  margin-right: 1rem;
 `;
 
 const RadioElem = styled.div`

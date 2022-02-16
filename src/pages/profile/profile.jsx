@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearProfile, readProfile } from '../../modules/profileRead';
-
+import Footer from '../../components/Footer/footer';
 function Profile() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -26,6 +26,7 @@ function Profile() {
 
 
   return (
+    <>
     <div className={style.Profile}>
       <Navbar/>
       <div className={style.profileContainer}>
@@ -33,6 +34,8 @@ function Profile() {
         <ProfileProject/>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

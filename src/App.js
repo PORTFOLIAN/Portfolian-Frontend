@@ -8,7 +8,7 @@ import Main from './pages/main/main';
 import Write from './pages/write/write';
 import Project from './pages/project/project';
 import Profile from './pages/profile/profile';
-import Footer from './components/Footer/footer';
+
 
 function App() {
   return (
@@ -17,18 +17,15 @@ function App() {
       <Switch>
         <Route exact path={["/", "/main"]}>
           <Main />
-          <Footer></Footer>
         </Route>
         <Route path="/write">
           <Write />
         </Route>
         <Route path="/projects">
           <Project />
-          <Footer></Footer>
         </Route>
         <Route path="/users">
           <Profile />
-          <Footer></Footer>
         </Route>
       </Switch>
       
