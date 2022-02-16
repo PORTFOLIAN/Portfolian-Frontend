@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {ReactComponent as Line} from '../asset/line.svg'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 function ProjectTemplate({contents}) {
 //   {
@@ -39,7 +40,7 @@ function ProjectTemplate({contents}) {
             <Line></Line>
             <TemplateTitle>프로젝트 상세</TemplateTitle>
           </TemplateContent>
-          <Description>{contents.description}</Description>
+          <ReactMarkdown>{contents.description}</ReactMarkdown>
         </>
         : null
       }

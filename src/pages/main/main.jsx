@@ -10,6 +10,7 @@ import RecruitList from '../../components/RecruitList/recruitList';
 import { useDispatch } from 'react-redux';
 import { update } from '../../modules/recruitList';
 import Navbar from '../../components/Navbar/navbar';
+import Banner from '../../components/Banner/banner';
 
 function Main(props) {
   let [more, setMore] = useState(false);
@@ -19,11 +20,9 @@ function Main(props) {
 
 
   return (
-    <div>
+    <div className={style.mainContainer}>
       <Navbar />
-      <div className={style.banner}>
-        배너 만들~~~
-      </div>
+      <Banner/>
       <div className={style.container}>
         <div className={style.order}>
           <div className={style.showFilter} onClick={()=>setMore(!more)}>

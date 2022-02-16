@@ -77,6 +77,7 @@ const CardContainer = styled.div`
   cursor: pointer;
   box-shadow: 0px 0px 8px 0px rgba(207, 207, 207, 0.507);
   // border: 1px solid #EAEAEA;
+  background-color: #fff;
   transform: scale(1);
   transition: all 0.3s ease-in-out;
   overflow: auto;

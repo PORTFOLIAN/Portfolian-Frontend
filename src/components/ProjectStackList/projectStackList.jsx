@@ -25,6 +25,6 @@ const StackListContainer = styled.div`
   @media screen and (max-width: 768px){
     /* justify-content: center; */
     margin-left: 1rem;
-    /* font-weight: 500; */
+    font-weight: 500;
   }
 `

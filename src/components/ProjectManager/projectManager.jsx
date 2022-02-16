@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import ProjectStackTag from '../components/ProjectStackTag/projectStackTag';
-import StackTagDiv from '../components/StackTagDiv/stackTagDiv';
-import UnitInfo from '../components/UnitInfo/unitInfo';
+import StackTagDiv from '../StackTagDiv/stackTagDiv';
+import UnitInfo from '../UnitInfo/unitInfo';
+import { ReactComponent as BookMarKTrue } from '../asset/projectBookmark.svg';
+import { ReactComponent as BookMarkFalse } from '../asset/projectBookmarkFalse.svg'
 
-function ProjectManager({ leader, capacity, view, status }) {
+function ProjectManager({ leader, capacity, view, status, bookMark }) {
   const user = useSelector((state) => state.user);
+  const [bookmark, setBookmark] = useState(bookMark);
   return (
     <ManagerContainer>
+      {
+        user.userId === leader.userId 
+        ? null
+        : 
+        <>
+          {
+            bookMark
+            ? <BookMarKTrue style={{alignSelf: "flex-start", cursor: "pointer", marginLeft: "1rem"}}/>
+            : <BookMarkFalse style={{alignSelf: "flex-start", cursor: "pointer", marginLeft: "1rem"}}/>
+          }
+        </>
+      }
       <ManagerImg src={leader.photo} alt="leader profile"></ManagerImg>
       <DescContainer>
         <ManagerText>Team Manager</ManagerText>

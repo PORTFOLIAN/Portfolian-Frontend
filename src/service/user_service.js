@@ -12,10 +12,11 @@ class User {
   //id를 이용해서 사용자 정보를 조회한다.
   getUserInfo = async(userId) => {
     try {
-      const user = await this.user.get(`users/${userId}/info`);
-      return user;
+      const response = await this.user.get(`users/${userId}/info`)
+      return response;
     } catch(error) {
-      console.log(error);
+      // this.getUserInfo(userId);
+      console.log(error.response);
     }
   };
 
