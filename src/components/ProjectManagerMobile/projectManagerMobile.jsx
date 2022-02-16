@@ -13,26 +13,28 @@ function ProjectManagerMobile({leader, capacity, view, status, bookMark}) {
   const user = useSelector((state) => state.user);
   return (
     <ManagerContainer>
-      {
-        user.userId === leader.userId
-        ? null
-        :
-        <>
+      <ManagerUnit>
         {
-          bookMark
-          ? <BookMarKTrue style={{alignSelf: "flex-start", cursor: "pointer"}}/>
-          : <BookMarkFalse style={{alignSelf: "flex-start", cursor: "pointer"}}/>
+          user.userId === leader.userId
+          ? null
+          :
+          <>
+          {
+            bookMark
+            ? <BookMarKTrue style={{alignSelf: "flex-start", cursor: "pointer"}}/>
+            : <BookMarkFalse style={{alignSelf: "flex-start", cursor: "pointer"}}/>
+          }
+          </>
         }
-        </>
-      }
-      <ManagerImg src={leader.photo} alt="leader profile"/>
-      <ManagerDesctiprion>
-        <ManagerNickName text={true}>Team Manager</ManagerNickName>
-        <ManagerNickName>{leader.nickName}</ManagerNickName>
-        <ManagerStack>
-          {leader.stack && <StackTagDiv tagName={leader.stack} margin={"0"}></StackTagDiv>}
-        </ManagerStack>
-      </ManagerDesctiprion>
+        <ManagerImg src={leader.photo} alt="leader profile"/>
+        <ManagerDesctiprion>
+          <ManagerNickNameText>Team Manager</ManagerNickNameText>
+          <ManagerNickName>{leader.nickName}</ManagerNickName>
+          <ManagerStack>
+            {leader.stack && <StackTagDiv tagName={leader.stack} margin={"0"}></StackTagDiv>}
+          </ManagerStack>
+        </ManagerDesctiprion>
+      </ManagerUnit>
       <ProjectUnit>
         <UnitInfo>
           {capacity}
@@ -69,13 +71,16 @@ const ManagerContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 0 1rem;
-  
+  background-color: #f8f9ff;
 
 `
-
+const ManagerUnit = styled.div`
+  display: flex;
+`
 
 const ManagerImg = styled.img`
   width: 5rem;
@@ -99,13 +104,24 @@ const ManagerDesctiprion = styled.div`
 const ManagerNickName = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: ${props => (props.text) ? '#6F9ACD' : '#343A40'};
+  color: #343A40;
+  white-space: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   @media screen and (max-width: 768px){
     font-size: 16px;
     font-weight: 500;
   }
+  `
+
+const ManagerNickNameText = styled(ManagerNickName)`
+  color: #6F9ACD;
   @media screen and (max-width: 414px) {
-    display: ${props => (props.text) ? 'none' : 'block'}
+    display: none;
+    
   }
 `
 
@@ -117,8 +133,8 @@ const ManagerStack = styled.div`
 `
 
 const ProjectUnit = styled.div`
-  flex-grow: 1;
-  align-self: center;
+  /* flex-grow: 1; */
+  /* align-self: center; */
   margin-left: 1rem;
   display: flex;
   flex-direction: column;
@@ -132,14 +148,14 @@ const UnitInfo = styled.div`
 
 const Btn = styled.button`
   height: 2rem;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   border-radius: 16px;
   outline: 0;
   width: 8rem;
   @media screen and (max-width: 414px){
-    width: 70%;
-    height: auto;
+    width: 100%;
+    height: 2rem;
   }
 
 `
