@@ -34,7 +34,7 @@ const initialState = {
     nickName: "",
     description: "",
     stack: "",
-    photo: "",
+    photo: "../../public/img/banner/03.png",
   },
 }
 

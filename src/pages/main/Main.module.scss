@@ -1,6 +1,8 @@
 div.mainContainer {
-  // min-height: calc(100vw - 150px);
-  background-color: rgba(251, 249, 255, 0.548);
+  min-height: calc(100vh - 160px);
+  // background-color: rgba(251, 249, 255, 0.548);
+  position: relative;
+  padding-bottom: 2rem;
 }
 
 div.banner {

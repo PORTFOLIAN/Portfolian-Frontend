@@ -27,8 +27,8 @@ function Project() {
     <div className={style.projectContainer}>
       <Navbar />
       <ProjectDetail projectId={projectId}/>
+      <Footer></Footer>
     </div>
-    <Footer></Footer>
     </>
   )
 }
