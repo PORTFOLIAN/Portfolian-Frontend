@@ -4,8 +4,18 @@ import ProjectStackList from '../ProjectStackList/projectStackList';
 import RecruitStacksSelection from '../RecruitStacksSelection/recruitStacksSelection';
 
 function EditProfile({userId, profileRead, setEditMode}) {
+  // const dispatch = useDispatch();
   const [stacks, setStacks] = useState(profileRead.stackList);
   const [selectStack, setSelectStack] = useState(false);
+  // const 
+  const [nickName, setnickName] = useState(profileRead.nickName);
+
+  const handleOnChangeProfiles = (e) => {
+    let {value, name} = e.target;
+    // dispatch(리듀스만들어서디스패치해{key: name, value: e.target.value}));
+  }
+
+
   return (
     <>
     <Container>
@@ -20,7 +30,7 @@ function EditProfile({userId, profileRead, setEditMode}) {
           <ProjectStackList stackList={stacks}/>
           <button onClick={() => setSelectStack(true)}>기술 태그 선택하기 (최대 7개)</button>
         </div>
-        <input type='text' placeholder='닉네임을 설정하세요.' value={profileRead.nickName}></input>
+        {/* <input type='text' placeholder='닉네임을 설정하세요.' value={nickName} onChange={}></input> */}
         <textarea placeholder={profileRead.description}></textarea>
       </ProfileContents>
     </Container>
