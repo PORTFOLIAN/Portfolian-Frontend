@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { update } from '../../modules/recruitList';
 import Navbar from '../../components/Navbar/navbar';
 import Banner from '../../components/Banner/banner';
+import Footer from '../../components/Footer/footer';
 
 function Main(props) {
   let [more, setMore] = useState(false);
@@ -20,6 +21,7 @@ function Main(props) {
 
 
   return (
+    <>
     <div className={style.mainContainer}>
       <Navbar />
       <Banner/>
@@ -46,7 +48,9 @@ function Main(props) {
           } */}
         </div>
       </div>
+    <Footer></Footer>
     </div>
+    </>
   )
 }
 

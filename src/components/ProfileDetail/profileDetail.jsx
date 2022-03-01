@@ -6,6 +6,8 @@ import ProjectStackList from '../ProjectStackList/projectStackList';
 import {ReactComponent as PencilIcon} from '../asset/pencil.svg';
 import {ReactComponent as GithubIcon} from '../asset/github.svg';
 import {ReactComponent as MailIcon} from '../asset/mail.svg';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { toast } from 'react-toastify';
 
 /*
 유저프로필 관련 데이터 받아오는 컨트롤러 컴포넌트 (받아와서 뷰 컴포넌트로 props로 보내주기)
@@ -16,12 +18,19 @@ import {ReactComponent as MailIcon} from '../asset/mail.svg';
 */
 /* 자기 프로필인데 정보 안들어있으면 정보 넣어주라고 하기 */
 
-function ProfileDetail({userId}) {
-  const profileRead = useSelector((state) => state.profileRead);
-  const [editMode, setEditMode] = useState(false);
+function ProfileDetail({userId, profileRead, setEditMode}) {
+  // const profileRead = useSelector((state) => state.profileRead);
+  const [mailArea, setMailArea] = useState(false); 
   const [stacks, setStacks] = useState(profileRead.stackList);
   console.log("profileDetail: ",profileRead);
 
+  const onClickMail = ()=> {
+    toast.info("클립보드에 복사되었습니다.", {
+      position: toast.POSITION.TOP_RIGHT,
+      theme: 'light',
+      autoClose: 3000,
+    });
+  }
   return (
     <Container>
       <ImgContainner>
@@ -30,11 +39,32 @@ function ProfileDetail({userId}) {
       <ProfileContents>
         <ProjectStackList stackList={stacks}/>
         <NickNameText>{ profileRead.nickName }</NickNameText>
-        <DescriptionText>{profileRead.description} 프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁프로필 소개 입력 부탁</DescriptionText>
+
+        <DescriptionText>{profileRead.description}</DescriptionText>
         <IconCentainer>
-          <GithubIcon/>
-          <MailIcon/>
-          <PencilIcon/>
+          {
+            profileRead.github.legnth > 0 &&
+            <GithubBtn onClick={() => window.open(profileRead.github, '_blank')}> <GithubIcon/> </GithubBtn>
+          }
+          <MailContainer>
+
+            {
+              profileRead.mail.length > 0 && 
+              <CopyToClipboard text={profileRead.mail}>
+                <MailIcon style={{cursor: "pointer"}} onClick={onClickMail} onMouseOver={() => setMailArea(true)} onMouseOut={() => setMailArea(false)}/>
+              </CopyToClipboard>
+              }
+              {
+                mailArea
+                ? <MailText>{profileRead.mail}</MailText>
+                : null
+              }
+          </MailContainer>
+          {
+            userId === profileRead.userId 
+            ? <PencilIcon onClick={() => setEditMode(true)}/>
+            : null
+          }
         </IconCentainer>
       </ProfileContents>
     </Container>
@@ -56,9 +86,9 @@ const Container = styled.div`
 `
 
 const ImgContainner = styled.div`
-  width: 12rem;
-  height: 12rem;
-  border: 2px solid #c5c5c5;
+  width: 10rem;
+  height: 10rem;
+  border: 3px solid #f0f1d9;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -106,5 +136,23 @@ const DescriptionText = styled.div`
 const IconCentainer = styled.div`
   max-width: 140px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+`
+
+const GithubBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`
+
+const MailContainer = styled.div`
+  margin-left: 1rem;
+`
+const MailText = styled.div`
+  background-color: #909090;
+  position: absolute;
+  padding: 0.5rem;
+  color: #fff;
+  border-radius: 16px;
+  font-size: 14px;
 `

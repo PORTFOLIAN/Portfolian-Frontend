@@ -1,6 +1,8 @@
 div.mainContainer {
-  min-height: calc(100vw - 190px);
-  background-color: rgba(251, 249, 255, 0.548);
+  min-height: calc(100vh - 160px);
+  // background-color: rgba(251, 249, 255, 0.548);
+  position: relative;
+  padding-bottom: 2rem;
 }
 
 div.banner {
@@ -28,7 +30,8 @@ div.order {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 896px;
   flex-wrap: wrap-reverse;
 }
 

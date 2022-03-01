@@ -8,6 +8,7 @@ import Navbar from '../../components/Navbar/navbar';
 import ProjectDetail from '../../components/ProjectDetail/projectDetail';
 import ProjectManagerMobile from '../../components/ProjectManagerMobile/projectManagerMobile';
 import { clearRead, readProject } from '../../modules/projectRead';
+import Footer from '../../components/Footer/footer';
 
 function Project() {
   const dispatch = useDispatch();
@@ -22,10 +23,13 @@ function Project() {
   }, [projectId]);
 
   return (
+    <>
     <div className={style.projectContainer}>
       <Navbar />
       <ProjectDetail projectId={projectId}/>
+      <Footer></Footer>
     </div>
+    </>
   )
 }
 

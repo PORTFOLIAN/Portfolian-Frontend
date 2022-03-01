@@ -7,10 +7,15 @@ import StackTagDiv from '../StackTagDiv/stackTagDiv';
 import {ReactComponent as Views } from '../asset/views.svg'
 import {ReactComponent as Capacity} from '../asset/capacity.svg'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function ProjectManagerMobile({leader, capacity, view, status, bookMark}) {
   const [bookmark, setBookmark] = useState(bookMark);
   const user = useSelector((state) => state.user);
+  const history = useHistory();
+  const onClickProfile = ()=> {
+    history.push(`/users/${leader.userId}/info`)
+  }
   return (
     <ManagerContainer>
       <ManagerUnit>
@@ -26,8 +31,8 @@ function ProjectManagerMobile({leader, capacity, view, status, bookMark}) {
           }
           </>
         }
-        <ManagerImg src={leader.photo} alt="leader profile"/>
-        <ManagerDesctiprion>
+        <ManagerImg src={leader.photo} alt="leader profile" onClick={onClickProfile}/>
+        <ManagerDesctiprion onClick={onClickProfile}>
           <ManagerNickNameText>Team Manager</ManagerNickNameText>
           <ManagerNickName>{leader.nickName}</ManagerNickName>
           <ManagerStack>
@@ -89,6 +94,7 @@ const ManagerImg = styled.img`
   display: inline-block;
   align-self: center;
   margin: 0 1rem;
+  cursor: pointer;
   @media screen and (max-width: 414px){
     width: 20vw;
     height: 20vw;
@@ -100,22 +106,26 @@ const ManagerDesctiprion = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-self: center;
+  cursor: pointer;
 `
 const ManagerNickName = styled.div`
   font-size: 18px;
   font-weight: bold;
   color: #343A40;
-  white-space: normal;
+  /* white-space: normal;
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   @media screen and (max-width: 768px){
     font-size: 16px;
     font-weight: 500;
   }
-  `
+  @media screen and (max-width: 414px) {
+    max-width: 90%;
+  }
+`
 
 const ManagerNickNameText = styled(ManagerNickName)`
   color: #6F9ACD;
@@ -135,7 +145,7 @@ const ManagerStack = styled.div`
 const ProjectUnit = styled.div`
   /* flex-grow: 1; */
   /* align-self: center; */
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,7 +153,7 @@ const ProjectUnit = styled.div`
 `
 
 const UnitInfo = styled.div`
-  
+  font-size: 12px;
 `
 
 const Btn = styled.button`
@@ -156,6 +166,7 @@ const Btn = styled.button`
   @media screen and (max-width: 414px){
     width: 100%;
     height: 2rem;
+    font-size: 12px;
   }
 
 `
