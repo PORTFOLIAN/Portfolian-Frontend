@@ -3,37 +3,36 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import HeaderProfile from '../HeaderProfile/headerProfile';
-import {ReactComponent as Alert} from "../asset/alert.svg"
-import {ReactComponent as Chatting} from "../asset/chatting.svg"
+import { ReactComponent as Alert } from '../asset/alert.svg';
+import { ReactComponent as Chatting } from '../asset/chatting.svg';
 import DropDown from '../DropDown/dropDown';
 
-
-function UserOn({handleLogout}) {
-  const user = useSelector((state)=>state.user);
+function UserOn({ handleLogout }) {
+  const user = useSelector((state) => state.user);
   const [chattingSwitch, setchattingSwitch] = useState(false);
   const [alertSwitch, setalertSwitch] = useState(false);
 
   return (
     <Container>
-      <HeaderProfile handleLogout={handleLogout}/>
-      <Chatting style={{marginRight:"16px",cursor:"pointer"}}/>
-      <Alert width="1.3rem" height="1.3rem" style={{cursor:"pointer"}}/>
+      <HeaderProfile handleLogout={handleLogout} />
+      <Chatting style={{ marginRight: '16px', cursor: 'pointer' }} />
+      <Alert width="1.3rem" height="1.3rem" style={{ cursor: 'pointer' }} />
       {/* <button onClick={handleLogout} >로그아웃임시</button> */}
       {
         // profileDropDownSwitch && <DropDown/>
       }
     </Container>
-  )
+  );
 }
 
-export default UserOn
+export default UserOn;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   margin-left: 1rem;
   margin-right: 1rem;
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     margin-left: 0px;
   }
-`
+`;

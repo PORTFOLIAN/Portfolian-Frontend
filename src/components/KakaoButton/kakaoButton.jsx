@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 // import {KAKAO_AUTH_URL} from '../../../store/OAuth'; //REST API ver
 
 const KakaoBtn = styled.div`
@@ -12,14 +12,12 @@ const KakaoImg = styled.img`
   // margin: 1rem;
 `;
 
-function KakaoButton({onClick}) {
-
+function KakaoButton({ onClick }) {
   return (
-    <KakaoBtn> 
+    <KakaoBtn>
       <KakaoImg alt="카카오로그인" src="img/kakao.svg"></KakaoImg>
     </KakaoBtn>
-  )
+  );
 }
 
-
-export default KakaoButton
+export default KakaoButton;

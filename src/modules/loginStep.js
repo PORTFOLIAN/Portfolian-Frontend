@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 /* 
 
@@ -15,7 +15,7 @@ const initialState = {
 };
 
 const loginstepSlice = createSlice({
-  name: "loginStep",
+  name: 'loginStep',
   initialState,
   reducers: {
     nextStep: (state, action) => ({
@@ -26,19 +26,15 @@ const loginstepSlice = createSlice({
       ...state,
       currentStep: state.currentStep - 1,
     }),
-    clearStep: ()=>initialState,
-    setSignUpUser: (state, {payload: {key, value} }) => ({
+    clearStep: () => initialState,
+    setSignUpUser: (state, { payload: { key, value } }) => ({
       ...state,
       [key]: value,
     }),
-  }
+  },
 });
 
-export const {
-  nextStep,
-  previousStep,
-  clearStep,
-  setSignUpUser,
-} = loginstepSlice.actions;
+export const { nextStep, previousStep, clearStep, setSignUpUser } =
+  loginstepSlice.actions;
 
 export default loginstepSlice.reducer;

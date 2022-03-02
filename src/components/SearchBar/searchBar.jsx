@@ -1,47 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { update } from '../../modules/recruitList';
 import project from '../../service/project_service';
-import {ReactComponent as SearchIcon} from '../asset/search.svg' 
-
+import { ReactComponent as SearchIcon } from '../asset/search.svg';
 
 function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
   const dispatch = useDispatch();
   const recruitList = useSelector((state) => state.recruitList);
   const handleOnClickSearch = () => {
-    dispatch(update({key: "keyword", value: keyword}));
-  }
+    dispatch(update({ key: 'keyword', value: keyword }));
+  };
 
   const handleOnKeypress = (e) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       handleOnClickSearch();
     }
-  }
+  };
 
   useEffect(() => {
     project.getList(recruitList).then((response) => {
-       dispatch(update({key: "recruit", value: response.data.articleList}))
-    })
+      dispatch(update({ key: 'recruit', value: response.data.articleList }));
+    });
     // return () => {
     //   dispatch(update({key: "keyword", value: "default"}));
     // };
   }, [recruitList.keyword]);
-  
 
   return (
     <>
       <InputContainer>
-        <Input type="text" placeholder="모집글 검색하기" onChange={(e)=>handleInputKeyword(e)} onKeyPress={handleOnKeypress} value={keyword}></Input>
-        <SearchIcon onClick={handleOnClickSearch} style={{cursor:"pointer"}}/>
+        <Input
+          type="text"
+          placeholder="모집글 검색하기"
+          onChange={(e) => handleInputKeyword(e)}
+          onKeyPress={handleOnKeypress}
+          value={keyword}
+        ></Input>
+        <SearchIcon
+          onClick={handleOnClickSearch}
+          style={{ cursor: 'pointer' }}
+        />
       </InputContainer>
       {/* <InputContainerMoblie>
         <SearchIcon style={{cursor:"pointer"}} onClick={handleInputMoblie}/>
       </InputContainerMoblie> */}
     </>
-    )
+  );
 }
-export default SearchBar
+export default SearchBar;
 
 const InputContainer = styled.div`
   height: 2rem;
@@ -54,12 +61,12 @@ const InputContainer = styled.div`
   align-items: center;
   border-radius: 24px;
   &:focus {
-    border: 1px solid #6F9ACD;
+    border: 1px solid #6f9acd;
   }
   @media screen and (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 const Input = styled.input`
   border: none;
@@ -70,13 +77,13 @@ const Input = styled.input`
   background-color: transparent;
   -webkit-appearance: none;
   overflow: auto;
-  ::placeholder ::-webkit-input-placeholder{
+  ::placeholder ::-webkit-input-placeholder {
     color: #d8d7d7;
   }
-`
+`;
 const InputContainerMoblie = styled.div`
   display: none;
   @media screen and (max-width: 768px) {
     display: flex;
   }
-`
+`;

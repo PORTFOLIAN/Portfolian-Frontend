@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { nextStep, previousStep, setSignUpUser } from '../../modules/loginStep';
 import { addUserNickName } from '../../modules/user';
 import userService from '../../service/user_service';
-import {ReactComponent as Prev} from '../asset/prev.svg'
-
+import { ReactComponent as Prev } from '../asset/prev.svg';
 
 const NicNameContainer = styled.div`
   display: flex;
@@ -39,7 +38,7 @@ const DescText = styled.div`
 
 const InputNicName = styled.input`
   width: 80%;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
   padding-bottom: 2px;
   margin-top: 30px;
   font-size: 1.2rem;
@@ -50,7 +49,7 @@ const InputNicName = styled.input`
 const SubmitNicName = styled.button`
   margin-top: 30px;
   color: #fff;
-  background-color: #6F9ACD;
+  background-color: #6f9acd;
   /* background-color:#2d303b; */
   border: none;
   padding: 10px 20px;
@@ -60,65 +59,77 @@ const SubmitNicName = styled.button`
 `;
 
 function SetNickName() {
-  const [nickName, setNickName] = useState("");
+  const [nickName, setNickName] = useState('');
   const dispatch = useDispatch();
-  const loginStep = useSelector((state)=> state.loginStep);
+  const loginStep = useSelector((state) => state.loginStep);
   const onInput = (value) => {
     if (value.length <= 10) {
       setNickName(value);
     }
-  }
-  const handleSignUp = async() => {
-    const beforeNickName = nickName.replace(/ /gi, "");
+  };
+  const handleSignUp = async () => {
+    const beforeNickName = nickName.replace(/ /gi, '');
     if (nickName.length === 0) {
-      toast.info("닉네임을 입력해주세요!", {
+      toast.info('닉네임을 입력해주세요!', {
         position: toast.POSITION.TOP_RIGHT,
         theme: 'light',
         autoClose: 3000,
-        icon: "😐",
+        icon: '😐',
       });
       return;
     }
     if (beforeNickName.length !== nickName.length) {
-      toast.info("닉네임에 공백이 들어갈 수 없습니다.", {
+      toast.info('닉네임에 공백이 들어갈 수 없습니다.', {
         position: toast.POSITION.TOP_RIGHT,
         theme: 'light',
         autoClose: 3000,
-        icon: "😐"
+        icon: '😐',
       });
-      return ;
+      return;
     }
-    
-    const userId = loginStep.userId;
-    
-    dispatch(setSignUpUser({key: "nickName", value: nickName})); //이건 로그인스텝
-    dispatch(addUserNickName({ //이건 유저
-      userId,
-      nickName,
-    }))
-    dispatch(nextStep()); //이건 로그인스텝
-    
-  }
 
-  const handledPrevBtn = async() => {
+    const userId = loginStep.userId;
+
+    dispatch(setSignUpUser({ key: 'nickName', value: nickName })); //이건 로그인스텝
+    dispatch(
+      addUserNickName({
+        //이건 유저
+        userId,
+        nickName,
+      }),
+    );
+    dispatch(nextStep()); //이건 로그인스텝
+  };
+
+  const handledPrevBtn = async () => {
     //회원탈퇴시킬까?
-  }
+  };
 
   return (
     <>
       <NicNameContainer>
-        <PrevBtn onClick={()=>dispatch(previousStep())}>
+        <PrevBtn onClick={() => dispatch(previousStep())}>
           <Prev width="1rem" height="1.5rem"></Prev>
         </PrevBtn>
         <SetContainer>
           <SetText>닉네임을 설정해주세요. (최대 10자)</SetText>
           <DescText>닉네임은 마이페이지에서 변경할 수 있습니다.</DescText>
-          <InputNicName type="text" name="nickName" maxLength="10" value={nickName} onChange={(e)=>{onInput(e.target.value)}}/>
-          <SubmitNicName onClick={handleSignUp} name="submit">완료</SubmitNicName>
+          <InputNicName
+            type="text"
+            name="nickName"
+            maxLength="10"
+            value={nickName}
+            onChange={(e) => {
+              onInput(e.target.value);
+            }}
+          />
+          <SubmitNicName onClick={handleSignUp} name="submit">
+            완료
+          </SubmitNicName>
         </SetContainer>
       </NicNameContainer>
     </>
-  )
+  );
 }
 
-export default SetNickName
+export default SetNickName;

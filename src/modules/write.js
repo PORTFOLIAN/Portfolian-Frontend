@@ -1,32 +1,33 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import projectService from "../service/project_service";
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import projectService from '../service/project_service';
 
-const WRITE_POST_ACTION = createAction("write/writePost");
-const MODIFY_POST_ACTION = createAction("write/modifyPost");
+const WRITE_POST_ACTION = createAction('write/writePost');
+const MODIFY_POST_ACTION = createAction('write/modifyPost');
 
 const writePost = createAsyncThunk(
   WRITE_POST_ACTION,
-  async({article, ownerStack}, thunkAPI)=> {
+  async ({ article, ownerStack }, thunkAPI) => {
     //유저가 저장누르면 서버로 내용 보내는거를 project-service에 구현하고 그거 호출하는 api 작성해주기!
     const response = await projectService.post({
-      article, ownerStack,
+      article,
+      ownerStack,
     });
 
     return response;
-  }
-)
+  },
+);
 
 const modifyPost = createAsyncThunk(
   MODIFY_POST_ACTION,
-  async({projectId, article, ownerStack}, thunkAPI) => {
+  async ({ projectId, article, ownerStack }, thunkAPI) => {
     const response = await projectService.modify({
-      projectId, article, ownerStack,
-    })
+      projectId,
+      article,
+      ownerStack,
+    });
     return response.data;
-  }
-)
-
-
+  },
+);
 
 const initialState = {
   title: '',
@@ -39,25 +40,25 @@ const initialState = {
   capacity: undefined,
   ownerStack: '',
   projectId: undefined,
-}
+};
 
 const writeSlice = createSlice({
-  name: "write",
+  name: 'write',
   initialState,
   reducers: {
-    changeContents: (state, {payload: {key, value} }) => ({
+    changeContents: (state, { payload: { key, value } }) => ({
       ...state,
       [key]: value,
     }),
 
-    changeStacks: (state, {payload: {key, value}}) => ({
+    changeStacks: (state, { payload: { key, value } }) => ({
       ...state,
       [key]: value,
     }),
 
-    clearContents: (state)=> initialState,
+    clearContents: (state) => initialState,
 
-    setContents: (state, {payload: project}) => ({
+    setContents: (state, { payload: project }) => ({
       ...state,
       title: project.title,
       stackList: project.stackList,
@@ -69,7 +70,7 @@ const writeSlice = createSlice({
       capacity: project.capacity,
       ownerStack: project.leader.stack,
       projectId: project.projectId,
-    })
+    }),
   },
   extraReducers: {
     [writePost.fulfilled]: (state, { payload }) => {
@@ -84,12 +85,11 @@ const writeSlice = createSlice({
     //     state.postError = "failed"; // post 정보 담음
     //   }
     // },
-    [modifyPost.fulfilled]: (state, {payload}) => {
+    [modifyPost.fulfilled]: (state, { payload }) => {},
+  },
+});
 
-    }
-  }
-})
-
-export const {changeContents, changeStacks, clearContents, setContents} = writeSlice.actions;
-export {writePost, modifyPost};
+export const { changeContents, changeStacks, clearContents, setContents } =
+  writeSlice.actions;
+export { writePost, modifyPost };
 export default writeSlice.reducer;

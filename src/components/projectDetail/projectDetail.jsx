@@ -6,45 +6,50 @@ import ProjectManager from '../ProjectManager/projectManager';
 import ProjectControl from '../ProjectControl/projectControl';
 import ProjectStackList from '../ProjectStackList/projectStackList';
 import ProjectTemplate from '../ProjectTemplate/projectTemplate';
-import {useMediaQuery} from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
 import ProjectManagerMobile from '../ProjectManagerMobile/projectManagerMobile';
 
-
 function ProjectDetail({ projectId }) {
-  const projectRead = useSelector((state)=>state.projectRead);
-  const isMobile = useMediaQuery({query: '(max-width: 768px)'})
-
+  const projectRead = useSelector((state) => state.projectRead);
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <>
       <ProjectContainer>
         <Title>{projectRead.title}</Title>
-        <ProjectControl leaderId={projectRead.leader.userId}/>
+        <ProjectControl leaderId={projectRead.leader.userId} />
         <DetailContainer>
           <ProjectContents>
-            <ProjectStackList stackList={projectRead.stackList}/>
-            <ProjectTemplate contents={projectRead.contents} bookMark={projectRead.bookMark}/>
+            <ProjectStackList stackList={projectRead.stackList} />
+            <ProjectTemplate
+              contents={projectRead.contents}
+              bookMark={projectRead.bookMark}
+            />
           </ProjectContents>
-          {
-            !isMobile
-            ?
+          {!isMobile ? (
             <OwnerContents>
-              <ProjectManager leader={projectRead.leader} capacity={projectRead.capacity} view={projectRead.view} status={projectRead.status} bookMark={projectRead.bookMark}>
-
-              </ProjectManager>
+              <ProjectManager
+                leader={projectRead.leader}
+                capacity={projectRead.capacity}
+                view={projectRead.view}
+                status={projectRead.status}
+                bookMark={projectRead.bookMark}
+              ></ProjectManager>
             </OwnerContents>
-            : null
-          }
+          ) : null}
         </DetailContainer>
       </ProjectContainer>
-      {
-        isMobile
-        ? 
+      {isMobile ? (
         <MobileOwnerContents>
-          <ProjectManagerMobile leader={projectRead.leader} capacity={projectRead.capacity} view={projectRead.view} status={projectRead.status} bookMark={projectRead.bookMark}/>
+          <ProjectManagerMobile
+            leader={projectRead.leader}
+            capacity={projectRead.capacity}
+            view={projectRead.view}
+            status={projectRead.status}
+            bookMark={projectRead.bookMark}
+          />
         </MobileOwnerContents>
-        : null
-      }
+      ) : null}
     </>
   );
 }
@@ -58,15 +63,15 @@ const ProjectContainer = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 1rem;
   }
-`
+`;
 const Title = styled.div`
   font-size: 3rem;
   font-weight: bold;
-  @media screen and (max-width: 768px){
-    margin: 1rem 1rem 1rem 1rem ;
+  @media screen and (max-width: 768px) {
+    margin: 1rem 1rem 1rem 1rem;
     font-size: 2rem;
   }
-`
+`;
 const DetailContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -74,11 +79,11 @@ const DetailContainer = styled.div`
   @media screen and (max-width: 768px) {
     /* display: block; */
   }
-`
+`;
 const ProjectContents = styled.div`
   /* width: 100%; */
   /* max-width: 600px; */
-`
+`;
 
 const OwnerContents = styled.div`
   width: 160px;
@@ -90,7 +95,7 @@ const OwnerContents = styled.div`
   @media screen and (max-width: 768) {
     display: none;
   }
-`
+`;
 
 const MobileOwnerContents = styled.div`
   position: sticky;
@@ -102,4 +107,4 @@ const MobileOwnerContents = styled.div`
   border-top: 1px solid #cfcfcf;
   height: 8rem;
   margin-top: 1rem;
-`
+`;

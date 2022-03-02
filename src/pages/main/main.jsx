@@ -1,5 +1,5 @@
-import { symbol } from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import { symbol } from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import style from './Main.module.scss';
 import { useSelector } from 'react-redux';
 // import MakeTagButton from '../../components/MakeTagButton';
@@ -18,40 +18,34 @@ function Main(props) {
   const dispatch = useDispatch;
   const stackList = useSelector((state) => state.stackList);
 
-
-
   return (
     <>
-    <div className={style.mainContainer}>
-      <Navbar />
-      <Banner/>
-      <div className={style.container}>
-        <div className={style.order}>
-          <div className={style.showFilter} onClick={()=>setMore(!more)}>
-            사용 기술 선택하기 ▼
+      <div className={style.mainContainer}>
+        <Navbar />
+        <Banner />
+        <div className={style.container}>
+          <div className={style.order}>
+            <div className={style.showFilter} onClick={() => setMore(!more)}>
+              사용 기술 선택하기 ▼
+            </div>
+            <SortRadioBtn></SortRadioBtn>
           </div>
-          <SortRadioBtn></SortRadioBtn>
-        </div>
-        {
-          more
-          ? <StackTagSelection/>
-          : (null)
-        }
-        <div className={style.recruitList}>
-          <RecruitList></RecruitList>
-          {/* {
+          {more ? <StackTagSelection /> : null}
+          <div className={style.recruitList}>
+            <RecruitList></RecruitList>
+            {/* {
             project.map((a)=>{
               return (
                 <RecruitCard a={a}/>
               )
             })
           } */}
+          </div>
         </div>
+        <Footer></Footer>
       </div>
-    <Footer></Footer>
-    </div>
     </>
-  )
+  );
 }
 
 export default Main;

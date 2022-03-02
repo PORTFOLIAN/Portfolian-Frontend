@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Modal from '../../components/Modal/modal';
-import RecruitTemplate from '../../components/RecruitTemplate/recruitTemplate'
+import RecruitTemplate from '../../components/RecruitTemplate/recruitTemplate';
 import SetOwnerStack from '../../components/SetOwnerStack/setOwnerStack';
-import style from './Write.module.scss'
+import style from './Write.module.scss';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -11,8 +11,8 @@ import { clearContents, modifyPost, writePost } from '../../modules/write';
 import Navbar from '../../components/Navbar/navbar';
 
 function Write() {
-  const user = useSelector((state)=> state.user);
-  const write = useSelector((state)=> state.write);
+  const user = useSelector((state) => state.user);
+  const write = useSelector((state) => state.write);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,77 +20,77 @@ function Write() {
 
   const handleOwnerStackModal = () => {
     setOwnerStackModal(!ownerStackModal);
-  }
+  };
 
   const checkValidity = () => {
-    if(write.title.length === 0) {
-      toast.error("제목을 입력해주세요.", {
-        position: "top-right",
+    if (write.title.length === 0) {
+      toast.error('제목을 입력해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.stackList.length === 0) {
-      toast.error("사용하실 기술을 선택해주세요.", {
-        position: "top-right",
+      toast.error('사용하실 기술을 선택해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.subjectDescription.length === 0) {
-      toast.error("프로젝트 주제에 대해 설명해주세요.", {
-        position: "top-right",
+      toast.error('프로젝트 주제에 대해 설명해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.projectTime.length === 0) {
-      toast.error("프로젝트 기간을 설정해주세요.", {
-        position: "top-right",
+      toast.error('프로젝트 기간을 설정해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.condition.length === 0) {
-      toast.error("모집 조건을 설명해주세요.", {
-        position: "top-right",
+      toast.error('모집 조건을 설명해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.progress.length === 0) {
-      toast.error("프로젝트 진행방식에 대해 설명해주세요.", {
-        position: "top-right",
+      toast.error('프로젝트 진행방식에 대해 설명해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.capacity <= 0) {
-      toast.error("모집 인원을 다시 설정해주세요.", {
-        position: "top-right",
+      toast.error('모집 인원을 다시 설정해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.capacity > 16) {
-      toast.error("모집 인원은 최대 16명입니다.", {
-        position: "top-right",
+      toast.error('모집 인원은 최대 16명입니다.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     if (write.ownerStack.length === 0) {
-      toast.error("작성자님이 사용할 기술을 선택해주세요.", {
-        position: "top-right",
+      toast.error('작성자님이 사용할 기술을 선택해주세요.', {
+        position: 'top-right',
         autoClose: 3000,
       });
       return false;
     }
     return true;
-  }
+  };
 
   const handleClickSubmit = () => {
-    if(!checkValidity()) return ;
+    if (!checkValidity()) return;
     else {
       const article = {
         title: write.title,
@@ -101,43 +101,43 @@ function Write() {
         progress: write.progress,
         description: write.description,
         capacity: write.capacity,
-      }
-      const ownerStack = write.ownerStack
+      };
+      const ownerStack = write.ownerStack;
       if (write.projectId) {
         // 수정하는 상황
         const projectId = write.projectId;
-        dispatch(modifyPost({projectId, article, ownerStack})).then((response)=> {
-          toast.success("글 수정이 완료되었어요!", {
-            position: "top-right",
-            autoClose: 4000,
-          });
-        });
+        dispatch(modifyPost({ projectId, article, ownerStack })).then(
+          (response) => {
+            toast.success('글 수정이 완료되었어요!', {
+              position: 'top-right',
+              autoClose: 4000,
+            });
+          },
+        );
         history.goBack();
-      }
-      else {
-        dispatch(writePost({ article,  ownerStack })).then((response)=> {
+      } else {
+        dispatch(writePost({ article, ownerStack })).then((response) => {
           // console.log("write 글작성 writePost response: ", response);
-          toast.success("글 작성이 완료되었어요!", {
-            position: "top-right",
+          toast.success('글 작성이 완료되었어요!', {
+            position: 'top-right',
             autoClose: 4000,
           });
         });
-        history.push('/')
+        history.push('/');
       }
     }
-    
-  }
+  };
 
-  useEffect(()=> {
+  useEffect(() => {
     //유저정보 없으면 로그인하라고 알려주고 홈으로 가기
     if (!user.userId) {
-      toast.error("로그인이 필요한 페이지입니다.", {
-        position: "top-right",
+      toast.error('로그인이 필요한 페이지입니다.', {
+        position: 'top-right',
         autoClose: 3000,
       });
-      history.push("/");
+      history.push('/');
     }
-  }, [user.userId])
+  }, [user.userId]);
 
   useEffect(() => {
     return () => {
@@ -155,14 +155,23 @@ function Write() {
           <button>취&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</button>
           <div>
             <button className={style.temp}>임시저장</button>
-            <button className={style.save} onClick={handleOwnerStackModal}>다&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;음</button>
+            <button className={style.save} onClick={handleOwnerStackModal}>
+              다&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;음
+            </button>
           </div>
           {/* {console.log(project)} */}
         </div>
       </div>
-      {ownerStackModal && <Modal closeModal={handleOwnerStackModal}><SetOwnerStack handleOwnerStackModal={handleOwnerStackModal} handleClickSubmit={handleClickSubmit}></SetOwnerStack></Modal>}
+      {ownerStackModal && (
+        <Modal closeModal={handleOwnerStackModal}>
+          <SetOwnerStack
+            handleOwnerStackModal={handleOwnerStackModal}
+            handleClickSubmit={handleClickSubmit}
+          ></SetOwnerStack>
+        </Modal>
+      )}
     </>
-  )
+  );
 }
 
-export default Write
+export default Write;

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const ModalOverlay = styled.div`
   box-sizing: border-box;
@@ -30,8 +30,8 @@ const ModalInner = styled.div`
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
   border-radius: 10px;
-  width: ${(props) => props.width || "360px"};
-  height: ${(props) => props.height || "480px"};
+  width: ${(props) => props.width || '360px'};
+  height: ${(props) => props.height || '480px'};
   max-width: 480px;
   top: 50%;
   transform: translateY(-50%);
@@ -42,7 +42,7 @@ const ModalInner = styled.div`
   }
 `;
 
-const   CloseBar = styled.div`
+const CloseBar = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
@@ -52,17 +52,20 @@ const CloseBtn = styled.img`
   cursor: pointer;
 `;
 
-
-function Modal({width, height, closeModal, children}) {
+function Modal({ width, height, closeModal, children }) {
   return (
     <ModalOverlay onClick={closeModal}>
       <ModalWrapper>
-        <ModalInner width={width} height={height} onClick={e=>e.stopPropagation()}>
+        <ModalInner
+          width={width}
+          height={height}
+          onClick={(e) => e.stopPropagation()}
+        >
           {children}
         </ModalInner>
       </ModalWrapper>
     </ModalOverlay>
-  )
+  );
 }
 
-export default Modal
+export default Modal;

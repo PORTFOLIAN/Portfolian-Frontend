@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import loginStep from '../../modules/loginStep';
 import BeforeLogin from '../BeforeLogin/beforeLogin';
 import SetNickName from '../SetNickName/setNickName';
@@ -38,27 +38,29 @@ const BEFORE_LOGIN = 1;
 const SET_NICKNAME = 2;
 // const SET_SIGNUPEND = 3;
 
-function LoginModal({closeModal}) {
+function LoginModal({ closeModal }) {
   const loginStep = useSelector((state) => state.loginStep.currentStep);
-  const userIdInLoginStep = useSelector((state)=>state.loginStep.userId);
+  const userIdInLoginStep = useSelector((state) => state.loginStep.userId);
   const renderByLoginStep = (loginStep) => {
     switch (loginStep) {
       case BEFORE_LOGIN:
-        return (
-          <BeforeLogin closeModal={closeModal}> </BeforeLogin>
-        );
+        return <BeforeLogin closeModal={closeModal}> </BeforeLogin>;
       case SET_NICKNAME:
         return <SetNickName></SetNickName>;
       default:
         closeModal();
         return <></>;
     }
-  }
+  };
 
   return (
     <>
       <CloseBar>
-        <CloseBtn alt="닫기" src="/img/close.svg" onClick={closeModal} ></CloseBtn>
+        <CloseBtn
+          alt="닫기"
+          src="/img/close.svg"
+          onClick={closeModal}
+        ></CloseBtn>
       </CloseBar>
       <LoginContainer>
         <Logo>
@@ -66,8 +68,8 @@ function LoginModal({closeModal}) {
         </Logo>
         {renderByLoginStep(loginStep)}
       </LoginContainer>
-      </>
-  )
+    </>
+  );
 }
 
-export default LoginModal
+export default LoginModal;

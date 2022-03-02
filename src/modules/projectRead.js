@@ -1,51 +1,52 @@
-import { createAsyncThunk, createSlice, createAction } from "@reduxjs/toolkit";
-import projectService from "../service/project_service";
+import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
+import projectService from '../service/project_service';
 
 // 유저가 클릭한 모집공고의 상세페이지 상태를 담고있는 리덕스입니다.
 // 모집공고 클릭시 상태 담고 나가면 초기화
-const READ_PROJECT = createAction("projectRead/readProject");
+const READ_PROJECT = createAction('projectRead/readProject');
 
 const readProject = createAsyncThunk(
-  READ_PROJECT, 
+  READ_PROJECT,
   async (projectId, thunkAPI) => {
     const response = await projectService.getDetail(projectId);
 
     return response.data;
-  });
+  },
+);
 
 const initialState = {
   code: 0,
   projectId: undefined,
-  title: "",
+  title: '',
   stackList: [],
   contents: {
-    subjectDescription: "",
-    projectTime: "",
-    recruitmentCondition: "",
-    progress: "",
-    description: "",
+    subjectDescription: '',
+    projectTime: '',
+    recruitmentCondition: '',
+    progress: '',
+    description: '',
   },
   capacity: 0,
   view: 0,
   bookMark: false,
   status: 0,
   leader: {
-    userId: "",
-    nickName: "",
-    description: "",
-    stack: "",
-    photo: "../../public/img/banner/03.png",
+    userId: '',
+    nickName: '',
+    description: '',
+    stack: '',
+    photo: '../../public/img/banner/03.png',
   },
-}
+};
 
 const projectReadSlice = createSlice({
-  name: "projectRead",
+  name: 'projectRead',
   initialState,
   reducers: {
-    clearRead: (state)=>initialState,
+    clearRead: (state) => initialState,
   },
   extraReducers: {
-    [readProject.fulfilled]: (state, {payload}) => ({
+    [readProject.fulfilled]: (state, { payload }) => ({
       ...state,
       code: payload.code,
       projectId: payload.projectId,
@@ -70,9 +71,9 @@ const projectReadSlice = createSlice({
         photo: payload.leader.photo,
       },
     }),
-  }
-})
+  },
+});
 
 export { readProject };
-export const {clearRead} = projectReadSlice.actions;
+export const { clearRead } = projectReadSlice.actions;
 export default projectReadSlice.reducer;

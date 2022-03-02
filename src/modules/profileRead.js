@@ -1,15 +1,15 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import userService from "../service/user_service";
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import userService from '../service/user_service';
 
-const READ_PROFILE = createAction("profileRead/readProfile");
+const READ_PROFILE = createAction('profileRead/readProfile');
 
 const readProfile = createAsyncThunk(
   READ_PROFILE,
   async (profileUserId, thunkAPI) => {
     const response = await userService.getUserInfo(profileUserId);
     return response.data;
-  }
-)
+  },
+);
 
 const initialState = {
   userId: '',
@@ -19,17 +19,16 @@ const initialState = {
   photo: '',
   github: '',
   mail: '',
-}
-
+};
 
 const profileReadSlice = createSlice({
-  name: "profileRead",
+  name: 'profileRead',
   initialState,
   reducers: {
     clearProfile: (state) => initialState,
   },
   extraReducers: {
-    [readProfile.fulfilled]: (state, {payload}) => ({
+    [readProfile.fulfilled]: (state, { payload }) => ({
       ...state,
       userId: payload.userId,
       nickName: payload.nickName,
@@ -39,11 +38,11 @@ const profileReadSlice = createSlice({
       github: payload.github,
       mail: payload.mail,
     }),
-    [readProfile.rejected]: (state, {payload}) => ({
+    [readProfile.rejected]: (state, { payload }) => ({
       ...state,
-    })
-  }
-})
+    }),
+  },
+});
 
 export { readProfile };
 export const { clearProfile } = profileReadSlice.actions;

@@ -1,43 +1,42 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ReactComponent as BookMarkTrue} from "../asset/bookmark_true.svg";
-import { ReactComponent as BookMarkFalse} from "../asset/bookmark_false.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as BookMarkTrue } from '../asset/bookmark_true.svg';
+import { ReactComponent as BookMarkFalse } from '../asset/bookmark_false.svg';
 import UnitInfo from '../UnitInfo/unitInfo';
 import RecruitStacksView from '../RecruitStacksView/recruitStacksView';
 import { useHistory } from 'react-router-dom';
 
-
-function RecruitCard({recruitElem}) {
+function RecruitCard({ recruitElem }) {
   const history = useHistory();
 
   const handleOnClick = () => {
-    history.push(`/projects/${recruitElem.projectId}`)
-  }
-  
+    history.push(`/projects/${recruitElem.projectId}`);
+  };
+
   return (
     <CardContainer onClick={handleOnClick}>
-      <BookMarkIcon 
+      <BookMarkIcon
       // onClick={ 북마크 설정하는 api통신}
       >
-        {
-          recruitElem.bookMark
-          ? <BookMarkTrue height="19px"></BookMarkTrue>
-          : <BookMarkFalse height="19px"></BookMarkFalse>
-        }
+        {recruitElem.bookMark ? (
+          <BookMarkTrue height="19px"></BookMarkTrue>
+        ) : (
+          <BookMarkFalse height="19px"></BookMarkFalse>
+        )}
       </BookMarkIcon>
       <CardContents>
         <Details>
           <Title>{recruitElem.title}</Title>
-          <RecruitStacksView stackList={recruitElem.stackList}></RecruitStacksView>
+          <RecruitStacksView
+            stackList={recruitElem.stackList}
+          ></RecruitStacksView>
           <Description>{recruitElem.description}</Description>
         </Details>
-        <UnitInfo capacity={recruitElem.capacity} view={recruitElem.view} >
+        <UnitInfo capacity={recruitElem.capacity} view={recruitElem.view}>
           <ApplyBtn status={recruitElem.status}>
-            {
-            recruitElem.status === 0 
-            ? '지원하기' //이거 클릭하면 채팅하겠냐는 창 띄우고 채팅열어주기
-            : '모집종료'
-            }
+            {recruitElem.status === 0
+              ? '지원하기' //이거 클릭하면 채팅하겠냐는 창 띄우고 채팅열어주기
+              : '모집종료'}
           </ApplyBtn>
         </UnitInfo>
       </CardContents>
@@ -65,7 +64,7 @@ function RecruitCard({recruitElem}) {
           </div>
       </div> */}
     </CardContainer>
-  )
+  );
 }
 
 const CardContainer = styled.div`
@@ -85,7 +84,6 @@ const CardContainer = styled.div`
   &:hover {
     transform: scale(1.01);
   }
-  
 `;
 
 const BookMarkIcon = styled.div`
@@ -99,7 +97,7 @@ const CardContents = styled.div`
   align-items: center; //나중에 제목 길이 길게 테스트해보고 문제있으면 flex-end로 바꿔
   flex-wrap: wrap;
   // flex-shrink: 1;
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     flex-direction: column;
     align-items: center;
   }
@@ -110,7 +108,7 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 580px;
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     align-items: center;
   }
 `;
@@ -126,7 +124,7 @@ const Title = styled.div`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     align-items: center;
   }
 `;
@@ -142,15 +140,15 @@ const Description = styled.div`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     align-items: center;
     text-align: center;
   }
-`
+`;
 
 const ApplyBtn = styled.button`
-  background-color: ${props => (props.status === 0 ? '#6F9ACD' : '#CCCCCC')};
-  color: ${props => (props.status === 0 ? 'rgb(238, 238, 238)' : '#909090')};
+  background-color: ${(props) => (props.status === 0 ? '#6F9ACD' : '#CCCCCC')};
+  color: ${(props) => (props.status === 0 ? 'rgb(238, 238, 238)' : '#909090')};
   cursor: pointer;
   width: 164px;
   height: 32px;
@@ -161,4 +159,4 @@ const ApplyBtn = styled.button`
   margin-top: 4px;
 `;
 
-export default RecruitCard
+export default RecruitCard;

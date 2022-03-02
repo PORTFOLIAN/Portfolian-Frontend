@@ -23,38 +23,42 @@ function Profile() {
   const profileRead = useSelector((state) => state.profileRead);
   const [editMode, setEditMode] = useState(false);
   const location = useLocation();
-  const profileUserId = location.pathname.split("/")[2];
+  const profileUserId = location.pathname.split('/')[2];
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(readProfile(profileUserId));
     return () => {
-      dispatch(clearProfile())
-    }
+      dispatch(clearProfile());
+    };
   }, [profileUserId]);
-
 
   return (
     <>
-    <div className={style.Profile}>
-      <Navbar/>
-      <div className={style.profileContainer}>
-        {
-          !editMode 
-          ? 
-          <>
-          {
-            profileRead.userId.length > 0 
-            ? <ProfileDetail userId={user.userId} profileRead={profileRead} setEditMode={setEditMode}/>
-            : null
-          }
-          </>
-          : <EditProfile userId={user.userId} profileRead={profileRead} setEditMode={setEditMode}/>
-        }
-      </div>
+      <div className={style.Profile}>
+        <Navbar />
+        <div className={style.profileContainer}>
+          {!editMode ? (
+            <>
+              {profileRead.userId.length > 0 ? (
+                <ProfileDetail
+                  userId={user.userId}
+                  profileRead={profileRead}
+                  setEditMode={setEditMode}
+                />
+              ) : null}
+            </>
+          ) : (
+            <EditProfile
+              userId={user.userId}
+              profileRead={profileRead}
+              setEditMode={setEditMode}
+            />
+          )}
+        </div>
 
-      <ProfileProject/>
-    <Footer></Footer>
-    </div>
+        <ProfileProject />
+        <Footer></Footer>
+      </div>
     </>
   );
 }

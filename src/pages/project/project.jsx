@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useEffect } from 'react';
 import style from './Project.module.scss';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import Navbar from '../../components/Navbar/navbar';
 import ProjectDetail from '../../components/ProjectDetail/projectDetail';
 import ProjectManagerMobile from '../../components/ProjectManagerMobile/projectManagerMobile';
@@ -13,26 +13,24 @@ import Footer from '../../components/Footer/footer';
 function Project() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const projectId = location.pathname.split("/")[2];
+  const projectId = location.pathname.split('/')[2];
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(readProject(projectId));
-    return ()=> {
+    return () => {
       dispatch(clearRead());
-    }
+    };
   }, [projectId]);
 
   return (
     <>
-    <div className={style.projectContainer}>
-      <Navbar />
-      <ProjectDetail projectId={projectId}/>
-      <Footer></Footer>
-    </div>
+      <div className={style.projectContainer}>
+        <Navbar />
+        <ProjectDetail projectId={projectId} />
+        <Footer></Footer>
+      </div>
     </>
-  )
+  );
 }
 
-export default Project
-
-
+export default Project;

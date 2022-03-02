@@ -1,15 +1,17 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import authService from "../service/auth_service";
-import userService from "../service/user_service";
-import httpClient from "../service/http_client";
-import axios from "axios";
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import authService from '../service/auth_service';
+import userService from '../service/user_service';
+import httpClient from '../service/http_client';
+import axios from 'axios';
 
 //action 정의
-const FETCH_USESR_BY_ID = createAction("user/FETCH_USESR_BY_ID");
-const FETCH_USER_BY_REFRESHTOKEN = createAction("user/FETCH_USER_BY_REFRESHTOKEN");
-const ADD_USER_NICKNAME = createAction("user/ADD_USER_NICKNAME");
-const MODIFY_USER_INFO = createAction("user/MODIFY_USER_INFO");
-const SET_USER_INFO = createAction("user/SET_USER_INFO");
+const FETCH_USESR_BY_ID = createAction('user/FETCH_USESR_BY_ID');
+const FETCH_USER_BY_REFRESHTOKEN = createAction(
+  'user/FETCH_USER_BY_REFRESHTOKEN',
+);
+const ADD_USER_NICKNAME = createAction('user/ADD_USER_NICKNAME');
+const MODIFY_USER_INFO = createAction('user/MODIFY_USER_INFO');
+const SET_USER_INFO = createAction('user/SET_USER_INFO');
 
 /*
 createAsyncThunk (액션타입문자열, 프로미스를 반환하는 비동기함수, 추가옵션)
@@ -23,17 +25,17 @@ createAsyncThunk (액션타입문자열, 프로미스를 반환하는 비동기�
 const fetchUserById = createAsyncThunk(
   FETCH_USESR_BY_ID,
   async (userData, thunkAPI) => {
-    const response = await authService.login(userData.social, userData.code); 
+    const response = await authService.login(userData.social, userData.code);
     //카카오로그인이면 social: kakao, code: tokenId
     // console.log("fetchUserById response: ", response);
     const accessToken = response.data.accessToken;
 
     httpClient.defaults.headers.common[
-      "Authorization"
+      'Authorization'
     ] = `Bearer ${accessToken}`;
     return response.data;
-  }
-)
+  },
+);
 
 const fetchUserByRefreshToken = createAsyncThunk(
   FETCH_USER_BY_REFRESHTOKEN,
@@ -41,9 +43,8 @@ const fetchUserByRefreshToken = createAsyncThunk(
     const response = await authService.getUserInfo(userId);
     const accessToken = response.data.accessToken;
     httpClient.defaults.headers.common[
-      "Authorization"
+      'Authorization'
     ] = `Bearer ${accessToken}`;
-
 
     return response.data;
     // const userInfo = {
@@ -52,10 +53,9 @@ const fetchUserByRefreshToken = createAsyncThunk(
     //   imageUrl: response.data.photo,
     // };
 
-
     // return userInfo;
-  }
-)
+  },
+);
 
 const setUserInfo = createAsyncThunk(
   SET_USER_INFO,
@@ -68,8 +68,8 @@ const setUserInfo = createAsyncThunk(
       imageUrl: response.data.photo,
     };
     return userInfo;
-  }
-)
+  },
+);
 
 //유저 최초 로그인시(회원가입시) 닉네임을 설정하고 엑세스토큰을 셋팅한다.
 const addUserNickName = createAsyncThunk(
@@ -78,15 +78,15 @@ const addUserNickName = createAsyncThunk(
     // console.log(userInfo);
     const response = await authService.setNickName(userInfo);
     // console.log("addUserNickName response: ", response);
-    
+
     const accessToken = response.data.accessToken; //
 
     httpClient.defaults.headers.common[
-      "Authorization"
+      'Authorization'
     ] = `Bearer ${accessToken}`;
 
     return userInfo;
-  }
+  },
 );
 
 const initialState = {
@@ -96,7 +96,7 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     setUser: (state, { payload: { key, value } }) => ({
@@ -156,10 +156,5 @@ const userSlice = createSlice({
 });
 
 export const { setUser, clearUser } = userSlice.actions;
-export {
-  fetchUserById,
-  addUserNickName,
-  fetchUserByRefreshToken,
-  setUserInfo,
-};
+export { fetchUserById, addUserNickName, fetchUserByRefreshToken, setUserInfo };
 export default userSlice.reducer;

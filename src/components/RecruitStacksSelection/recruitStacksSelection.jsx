@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import styled from 'styled-components'
-import { wholeStack } from '../../modules/wholeStack'
+import styled from 'styled-components';
+import { wholeStack } from '../../modules/wholeStack';
 import { changeStacks } from '../../modules/write';
-import StackTagBtn from '../StackTagBtn/stackTagBtn'
+import StackTagBtn from '../StackTagBtn/stackTagBtn';
 
 function RecruitStacksSelection({ stackList }) {
   const [wholeStacks, setWholeStacks] = useState([]);
@@ -14,73 +14,74 @@ function RecruitStacksSelection({ stackList }) {
   const [selectList, setSelectList] = useState(stackList);
   const dispatch = useDispatch();
 
-  const handleStackDispatch = ()=> {
-    dispatch(changeStacks({key: "stackList", value: selectList}));
-  }
+  const handleStackDispatch = () => {
+    dispatch(changeStacks({ key: 'stackList', value: selectList }));
+  };
 
-  const handleStackClick = (tag, select)=>{
+  const handleStackClick = (tag, select) => {
     const tempWholeStacks = wholeStacks.map((stack, i) => {
       if (stack.name === tag.name) {
-        if (stack.select === false ) {
+        if (stack.select === false) {
           if (selectCnt < 7) {
             setSelectList(selectList.concat(stack.name));
-            setSelectCnt(selectCnt+1);
-          }
-          else {
-            toast.error("스택은 최대 7개까지 선택 가능합니다.", {
+            setSelectCnt(selectCnt + 1);
+          } else {
+            toast.error('스택은 최대 7개까지 선택 가능합니다.', {
               position: toast.POSITION.TOP_RIGHT,
               theme: 'light',
               autoClose: 3000,
-            })
+            });
             return stack;
           }
+        } else {
+          setSelectList(selectList.filter((x) => x !== stack.name));
+          setSelectCnt(selectCnt - 1);
         }
-        else {
-          setSelectList(selectList.filter(x => x!==stack.name))
-          setSelectCnt(selectCnt-1);
-        }
-        return ({...stack, select: !stack.select})
+        return { ...stack, select: !stack.select };
       }
-      return (stack);
-    })
+      return stack;
+    });
     setWholeStacks(tempWholeStacks);
-  }
+  };
 
   useEffect(() => {
     const stacks = wholeStack.map((elem, i) => {
-      if(stackList.includes(elem.name)) {
-        return {...elem, select: true};
+      if (stackList.includes(elem.name)) {
+        return { ...elem, select: true };
       }
-      return {...elem, select: false};
+      return { ...elem, select: false };
     });
     setWholeStacks(stacks);
     setSelectCnt(stackList.length);
     setSelectList(stackList);
-  }, [])
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     handleStackDispatch();
-  }, [selectList])
+  }, [selectList]);
 
   return (
     <div>
       <Text>사용 기술 선택 (최대 7개)</Text>
-      {
-        wholeStacks.map((stack, i)=> {
-          return (
-            <StackTagBtn stack={stack} key={i} selected={stack.select} handleStackClick={handleStackClick}></StackTagBtn> 
-          );
-        })
-      }
+      {wholeStacks.map((stack, i) => {
+        return (
+          <StackTagBtn
+            stack={stack}
+            key={i}
+            selected={stack.select}
+            handleStackClick={handleStackClick}
+          ></StackTagBtn>
+        );
+      })}
     </div>
-  )
+  );
 }
 
-export default RecruitStacksSelection
+export default RecruitStacksSelection;
 
 const Text = styled.div`
-  ont-size: 18px;
+  font-size: 18px;
   font-weight: 500;
   color: #909090;
   margin-bottom: 4px;
-`
+`;

@@ -1,4 +1,4 @@
-import httpClient from "./http_client";
+import httpClient from './http_client';
 
 class Project {
   constructor() {
@@ -7,39 +7,41 @@ class Project {
 
   getList = async (recruitList) => {
     try {
-      let stackReq="";
+      let stackReq = '';
       recruitList.stack.map((stack, i) => {
-        stackReq = stackReq.concat("&stack="+stack);
-      })
-      const recruit_list = await this.project.get(`projects?keyword=${recruitList.keyword}${stackReq}&sort=${recruitList.sort}`);
+        stackReq = stackReq.concat('&stack=' + stack);
+      });
+      const recruit_list = await this.project.get(
+        `projects?keyword=${recruitList.keyword}${stackReq}&sort=${recruitList.sort}`,
+      );
       return recruit_list;
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   };
 
-  post = async({article, ownerStack}) => {
+  post = async ({ article, ownerStack }) => {
     try {
       const response = await this.project.post('projects', {
         article: article,
         ownerStack: ownerStack,
       });
       return response;
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  getDetail = async(projectId) => {
+  getDetail = async (projectId) => {
     try {
       const response = await this.project.get(`projects/${projectId}`);
       return response;
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  modify = async({projectId, article, ownerStack}) => {
+  modify = async ({ projectId, article, ownerStack }) => {
     try {
       const response = await this.project.put(`projects/${projectId}`, {
         article: article,
@@ -49,7 +51,7 @@ class Project {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 }
 
 const projectService = new Project(httpClient);

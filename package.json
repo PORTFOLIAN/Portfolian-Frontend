@@ -10,6 +10,7 @@
     "@toast-ui/react-editor": "^3.1.1",
     "axios": "^0.24.0",
     "connected-react-router": "^6.9.2",
+    "eslint-config-prettier": "^8.4.0",
     "http-proxy-middleware": "^2.0.1",
     "qs": "^6.10.1",
     "react": "^17.0.2",
@@ -41,7 +42,8 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ]
   },
   "browserslist": {
