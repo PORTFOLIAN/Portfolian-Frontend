@@ -57,14 +57,13 @@ function LoginModal({ closeModal }) {
     <>
       <CloseBar>
         <CloseBtn
-          alt="닫기"
-          src="/img/close.svg"
-          onClick={closeModal}
-        ></CloseBtn>
+          alt='닫기'
+          src='/img/close.svg'
+          onClick={closeModal}></CloseBtn>
       </CloseBar>
       <LoginContainer>
         <Logo>
-          <LogoImg alt="로고" src="/img/logo520.svg"></LogoImg>
+          <LogoImg alt='로고' src='/img/logo520.svg'></LogoImg>
         </Logo>
         {renderByLoginStep(loginStep)}
       </LoginContainer>

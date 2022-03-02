@@ -100,16 +100,15 @@ const StackTagSelection = React.memo(() => {
             stack={stack}
             selected={selected}
             key={i}
-            handleStackClick={handleStackClick}
-          ></StackTagBtn>
+            handleStackClick={handleStackClick}></StackTagBtn>
         );
       })}
       {selectStacks.length === 32 ? (
-        <Button color="#EAEAEA" onClick={() => dispatch(clearStack())}>
+        <Button color='#EAEAEA' onClick={() => dispatch(clearStack())}>
           전체취소
         </Button>
       ) : (
-        <Button color="#EAEAEA" onClick={() => dispatch(initStack())}>
+        <Button color='#EAEAEA' onClick={() => dispatch(initStack())}>
           전체선택
         </Button>
       )}

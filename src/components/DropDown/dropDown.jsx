@@ -18,9 +18,8 @@ function DropDown({ userId, handleLogout }) {
         </ListTop>
         <ListItems>
           <AItem
-            href="/write"
-            style={{ display: 'inline-block', textDecoration: 'none' }}
-          >
+            href='/write'
+            style={{ display: 'inline-block', textDecoration: 'none' }}>
             모집공고 생성
           </AItem>
         </ListItems>

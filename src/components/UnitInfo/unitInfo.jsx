@@ -10,9 +10,8 @@ function UnitInfo({ capacity, view, children }) {
         <span>
           {capacity}
           <CapacityIcon
-            height="0.8rem"
-            style={{ marginLeft: '4px' }}
-          ></CapacityIcon>
+            height='0.8rem'
+            style={{ marginLeft: '4px' }}></CapacityIcon>
         </span>
       </UnitContent>
       <UnitContent>

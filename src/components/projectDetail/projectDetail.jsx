@@ -33,8 +33,7 @@ function ProjectDetail({ projectId }) {
                 capacity={projectRead.capacity}
                 view={projectRead.view}
                 status={projectRead.status}
-                bookMark={projectRead.bookMark}
-              ></ProjectManager>
+                bookMark={projectRead.bookMark}></ProjectManager>
             </OwnerContents>
           ) : null}
         </DetailContainer>

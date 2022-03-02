@@ -6,8 +6,7 @@ function ProjectStackTag({ tagName }) {
   return (
     <TagDiv
       name={tagName}
-      color={wholeStack.find((elem) => elem.name === tagName).color}
-    >
+      color={wholeStack.find((elem) => elem.name === tagName).color}>
       {wholeStack.find((elem) => elem.name === tagName).tagName}
     </TagDiv>
   );

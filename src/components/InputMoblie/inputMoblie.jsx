@@ -24,12 +24,11 @@ function InputMoblie({ handleInputMoblie, keyword, handleInputKeyword }) {
       </CloseDiv> */}
       <InputDiv>
         <Input
-          type="text"
-          placeholder="모집글 검색"
+          type='text'
+          placeholder='모집글 검색'
           onChange={(e) => handleInputKeyword(e)}
           onKeyPress={handleOnKeypress}
-          value={keyword}
-        ></Input>
+          value={keyword}></Input>
       </InputDiv>
       <Search onClick={handleOnClickSearch} style={{ cursor: 'pointer' }}>
         검색

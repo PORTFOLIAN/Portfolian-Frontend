@@ -17,13 +17,13 @@ function App() {
         <Route exact path={['/', '/main']}>
           <Main />
         </Route>
-        <Route path="/write">
+        <Route path='/write'>
           <Write />
         </Route>
-        <Route path="/projects">
+        <Route path='/projects'>
           <Project />
         </Route>
-        <Route path="/users">
+        <Route path='/users'>
           <Profile />
         </Route>
       </Switch>

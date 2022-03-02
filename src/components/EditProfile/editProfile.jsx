@@ -20,7 +20,7 @@ function EditProfile({ userId, profileRead, setEditMode }) {
       <Container>
         <div>
           <ImgContainner>
-            <ProfileImg src={profileRead.photo} alt="photo" />
+            <ProfileImg src={profileRead.photo} alt='photo' />
           </ImgContainner>
           {/* <input type='file' id='profileImg' accept='image/*'></input> */}
         </div>

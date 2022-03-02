@@ -19,17 +19,16 @@ function RecruitCard({ recruitElem }) {
       // onClick={ 북마크 설정하는 api통신}
       >
         {recruitElem.bookMark ? (
-          <BookMarkTrue height="19px"></BookMarkTrue>
+          <BookMarkTrue height='19px'></BookMarkTrue>
         ) : (
-          <BookMarkFalse height="19px"></BookMarkFalse>
+          <BookMarkFalse height='19px'></BookMarkFalse>
         )}
       </BookMarkIcon>
       <CardContents>
         <Details>
           <Title>{recruitElem.title}</Title>
           <RecruitStacksView
-            stackList={recruitElem.stackList}
-          ></RecruitStacksView>
+            stackList={recruitElem.stackList}></RecruitStacksView>
           <Description>{recruitElem.description}</Description>
         </Details>
         <UnitInfo capacity={recruitElem.capacity} view={recruitElem.view}>

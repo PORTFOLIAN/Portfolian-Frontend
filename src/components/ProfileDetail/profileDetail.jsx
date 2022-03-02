@@ -34,7 +34,7 @@ function ProfileDetail({ userId, profileRead, setEditMode }) {
   return (
     <Container>
       <ImgContainner>
-        <ProfileImg src={profileRead.photo} alt="photo" />
+        <ProfileImg src={profileRead.photo} alt='photo' />
       </ImgContainner>
       <ProfileContents>
         <ProjectStackList stackList={stacks} />
@@ -44,8 +44,7 @@ function ProfileDetail({ userId, profileRead, setEditMode }) {
         <IconCentainer>
           {profileRead.github.legnth > 0 && (
             <GithubBtn
-              onClick={() => window.open(profileRead.github, '_blank')}
-            >
+              onClick={() => window.open(profileRead.github, '_blank')}>
               {' '}
               <GithubIcon />{' '}
             </GithubBtn>

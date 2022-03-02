@@ -43,10 +43,9 @@ function ProjectTemplate({ contents }) {
           <DescriptionContents
             components={{
               img: ({ node, ...props }) => (
-                <img style={{ maxWidth: '80%' }} {...props} alt="" />
+                <img style={{ maxWidth: '80%' }} {...props} alt='' />
               ),
-            }}
-          >
+            }}>
             {contents.description}
           </DescriptionContents>
         </>

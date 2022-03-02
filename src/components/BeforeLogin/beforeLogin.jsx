@@ -95,8 +95,7 @@ function BeforeLogin({ closeModal }) {
             backgroundColor: 'transparent',
             border: 'none',
             borderRadius: '100px',
-          }}
-        >
+          }}>
           <KakaoButton></KakaoButton>
         </KakaoLogin>
       </LoginBtn>

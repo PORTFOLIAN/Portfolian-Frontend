@@ -11,8 +11,7 @@ function StackTagDiv({ tagName, margin }) {
     <TagDiv
       name={tagName}
       color={wholeStack.find((elem) => elem.name === tagName).color}
-      margin={size}
-    >
+      margin={size}>
       {wholeStack.find((elem) => elem.name === tagName).tagName}
     </TagDiv>
   );

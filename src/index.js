@@ -59,7 +59,7 @@ ReactDOM.render(
         <PersistGate loading={null} persistor={persistor}>
           <App />
           <ToastContainer
-            position="top-right"
+            position='top-right'
             autoClose={2000}
             hideProgressBar={true}
             newestOnTop={false}

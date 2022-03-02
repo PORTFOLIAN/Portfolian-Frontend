@@ -89,8 +89,7 @@ function OwnerStackSelection({ handleSetStacks }) {
               stack={stack}
               key={i}
               selected={stack.select}
-              handleStackClick={handleStackClick}
-            ></StackTagBtn>
+              handleStackClick={handleStackClick}></StackTagBtn>
           );
         })}
       </OwnerStackContainer>
@@ -100,15 +99,13 @@ function OwnerStackSelection({ handleSetStacks }) {
           <>
             <SelectStackSpan
               color={selectStack.color}
-              name={selectStack.tagName}
-            >
+              name={selectStack.tagName}>
               {selectStack.tagName}
             </SelectStackSpan>
             <Delete
-              width="12px"
+              width='12px'
               style={{ cursor: 'pointer' }}
-              onClick={resetStackTags}
-            ></Delete>
+              onClick={resetStackTags}></Delete>
           </>
         ) : (
           <SelectStackSpan color={'#fff'}>&nbsp;</SelectStackSpan>

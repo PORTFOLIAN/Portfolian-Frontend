@@ -109,21 +109,21 @@ function SetNickName() {
     <>
       <NicNameContainer>
         <PrevBtn onClick={() => dispatch(previousStep())}>
-          <Prev width="1rem" height="1.5rem"></Prev>
+          <Prev width='1rem' height='1.5rem'></Prev>
         </PrevBtn>
         <SetContainer>
           <SetText>닉네임을 설정해주세요. (최대 10자)</SetText>
           <DescText>닉네임은 마이페이지에서 변경할 수 있습니다.</DescText>
           <InputNicName
-            type="text"
-            name="nickName"
-            maxLength="10"
+            type='text'
+            name='nickName'
+            maxLength='10'
             value={nickName}
             onChange={(e) => {
               onInput(e.target.value);
             }}
           />
-          <SubmitNicName onClick={handleSignUp} name="submit">
+          <SubmitNicName onClick={handleSignUp} name='submit'>
             완료
           </SubmitNicName>
         </SetContainer>

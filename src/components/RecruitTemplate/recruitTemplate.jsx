@@ -52,9 +52,9 @@ function RecruitTemplate() {
   return (
     <TemplateContainer>
       <TitleTextarea
-        placeholder="제목을 입력하세요."
-        maxLength="64"
-        name="title"
+        placeholder='제목을 입력하세요.'
+        maxLength='64'
+        name='title'
         value={title}
         ref={titleRef}
         onChange={handleOnChangeContents}
@@ -64,9 +64,9 @@ function RecruitTemplate() {
       <Capacity>
         <ContentTextDiv>모집인원</ContentTextDiv>
         <CapacityInput
-          type="number"
-          max="16"
-          name="capacity"
+          type='number'
+          max='16'
+          name='capacity'
           value={capacity}
           onChange={handleOnChangeContents}
         />
@@ -74,8 +74,8 @@ function RecruitTemplate() {
       <Contents>
         <ContentTextDiv>프로젝트 기간</ContentTextDiv>
         <ContentsInputs
-          placeholder="예시) 3개월, 2022.02~2022.04, ..."
-          name="projectTime"
+          placeholder='예시) 3개월, 2022.02~2022.04, ...'
+          name='projectTime'
           value={projectTime}
           onChange={handleOnChangeContents}
         />
@@ -83,8 +83,8 @@ function RecruitTemplate() {
       <Contents>
         <ContentTextDiv>프로젝트 주제 설명</ContentTextDiv>
         <ContentsInputs
-          placeholder="프로젝트의 주제에 대한 간단한 설명을 적어주세요."
-          name="subjectDescription"
+          placeholder='프로젝트의 주제에 대한 간단한 설명을 적어주세요.'
+          name='subjectDescription'
           value={subjectDescription}
           onChange={handleOnChangeContents}
         />
@@ -92,8 +92,8 @@ function RecruitTemplate() {
       <Contents>
         <ContentTextDiv>모집 조건</ContentTextDiv>
         <ContentsInputs
-          placeholder="구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분"
-          name="condition"
+          placeholder='구하고자 하는 팀원에 대해 간단한 설명을 적어주세요.&#13;&#10;예시) mongoDB 사용 가능하신 분, 두달 간 몰입해서 완료할 수 있는 분'
+          name='condition'
           value={condition}
           onChange={handleOnChangeContents}
         />
@@ -101,8 +101,8 @@ function RecruitTemplate() {
       <Contents>
         <ContentTextDiv>프로젝트 진행 방식</ContentTextDiv>
         <ContentsInputs
-          placeholder="예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정"
-          name="progress"
+          placeholder='예시) 주 1회 화상회의, 강남역에서 오프라인으로 진행, 협의 후 결정'
+          name='progress'
           value={progress}
           onChange={handleOnChangeContents}
         />
@@ -110,11 +110,11 @@ function RecruitTemplate() {
       <Contents>
         <ContentTextDiv>프로젝트 상세(선택)</ContentTextDiv>
         <Editor
-          height="500px"
+          height='500px'
           initialValue={description}
-          initialEditType="wysiwyg"
+          initialEditType='wysiwyg'
           autofocus={false}
-          placeholder="지원자에게 전달하고자 하는 정보를 자유롭게 적어주세요 :)"
+          placeholder='지원자에게 전달하고자 하는 정보를 자유롭게 적어주세요 :)'
           ref={editorRef}
           onChange={handleOnchangeEditor}
         />

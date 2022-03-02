@@ -71,8 +71,8 @@ function Navbar() {
     <>
       <div className={style.container}>
         <div className={style.navBody}>
-          <a href="/" className={style.logo}>
-            <img alt="LOGO" src="/img/logo520.svg" />
+          <a href='/' className={style.logo}>
+            <img alt='LOGO' src='/img/logo520.svg' />
           </a>
           <div className={style.contents}>
             <SearchBar
@@ -97,8 +97,7 @@ function Navbar() {
         <InputMoblie
           handleInputMoblie={handleInputMoblie}
           keyword={keyword}
-          handleInputKeyword={handleInputKeyword}
-        ></InputMoblie>
+          handleInputKeyword={handleInputKeyword}></InputMoblie>
       </div>
       {openModal && (
         <Modal closeModal={closeModal}>

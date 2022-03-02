@@ -31,12 +31,11 @@ function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
     <>
       <InputContainer>
         <Input
-          type="text"
-          placeholder="모집글 검색하기"
+          type='text'
+          placeholder='모집글 검색하기'
           onChange={(e) => handleInputKeyword(e)}
           onKeyPress={handleOnKeypress}
-          value={keyword}
-        ></Input>
+          value={keyword}></Input>
         <SearchIcon
           onClick={handleOnClickSearch}
           style={{ cursor: 'pointer' }}

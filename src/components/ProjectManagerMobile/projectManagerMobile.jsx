@@ -34,7 +34,7 @@ function ProjectManagerMobile({ leader, capacity, view, status, bookMark }) {
         )}
         <ManagerImg
           src={leader.photo}
-          alt="leader profile"
+          alt='leader profile'
           onClick={onClickProfile}
         />
         <ManagerDesctiprion onClick={onClickProfile}>
@@ -51,8 +51,7 @@ function ProjectManagerMobile({ leader, capacity, view, status, bookMark }) {
         <UnitInfo>
           {capacity}
           <Capacity
-            style={{ height: '14px', marginRight: '0.3rem' }}
-          ></Capacity>
+            style={{ height: '14px', marginRight: '0.3rem' }}></Capacity>
           {view}
           <Views style={{ marginLeft: '0.2rem' }}></Views>
         </UnitInfo>

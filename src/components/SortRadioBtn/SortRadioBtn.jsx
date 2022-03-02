@@ -53,9 +53,9 @@ function SortRadioBtn() {
         return (
           <RadioElem onClick={() => handleClickRadio(name)} key={i}>
             {radioState === name ? (
-              <RadioImg alt="LOGO" src="img/circle.svg"></RadioImg>
+              <RadioImg alt='LOGO' src='img/circle.svg'></RadioImg>
             ) : (
-              <RadioImg alt="LOGO" src="img/circle_empty.svg"></RadioImg>
+              <RadioImg alt='LOGO' src='img/circle_empty.svg'></RadioImg>
             )}
             <div>{name}</div>
           </RadioElem>

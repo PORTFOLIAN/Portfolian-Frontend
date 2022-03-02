@@ -59,8 +59,7 @@ function Modal({ width, height, closeModal, children }) {
         <ModalInner
           width={width}
           height={height}
-          onClick={(e) => e.stopPropagation()}
-        >
+          onClick={(e) => e.stopPropagation()}>
           {children}
         </ModalInner>
       </ModalWrapper>

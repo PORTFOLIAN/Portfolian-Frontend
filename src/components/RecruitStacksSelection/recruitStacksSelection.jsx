@@ -69,8 +69,7 @@ function RecruitStacksSelection({ stackList }) {
             stack={stack}
             key={i}
             selected={stack.select}
-            handleStackClick={handleStackClick}
-          ></StackTagBtn>
+            handleStackClick={handleStackClick}></StackTagBtn>
         );
       })}
     </div>

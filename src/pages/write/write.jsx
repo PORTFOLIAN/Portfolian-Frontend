@@ -166,8 +166,7 @@ function Write() {
         <Modal closeModal={handleOwnerStackModal}>
           <SetOwnerStack
             handleOwnerStackModal={handleOwnerStackModal}
-            handleClickSubmit={handleClickSubmit}
-          ></SetOwnerStack>
+            handleClickSubmit={handleClickSubmit}></SetOwnerStack>
         </Modal>
       )}
     </>

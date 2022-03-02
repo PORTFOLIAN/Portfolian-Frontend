@@ -15,7 +15,7 @@ const KakaoImg = styled.img`
 function KakaoButton({ onClick }) {
   return (
     <KakaoBtn>
-      <KakaoImg alt="카카오로그인" src="img/kakao.svg"></KakaoImg>
+      <KakaoImg alt='카카오로그인' src='img/kakao.svg'></KakaoImg>
     </KakaoBtn>
   );
 }

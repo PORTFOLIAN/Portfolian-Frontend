@@ -37,7 +37,7 @@ function HeaderProfile({ handleLogout }) {
     <>
       <UserContainer onClick={handleUserProfile}>
         {/* <UserPhoto src={user.imageUrl}/>  //나중에 기본 유알엘 설정되면 이걸루!*/}
-        <UserPhoto alt="UserImg" src={user.imageUrl}></UserPhoto>
+        <UserPhoto alt='UserImg' src={user.imageUrl}></UserPhoto>
         <UserNickName>{user.nickName}</UserNickName>
         <Triangle />
         {DropDownSwitch && (

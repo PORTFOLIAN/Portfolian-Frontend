@@ -13,25 +13,25 @@ function Banner() {
         <ImgContainer>
           <ImgItems
             src={'img/banner/ab.svg'}
-            alt="첫째"
+            alt='첫째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/aa.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ab.svg')}
           />
           <ImgItems
             src={'img/banner/ba.svg'}
-            alt="둘째"
+            alt='둘째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/bb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ba.svg')}
           />
           <ImgItems
             src={'img/banner/ca.svg'}
-            alt="셋째"
+            alt='셋째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/cb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ca.svg')}
           />
           <ImgItems
             src={'img/banner/da.svg'}
-            alt="넷째"
+            alt='넷째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/db.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/da.svg')}
           />
@@ -41,25 +41,25 @@ function Banner() {
         <ImgContainer>
           <ImgItems
             src={'img/banner/ea.svg'}
-            alt="다섯째"
+            alt='다섯째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/eb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ea.svg')}
           />
           <ImgItems
             src={'img/banner/fa.svg'}
-            alt="여섯째"
+            alt='여섯째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/fb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/fa.svg')}
           />
           <ImgItems
             src={'img/banner/ga.svg'}
-            alt="일곱째"
+            alt='일곱째'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/gb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ga.svg')}
           />
           <ImgItems
             src={'img/banner/ha.svg'}
-            alt="막내"
+            alt='막내'
             onMouseOver={(e) => (e.currentTarget.src = 'img/banner/hb.svg')}
             onMouseOut={(e) => (e.currentTarget.src = 'img/banner/ha.svg')}
           />

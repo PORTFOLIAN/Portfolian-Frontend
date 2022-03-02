@@ -23,8 +23,7 @@ const StackTagBtn = React.memo(({ stack, selected, handleStackClick }) => {
       color={stack.color}
       name={stack.name}
       selected={selected}
-      onClick={() => handleStackClick(stack, selected)}
-    >
+      onClick={() => handleStackClick(stack, selected)}>
       {stack.tagName}
     </Button>
   );

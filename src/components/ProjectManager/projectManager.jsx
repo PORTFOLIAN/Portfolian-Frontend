@@ -39,9 +39,8 @@ function ProjectManager({ leader, capacity, view, status, bookMark }) {
       )}
       <ManagerImg
         src={leader.photo}
-        alt="leader profile"
-        onClick={onClickProfile}
-      ></ManagerImg>
+        alt='leader profile'
+        onClick={onClickProfile}></ManagerImg>
       <DescContainer>
         <ManagerText onClick={onClickProfile}>Team Manager</ManagerText>
         <ManagerNickname onClick={onClickProfile}>
