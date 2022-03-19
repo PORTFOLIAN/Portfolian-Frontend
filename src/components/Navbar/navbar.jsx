@@ -17,6 +17,8 @@ import SearchBar from '../SearchBar/searchBar';
 import InputMoblie from '../InputMoblie/inputMoblie';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
+import ChatContainer from '../ChatContainer/chatContainer';
+import ChatContents from '../ChatContents/chatContents';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ function Navbar() {
   const [openModal, setOpenModal] = useState(false);
   const [inputMoblie, setInputMoblie] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [chattingSwitch, setchattingSwitch] = useState(false);
 
   const showModal = () => {
     setOpenModal(true);
@@ -49,6 +52,9 @@ function Navbar() {
     setKeyword(e.target.value);
   };
 
+  const handleChat = (e) => {
+    setchattingSwitch(!chattingSwitch);
+  };
   useEffect(() => {
     // console.log("nabvar useEffect user.nickName: ", user.nickName);
     if (user.nickName) {
@@ -85,7 +91,7 @@ function Navbar() {
                 로그인
               </button>
             ) : (
-              <UserOn handleLogout={handleLogout} />
+              <UserOn handleLogout={handleLogout} handleChat={handleChat} />
             )}
           </div>
         </div>
@@ -101,9 +107,11 @@ function Navbar() {
       </div>
       {openModal && (
         <Modal closeModal={closeModal}>
-          {' '}
-          <LoginModal closeModal={closeModal}></LoginModal>{' '}
+          <LoginModal closeModal={closeModal}></LoginModal>
         </Modal>
+      )}
+      {chattingSwitch && (
+        <ChatContainer handleChat={handleChat}></ChatContainer>
       )}
       {/* <Modal width="100px" height="200px" component={com()}></Modal> */}
     </>

@@ -1,6 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
+function Modal({ width, height, closeModal, children }) {
+  return (
+    <ModalOverlay onClick={closeModal}>
+      <ModalWrapper>
+        <ModalInner
+          width={width}
+          height={height}
+          onClick={(e) => e.stopPropagation()}>
+          {children}
+        </ModalInner>
+      </ModalWrapper>
+    </ModalOverlay>
+  );
+}
+
+export default Modal;
+
 const ModalOverlay = styled.div`
   box-sizing: border-box;
   position: fixed;
@@ -51,20 +68,3 @@ const CloseBtn = styled.img`
   margin: 16px;
   cursor: pointer;
 `;
-
-function Modal({ width, height, closeModal, children }) {
-  return (
-    <ModalOverlay onClick={closeModal}>
-      <ModalWrapper>
-        <ModalInner
-          width={width}
-          height={height}
-          onClick={(e) => e.stopPropagation()}>
-          {children}
-        </ModalInner>
-      </ModalWrapper>
-    </ModalOverlay>
-  );
-}
-
-export default Modal;
