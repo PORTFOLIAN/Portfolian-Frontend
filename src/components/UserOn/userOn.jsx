@@ -6,16 +6,20 @@ import HeaderProfile from '../HeaderProfile/headerProfile';
 import { ReactComponent as Alert } from '../asset/alert.svg';
 import { ReactComponent as Chatting } from '../asset/chatting.svg';
 import DropDown from '../DropDown/dropDown';
+import ChatContainer from '../ChatContainer/chatContainer';
 
-function UserOn({ handleLogout }) {
+function UserOn({ handleLogout, handleChat }) {
   const user = useSelector((state) => state.user);
-  const [chattingSwitch, setchattingSwitch] = useState(false);
+
   const [alertSwitch, setalertSwitch] = useState(false);
 
   return (
     <Container>
       <HeaderProfile handleLogout={handleLogout} />
-      <Chatting style={{ marginRight: '16px', cursor: 'pointer' }} />
+      <Chatting
+        style={{ marginRight: '16px', cursor: 'pointer' }}
+        onClick={handleChat}
+      />
       <Alert width='1.3rem' height='1.3rem' style={{ cursor: 'pointer' }} />
       {/* <button onClick={handleLogout} >로그아웃임시</button> */}
       {
