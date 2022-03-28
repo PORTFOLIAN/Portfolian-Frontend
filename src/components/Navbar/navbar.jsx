@@ -18,7 +18,7 @@ import InputMoblie from '../InputMoblie/inputMoblie';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import ChatContainer from '../ChatContainer/chatContainer';
-import ChatContents from '../ChatContents/chatContents';
+// import ChatContents from '../ChatContents/chatContents';
 
 function Navbar() {
   const dispatch = useDispatch();
