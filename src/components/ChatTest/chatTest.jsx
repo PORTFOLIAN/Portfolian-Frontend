@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as Close } from '../asset/close.svg';
-import socket from '../../service/socket';
 
-function ChatTest({ handleChat }) {
-  const [currSocket, setCurrSoket] = useState();
-  useEffect(() => {}, []);
+function ChatTest({ leaderId, projectId }) {
+  // note: navbar -> chatContainer -> chatTest | project -> chatContainer -> chatTest
 
   return (
     <>
-      <Close onClick={handleChat}></Close>
+      <button onClick={(e) => {}}>채팅방 입장하기</button>
+      <div>
+        {leaderId}
+        <br></br>
+        {projectId}
+      </div>
     </>
   );
 }
