@@ -18,6 +18,7 @@ import InputMoblie from '../InputMoblie/inputMoblie';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import ChatContainer from '../ChatContainer/chatContainer';
+import ChatTest from '../ChatTest/chatTest';
 // import ChatContents from '../ChatContents/chatContents';
 
 function Navbar() {
@@ -28,7 +29,7 @@ function Navbar() {
   const [openModal, setOpenModal] = useState(false);
   const [inputMoblie, setInputMoblie] = useState(false);
   const [keyword, setKeyword] = useState('');
-  const [chattingSwitch, setchattingSwitch] = useState(false);
+  const [chatSwitch, setchatSwitch] = useState(false);
 
   const showModal = () => {
     setOpenModal(true);
@@ -53,7 +54,7 @@ function Navbar() {
   };
 
   const handleChat = (e) => {
-    setchattingSwitch(!chattingSwitch);
+    setchatSwitch(!chatSwitch);
   };
   useEffect(() => {
     // console.log("nabvar useEffect user.nickName: ", user.nickName);
@@ -110,8 +111,10 @@ function Navbar() {
           <LoginModal closeModal={closeModal}></LoginModal>
         </Modal>
       )}
-      {chattingSwitch && (
-        <ChatContainer handleChat={handleChat}></ChatContainer>
+      {chatSwitch && (
+        <ChatContainer onClickChat={handleChat}>
+          {/* <ChatTest></ChatTest> */}
+        </ChatContainer>
       )}
       {/* <Modal width="100px" height="200px" component={com()}></Modal> */}
     </>

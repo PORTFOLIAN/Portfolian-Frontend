@@ -8,10 +8,17 @@ import ProjectStackList from '../ProjectStackList/projectStackList';
 import ProjectTemplate from '../ProjectTemplate/projectTemplate';
 import { useMediaQuery } from 'react-responsive';
 import ProjectManagerMobile from '../ProjectManagerMobile/projectManagerMobile';
+import ChatContainer from '../ChatContainer/chatContainer';
+import ChatTest from '../ChatTest/chatTest';
 
 function ProjectDetail({ projectId }) {
   const projectRead = useSelector((state) => state.projectRead);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [chatSwitch, setChatSwitch] = useState(false);
+
+  const onClickChat = (e) => {
+    setChatSwitch(!chatSwitch);
+  };
 
   return (
     <>
@@ -33,7 +40,8 @@ function ProjectDetail({ projectId }) {
                 capacity={projectRead.capacity}
                 view={projectRead.view}
                 status={projectRead.status}
-                bookMark={projectRead.bookMark}></ProjectManager>
+                bookMark={projectRead.bookMark}
+                onClickChat={onClickChat}></ProjectManager>
             </OwnerContents>
           ) : null}
         </DetailContainer>
@@ -48,6 +56,14 @@ function ProjectDetail({ projectId }) {
             bookMark={projectRead.bookMark}
           />
         </MobileOwnerContents>
+      ) : null}
+      {chatSwitch ? (
+        <ChatContainer onClickChat={onClickChat}>
+          <ChatTest
+            leaderId={projectRead.leader.userId}
+            projectId={projectRead.projectId}></ChatTest>
+          {/* 채팅 테스트 위한 컴포넌트임. 상대방 유저정보, 프로젝트 명 서버로 넘겨서 roomId받기 */}
+        </ChatContainer>
       ) : null}
     </>
   );

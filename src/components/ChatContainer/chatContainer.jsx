@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ChatTest from '../ChatTest/chatTest';
+import { ReactComponent as Close } from '../asset/close.svg';
 
-function ChatContainer({ handleChat, children }) {
+function ChatContainer({ onClickChat, children }) {
+  //note: handleChat은 navbar에서 상속받고있음
   return (
     <>
       <Container>
-        <ChatTest handleChat={handleChat}></ChatTest>
+        <div>
+          <Close onClick={onClickChat}></Close>
+        </div>
+        {children}
       </Container>
     </>
   );
