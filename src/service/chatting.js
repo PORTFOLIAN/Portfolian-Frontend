@@ -32,7 +32,7 @@ class Chatting {
     this.chatting = httpClient;
   }
   /* 채팅하기 or 채팅목록에서 채팅방 클릭했을 때 호출되는 메서드 */
-  creatChat = async (leaderId, projectId) => {
+  createChat = async (leaderId, projectId) => {
     try {
       const roomId = await this.chatting.post('chats', {
         userId: leaderId,
