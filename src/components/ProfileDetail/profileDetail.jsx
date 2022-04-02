@@ -37,7 +37,7 @@ function ProfileDetail({ userId, profileRead, setEditMode }) {
         <ProfileImg src={profileRead.photo} alt='photo' />
       </ImgContainner>
       <ProfileContents>
-        <ProjectStackList stackList={stacks} />
+        <ProjectStackList stackList={stacks} profile={true} />
         <NickNameText>{profileRead.nickName}</NickNameText>
 
         <DescriptionText>{profileRead.description}</DescriptionText>
@@ -118,7 +118,7 @@ const ProfileContents = styled.div`
   flex-direction: column;
   justify-content: space-around;
   @media screen and (max-width: 768px) {
-    margin: 0;
+    margin: 0 2rem;
   }
 `;
 
@@ -145,7 +145,7 @@ const GithubBtn = styled.button`
 `;
 
 const MailContainer = styled.div`
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 `;
 const MailText = styled.div`
   background-color: #909090;

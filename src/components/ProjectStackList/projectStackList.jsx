@@ -2,11 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import ProjectStackTag from '../ProjectStackTag/projectStackTag';
 
-function ProjectStackList({ stackList }) {
+function ProjectStackList({ stackList, profile = false }) {
   return (
-    <StackListContainer>
+    <StackListContainer profile={profile}>
       {stackList.map((elem, i) => {
-        return <ProjectStackTag tagName={elem} key={i}></ProjectStackTag>;
+        return (
+          <ProjectStackTag
+            tagName={elem}
+            key={i}
+            profile={profile}></ProjectStackTag>
+        );
       })}
     </StackListContainer>
   );
@@ -18,10 +23,11 @@ const StackListContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   max-width: 600px;
+  gap: 10px;
   /* width: 100%; */
   @media screen and (max-width: 768px) {
     /* justify-content: center; */
-    margin-left: 1rem;
+    margin-left: ${(props) => (props.profile ? 0 : '1rem')};
     font-weight: 500;
   }
 `;
