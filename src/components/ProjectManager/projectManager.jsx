@@ -6,76 +6,93 @@ import UnitInfo from '../UnitInfo/unitInfo';
 import { ReactComponent as BookMarKTrue } from '../asset/projectBookmark.svg';
 import { ReactComponent as BookMarkFalse } from '../asset/projectBookmarkFalse.svg';
 import { useHistory } from 'react-router-dom';
+import ChatContainer from '../ChatContainer/chatContainer';
+import ChatTest from '../ChatTest/chatTest';
 
-function ProjectManager({ leader, capacity, view, status, bookMark }) {
+function ProjectManager({
+  leader,
+  capacity,
+  view,
+  status,
+  bookMark,
+  onClickChat,
+}) {
   const history = useHistory();
   const user = useSelector((state) => state.user);
   const [bookmark, setBookmark] = useState(bookMark);
+
   const onClickProfile = () => {
     history.push(`/users/${leader.userId}/info`);
   };
+
   return (
-    <ManagerContainer>
-      {user.userId === leader.userId ? null : (
-        <>
-          {bookMark ? (
-            <BookMarKTrue
-              style={{
-                alignSelf: 'flex-start',
-                cursor: 'pointer',
-                marginLeft: '1rem',
-              }}
-            />
-          ) : (
-            <BookMarkFalse
-              style={{
-                alignSelf: 'flex-start',
-                cursor: 'pointer',
-                marginLeft: '1rem',
-              }}
-            />
-          )}
-        </>
-      )}
-      <ManagerImg
-        src={leader.photo}
-        alt='leader profile'
-        onClick={onClickProfile}></ManagerImg>
-      <DescContainer>
-        <ManagerText onClick={onClickProfile}>Team Manager</ManagerText>
-        <ManagerNickname onClick={onClickProfile}>
-          {leader.nickName}
-        </ManagerNickname>
-        <ManagerDesc onClick={onClickProfile}>{leader.description}</ManagerDesc>
-        <StackContainer>
-          <ManagerStackText>팀장 스택</ManagerStackText>
-          <ManagerStack>
-            {leader.stack && (
-              <StackTagDiv tagName={leader.stack} margin={'0'}></StackTagDiv>
+    <>
+      <ManagerContainer>
+        {user.userId === leader.userId ? null : (
+          <>
+            {bookMark ? (
+              <BookMarKTrue
+                style={{
+                  alignSelf: 'flex-start',
+                  cursor: 'pointer',
+                  marginLeft: '1rem',
+                }}
+              />
+            ) : (
+              <BookMarkFalse
+                style={{
+                  alignSelf: 'flex-start',
+                  cursor: 'pointer',
+                  marginLeft: '1rem',
+                }}
+              />
             )}
-          </ManagerStack>
-        </StackContainer>
-        <UnitInfo capacity={capacity} view={view}>
-          {leader.userId === user.userId ? (
-            <>
-              {status === 0 ? (
-                <ManagerBtn status={true}>모집마감하기</ManagerBtn>
-              ) : (
-                <ManagerBtn status={false}>재모집하기</ManagerBtn>
+          </>
+        )}
+        <ManagerImg
+          src={leader.photo}
+          alt='leader profile'
+          onClick={onClickProfile}></ManagerImg>
+        <DescContainer>
+          <ManagerText onClick={onClickProfile}>Team Manager</ManagerText>
+          <ManagerNickname onClick={onClickProfile}>
+            {leader.nickName}
+          </ManagerNickname>
+          <ManagerDesc onClick={onClickProfile}>
+            {leader.description}
+          </ManagerDesc>
+          <StackContainer>
+            <ManagerStackText>팀장 스택</ManagerStackText>
+            <ManagerStack>
+              {leader.stack && (
+                <StackTagDiv tagName={leader.stack} margin={'0'}></StackTagDiv>
               )}
-            </>
-          ) : (
-            <>
-              {status === 0 ? (
-                <UserBtn status={true}>채팅하기</UserBtn>
-              ) : (
-                <UserBtn status={false}>모집마감</UserBtn>
-              )}
-            </>
-          )}
-        </UnitInfo>
-      </DescContainer>
-    </ManagerContainer>
+            </ManagerStack>
+          </StackContainer>
+          <UnitInfo capacity={capacity} view={view}>
+            {leader.userId === user.userId ? (
+              <>
+                {status === 0 ? (
+                  <ManagerBtn status={true}>모집마감하기</ManagerBtn>
+                ) : (
+                  <ManagerBtn status={false}>재모집하기</ManagerBtn>
+                )}
+              </>
+            ) : (
+              <>
+                {status === 0 ? (
+                  <UserBtn status={true} onClick={onClickChat}>
+                    채팅하기
+                  </UserBtn>
+                ) : (
+                  <UserBtn status={false}>모집마감</UserBtn>
+                )}
+              </>
+            )}
+          </UnitInfo>
+        </DescContainer>
+      </ManagerContainer>
+    </>
   );
 }
 
