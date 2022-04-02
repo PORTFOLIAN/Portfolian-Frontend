@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 let Button = styled.button`
-  font-size: 14px;
+  font-size: ${(props) => (props.profile ? '12px' : '14px')};
   color: ${(props) =>
     props.selected
       ? props.name === 'etc'
@@ -17,16 +17,19 @@ let Button = styled.button`
   cursor: pointer;
   white-space: nowrap;
 `;
-const StackTagBtn = React.memo(({ stack, selected, handleStackClick }) => {
-  return (
-    <Button
-      color={stack.color}
-      name={stack.name}
-      selected={selected}
-      onClick={() => handleStackClick(stack, selected)}>
-      {stack.tagName}
-    </Button>
-  );
-});
+const StackTagBtn = React.memo(
+  ({ stack, selected, handleStackClick, profile = false }) => {
+    return (
+      <Button
+        color={stack.color}
+        name={stack.name}
+        selected={selected}
+        onClick={() => handleStackClick(stack, selected)}
+        profile={profile}>
+        {stack.tagName}
+      </Button>
+    );
+  },
+);
 
 export default StackTagBtn;

@@ -7,7 +7,12 @@ import { wholeStack } from '../../modules/wholeStack';
 import { changeStacks } from '../../modules/write';
 import StackTagBtn from '../StackTagBtn/stackTagBtn';
 
-function RecruitStacksSelection({ stackList }) {
+function RecruitStacksSelection({
+  stackList,
+  profile = false,
+  setProfiles = null,
+  profiles = null,
+}) {
   const [wholeStacks, setWholeStacks] = useState([]);
   const [selectCnt, setSelectCnt] = useState(0);
   // const {stackList} = useSelector((state)=>state.write.stackList);
@@ -57,19 +62,25 @@ function RecruitStacksSelection({ stackList }) {
   }, []);
 
   useEffect(() => {
-    handleStackDispatch();
+    if (!profile) handleStackDispatch();
+    if (profile)
+      setProfiles({
+        ...profiles,
+        stackList: selectList,
+      });
   }, [selectList]);
 
   return (
     <div>
-      <Text>사용 기술 선택 (최대 7개)</Text>
+      {profile ? null : <Text>사용 기술 선택 (최대 7개)</Text>}
       {wholeStacks.map((stack, i) => {
         return (
           <StackTagBtn
             stack={stack}
             key={i}
             selected={stack.select}
-            handleStackClick={handleStackClick}></StackTagBtn>
+            handleStackClick={handleStackClick}
+            profile={profile}></StackTagBtn>
         );
       })}
     </div>
