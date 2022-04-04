@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import chattingService from '../../service/chatting';
 
-function ChatTest({ leaderId, projectId }) {
-  // note: navbar -> chatContainer -> chatTest | project -> chatContainer -> chatTest
-
+function ChatRoom({ leaderId, projectId }) {
   useEffect(() => {
     // 채팅방 생성 http 통신 모듈 호출하기
     chattingService.createChat(leaderId, projectId).then((response) => {
@@ -11,12 +9,12 @@ function ChatTest({ leaderId, projectId }) {
       console.log(roomId);
     });
   }, []);
+
   return (
     <>
-      <button onClick={(e) => {}}>채팅방 입장하기</button>
       <div></div>
     </>
   );
 }
 
-export default ChatTest;
+export default ChatRoom;

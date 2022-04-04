@@ -9,7 +9,7 @@ import ProjectTemplate from '../ProjectTemplate/projectTemplate';
 import { useMediaQuery } from 'react-responsive';
 import ProjectManagerMobile from '../ProjectManagerMobile/projectManagerMobile';
 import ChatContainer from '../ChatContainer/chatContainer';
-import ChatTest from '../ChatTest/chatTest';
+import ChatRoom from '../ChatRoom/chatRoom';
 
 function ProjectDetail({ projectId }) {
   const projectRead = useSelector((state) => state.projectRead);
@@ -59,10 +59,9 @@ function ProjectDetail({ projectId }) {
       ) : null}
       {chatSwitch ? (
         <ChatContainer onClickChat={onClickChat}>
-          <ChatTest
+          <ChatRoom
             leaderId={projectRead.leader.userId}
-            projectId={projectRead.projectId}></ChatTest>
-          {/* 채팅 테스트 위한 컴포넌트임. 상대방 유저정보, 프로젝트 명 서버로 넘겨서 roomId받기 */}
+            projectId={projectRead.projectId}></ChatRoom>
         </ChatContainer>
       ) : null}
     </>
