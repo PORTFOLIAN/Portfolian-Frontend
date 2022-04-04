@@ -7,7 +7,6 @@ import { ReactComponent as BookMarKTrue } from '../asset/projectBookmark.svg';
 import { ReactComponent as BookMarkFalse } from '../asset/projectBookmarkFalse.svg';
 import { useHistory } from 'react-router-dom';
 import ChatContainer from '../ChatContainer/chatContainer';
-import ChatTest from '../ChatTest/chatTest';
 
 function ProjectManager({
   leader,

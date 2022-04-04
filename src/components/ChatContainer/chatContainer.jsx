@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ChatTest from '../ChatTest/chatTest';
 import { ReactComponent as Close } from '../asset/close.svg';
 
 function ChatContainer({ onClickChat, children }) {

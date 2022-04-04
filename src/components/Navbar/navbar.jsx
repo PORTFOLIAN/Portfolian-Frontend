@@ -18,7 +18,6 @@ import InputMoblie from '../InputMoblie/inputMoblie';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import ChatContainer from '../ChatContainer/chatContainer';
-import ChatTest from '../ChatTest/chatTest';
 // import ChatContents from '../ChatContents/chatContents';
 
 function Navbar() {
@@ -112,9 +111,7 @@ function Navbar() {
         </Modal>
       )}
       {chatSwitch && (
-        <ChatContainer onClickChat={handleChat}>
-          {/* <ChatTest></ChatTest> */}
-        </ChatContainer>
+        <ChatContainer onClickChat={handleChat}>{/* <></> */}</ChatContainer>
       )}
       {/* <Modal width="100px" height="200px" component={com()}></Modal> */}
     </>
