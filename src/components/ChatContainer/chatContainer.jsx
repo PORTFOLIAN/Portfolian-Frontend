@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Close } from '../asset/close.svg';
+import { ReactComponent as Prev } from '../asset/prev.svg';
 
-function ChatContainer({ onClickChat, children }) {
+function ChatContainer({ onClickChat, children, roomMode = false }) {
   //note: handleChat은 navbar에서 상속받고있음
   return (
     <>
       <Container>
-        <div>
+        <CloseContainer>
           <Close onClick={onClickChat}></Close>
-        </div>
+          {roomMode && (
+            <Prev
+              style={{ width: '14px', height: '19px' }}
+              onClick={onClickChat}></Prev>
+          )}
+        </CloseContainer>
         {children}
       </Container>
     </>
@@ -40,4 +46,13 @@ const Container = styled.div`
     width: 100%;
     height: 90%;
   }
+`;
+
+const CloseContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
 `;

@@ -38,7 +38,7 @@ function ProjectManager({
                 }}
               />
             ) : (
-              <BookMarkFalse
+              <BookMarkFalseIcon
                 style={{
                   alignSelf: 'flex-start',
                   cursor: 'pointer',
@@ -173,4 +173,12 @@ const ManagerBtn = styled(Btn)`
   color: ${(props) => (props.status ? '#6F9ACD' : '#FFF')};
   cursor: pointer;
   border: ${(props) => (props.status ? '1px solid #6F9ACD' : 'none')};
+`;
+
+const BookMarkFalseIcon = styled(BookMarkFalse)`
+  &:hover {
+    path {
+      fill: #999999;
+    }
+  }
 `;

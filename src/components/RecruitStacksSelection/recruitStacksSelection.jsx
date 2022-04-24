@@ -9,7 +9,7 @@ import StackTagBtn from '../StackTagBtn/stackTagBtn';
 
 function RecruitStacksSelection({
   stackList,
-  profile = false,
+  profileCheck = false,
   setProfiles = null,
   profiles = null,
 }) {
@@ -62,8 +62,8 @@ function RecruitStacksSelection({
   }, []);
 
   useEffect(() => {
-    if (!profile) handleStackDispatch();
-    if (profile)
+    if (!profileCheck) handleStackDispatch();
+    if (profileCheck)
       setProfiles({
         ...profiles,
         stackList: selectList,
@@ -72,7 +72,7 @@ function RecruitStacksSelection({
 
   return (
     <div>
-      {profile ? null : <Text>사용 기술 선택 (최대 7개)</Text>}
+      {profileCheck ? null : <Text>사용 기술 선택 (최대 7개)</Text>}
       {wholeStacks.map((stack, i) => {
         return (
           <StackTagBtn
@@ -80,7 +80,7 @@ function RecruitStacksSelection({
             key={i}
             selected={stack.select}
             handleStackClick={handleStackClick}
-            profile={profile}></StackTagBtn>
+            profileCheck={profileCheck}></StackTagBtn>
         );
       })}
     </div>

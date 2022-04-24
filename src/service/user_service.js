@@ -101,6 +101,18 @@ class User {
       console.log(error);
     }
   };
+
+  setBookMark = async (userId, projectId, bookMarked) => {
+    try {
+      const response = await this.user.post(`users/${userId}/bookMark`, {
+        projectId: projectId,
+        bookMarked: bookMarked,
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 const userService = new User(httpClient);

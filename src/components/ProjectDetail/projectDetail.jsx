@@ -58,9 +58,9 @@ function ProjectDetail({ projectId }) {
         </MobileOwnerContents>
       ) : null}
       {chatSwitch ? (
-        <ChatContainer onClickChat={onClickChat}>
+        <ChatContainer onClickChat={onClickChat} roomMode={true}>
           <ChatRoom
-            leaderId={projectRead.leader.userId}
+            otherUser={projectRead.leader}
             projectId={projectRead.projectId}></ChatRoom>
         </ChatContainer>
       ) : null}

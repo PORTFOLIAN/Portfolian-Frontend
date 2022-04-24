@@ -48,7 +48,7 @@ class Chatting {
   getChatList = async () => {
     try {
       const chatList = await this.chatting.get('chats');
-      return chatList;
+      return chatList.data;
     } catch (error) {
       console.error(error);
     }

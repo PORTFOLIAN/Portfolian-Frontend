@@ -56,11 +56,11 @@ function EditProfile({ userId, profileRead, setEditMode }) {
               <ProfileImg src={profiles.photo} alt='photo' />
             </ImgContainner>
           </div>
-          <input
+          {/* <input
             type='file'
             accept='image/*'
             name='photo'
-            onChange={() => {}}></input>
+            onChange={() => {}}></input> */}
           <div>
             <button>사진 선택</button>
             <button>삭제</button>
@@ -68,7 +68,10 @@ function EditProfile({ userId, profileRead, setEditMode }) {
         </div>
         <ProfileContents>
           <div>
-            <ProjectStackList stackList={profiles.stackList} profile={true} />
+            <ProjectStackList
+              stackList={profiles.stackList}
+              profileCheck={true}
+            />
             <SelectStackBtn onClick={() => setSelectStack(!selectStack)}>
               기술 태그 선택하기 (최대 7개)
             </SelectStackBtn>
@@ -80,7 +83,7 @@ function EditProfile({ userId, profileRead, setEditMode }) {
                   <CloseText>선택창 닫기</CloseText>
                 </CloseSelectStackContainer>
                 <RecruitStacksSelection
-                  profile={true}
+                  profileCheck={true}
                   stackList={profiles.stackList}
                   setProfiles={setProfiles}
                   profiles={profiles}
