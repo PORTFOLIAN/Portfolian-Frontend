@@ -21,6 +21,7 @@ class Auth {
   logout = async () => {
     try {
       const res = await this.auth.patch('oauth/logout');
+      console.log('logout');
       return res;
     } catch (error) {
       console.error(error);

@@ -18,14 +18,14 @@ let Button = styled.button`
   white-space: nowrap;
 `;
 const StackTagBtn = React.memo(
-  ({ stack, selected, handleStackClick, profile = false }) => {
+  ({ stack, selected, handleStackClick, profileCheck = false }) => {
     return (
       <Button
         color={stack.color}
         name={stack.name}
         selected={selected}
         onClick={() => handleStackClick(stack, selected)}
-        profile={profile}>
+        profileCheck={profileCheck}>
         {stack.tagName}
       </Button>
     );

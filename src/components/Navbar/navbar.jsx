@@ -18,7 +18,8 @@ import InputMoblie from '../InputMoblie/inputMoblie';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import ChatContainer from '../ChatContainer/chatContainer';
-import ChatTest from '../ChatTest/chatTest';
+import ChatList from '../ChatList/chatList';
+import ChatRoom from '../ChatRoom/chatRoom';
 // import ChatContents from '../ChatContents/chatContents';
 
 function Navbar() {
@@ -30,6 +31,9 @@ function Navbar() {
   const [inputMoblie, setInputMoblie] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [chatSwitch, setchatSwitch] = useState(false);
+  const [roomMode, setRoomMode] = useState(false); //채팅 리스트모드인지 룸입장한모드인지 체크하는 state
+  const [roomId, setRoomId] = useState();
+  const [otherUser, setOtherUser] = useState();
 
   const showModal = () => {
     setOpenModal(true);
@@ -39,9 +43,11 @@ function Navbar() {
     setOpenModal(false);
   };
   const handleLogout = async () => {
+    console.log('handlelogout');
     await authService.logout();
     dispatch(clearUser());
     dispatch(clearStep());
+    console.log('handleLogout');
     authService.resetToken();
   };
 
@@ -56,6 +62,13 @@ function Navbar() {
   const handleChat = (e) => {
     setchatSwitch(!chatSwitch);
   };
+
+  const handleChatRoomDetail = (clickRoomId, clickOtherUser) => {
+    setRoomId(clickRoomId);
+    setOtherUser(clickOtherUser);
+    // setRoomMode(true);
+  };
+
   useEffect(() => {
     // console.log("nabvar useEffect user.nickName: ", user.nickName);
     if (user.nickName) {
@@ -78,9 +91,9 @@ function Navbar() {
     <>
       <div className={style.container}>
         <div className={style.navBody}>
-          <a href='/' className={style.logo}>
+          <Link to='/' className={style.logo}>
             <img alt='LOGO' src='/img/logo520.svg' />
-          </a>
+          </Link>
           <div className={style.contents}>
             <SearchBar
               handleInputMoblie={handleInputMoblie}
@@ -112,8 +125,12 @@ function Navbar() {
         </Modal>
       )}
       {chatSwitch && (
-        <ChatContainer onClickChat={handleChat}>
-          {/* <ChatTest></ChatTest> */}
+        <ChatContainer onClickChat={handleChat} roomMode={roomMode}>
+          {!roomMode ? (
+            <ChatList handleChatRoomDetail={handleChatRoomDetail}></ChatList> //roomId, otherUserId 받고 roomMode 바꿔주기..?!
+          ) : roomId ? (
+            <ChatRoom roomId={roomId} user={otherUser}></ChatRoom>
+          ) : null}
         </ChatContainer>
       )}
       {/* <Modal width="100px" height="200px" component={com()}></Modal> */}

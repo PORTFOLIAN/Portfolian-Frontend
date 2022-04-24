@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import ProjectStackTag from '../ProjectStackTag/projectStackTag';
 
-function ProjectStackList({ stackList, profile = false }) {
+function ProjectStackList({ stackList, profileCheck = false }) {
   return (
-    <StackListContainer profile={profile}>
+    <StackListContainer profileCheck={profileCheck}>
       {stackList.map((elem, i) => {
         return (
           <ProjectStackTag
             tagName={elem}
             key={i}
-            profile={profile}></ProjectStackTag>
+            profileCheck={profileCheck}></ProjectStackTag>
         );
       })}
     </StackListContainer>
@@ -27,7 +27,7 @@ const StackListContainer = styled.div`
   /* width: 100%; */
   @media screen and (max-width: 768px) {
     /* justify-content: center; */
-    margin-left: ${(props) => (props.profile ? 0 : '1rem')};
+    margin-left: ${(props) => (props.profileCheck ? 0 : '1rem')};
     font-weight: 500;
   }
 `;

@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as BookMarkTrue } from '../asset/bookmark_true.svg';
 import { ReactComponent as BookMarkFalse } from '../asset/bookmark_false.svg';
 import UnitInfo from '../UnitInfo/unitInfo';
 import RecruitStacksView from '../RecruitStacksView/recruitStacksView';
 import { useHistory } from 'react-router-dom';
+import userService from '../../service/user_service';
+import { useSelector } from 'react-redux';
 
 function RecruitCard({ recruitElem }) {
   const history = useHistory();
-
+  const user = useSelector((state) => state.user);
+  const [bookMarkMode, setBookMarkMode] = useState(recruitElem.bookMark);
   const handleOnClick = () => {
     history.push(`/projects/${recruitElem.projectId}`);
   };
 
+  const handleBookMark = (e) => {
+    e.stopPropagation();
+    userService
+      .setBookMark(user.userId, recruitElem.projectId, !bookMarkMode)
+      .then((response) => {
+        console.log('handleBookMark', response);
+        setBookMarkMode(!bookMarkMode);
+      });
+  };
   return (
     <CardContainer onClick={handleOnClick}>
       <BookMarkIcon
-      // onClick={ 북마크 설정하는 api통신}
-      >
-        {recruitElem.bookMark ? (
+        onClick={(e) => {
+          handleBookMark(e);
+        }}>
+        {bookMarkMode ? (
           <BookMarkTrue height='19px'></BookMarkTrue>
         ) : (
-          <BookMarkFalse height='19px'></BookMarkFalse>
+          <BookMarkFalseIcon height='19px'></BookMarkFalseIcon>
         )}
       </BookMarkIcon>
       <CardContents>
@@ -156,6 +169,14 @@ const ApplyBtn = styled.button`
   border: 0;
   outline: 0;
   margin-top: 4px;
+`;
+
+const BookMarkFalseIcon = styled(BookMarkFalse)`
+  &:hover {
+    path {
+      fill: #999999;
+    }
+  }
 `;
 
 export default RecruitCard;

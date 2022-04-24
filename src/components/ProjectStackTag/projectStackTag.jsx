@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { wholeStack } from '../../modules/wholeStack';
 
-function ProjectStackTag({ tagName, profile = false }) {
+function ProjectStackTag({ tagName, profileCheck = false }) {
   return (
     <TagDiv
       name={tagName}
       color={wholeStack.find((elem) => elem.name === tagName).color}
-      profile={profile}>
+      profileCheck={profileCheck}>
       {wholeStack.find((elem) => elem.name === tagName).tagName}
     </TagDiv>
   );
@@ -20,8 +20,8 @@ let TagDiv = styled.div`
   color: ${(props) => (props.name === 'etc' ? '#EAEAEA' : '#343A40')};
   background-color: ${(props) => props.color};
   padding: 2px 16px;
-  margin-top: ${(props) => (props.profile ? '0' : '16px')};
-  margin-bottom: ${(props) => (props.profile ? '8px' : '16px')};
+  margin-top: ${(props) => (props.profileCheck ? '0' : '8px')};
+  margin-bottom: ${(props) => (props.profileCheck ? '8px' : '8px')};
   border-radius: 16px;
   border: 0;
   white-space: nowrap;

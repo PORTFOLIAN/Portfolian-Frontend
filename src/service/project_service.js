@@ -14,6 +14,7 @@ class Project {
       const recruit_list = await this.project.get(
         `projects?keyword=${recruitList.keyword}${stackReq}&sort=${recruitList.sort}`,
       );
+      console.log('sort=', recruitList.sort, '\n recruit_list=', recruit_list);
       return recruit_list;
     } catch (error) {
       console.error(error);
