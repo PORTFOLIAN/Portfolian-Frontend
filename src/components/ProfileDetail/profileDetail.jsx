@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import ProjectStackList from '../ProjectStackList/projectStackList';
 import { ReactComponent as PencilIcon } from '../asset/pencil.svg';
@@ -88,7 +87,7 @@ const Container = styled.div`
 const ImgContainner = styled.div`
   width: 10rem;
   height: 10rem;
-  border: 3px solid #f0f1d9;
+  border: 1px solid #dad5d5;
   border-radius: 100%;
   display: flex;
   justify-content: center;

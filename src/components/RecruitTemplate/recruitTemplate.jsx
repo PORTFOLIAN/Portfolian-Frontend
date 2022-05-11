@@ -1,11 +1,11 @@
 import { Editor } from '@toast-ui/react-editor';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-autosize-textarea/lib';
 import styled from 'styled-components';
 import RecruitStacksSelection from '../RecruitStacksSelection/recruitStacksSelection';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeContents, clearContents } from '../../modules/write';
+import { changeContents } from '../../modules/write';
 
 function RecruitTemplate() {
   const editorRef = useRef();

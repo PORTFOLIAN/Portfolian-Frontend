@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Kakao } from '../asset/kakao.svg';
 // import {KAKAO_AUTH_URL} from '../../../store/OAuth'; //REST API ver

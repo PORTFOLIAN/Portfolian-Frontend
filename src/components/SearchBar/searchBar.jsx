@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { update } from '../../modules/recruitList';
-import project from '../../service/project_service';
 import { ReactComponent as SearchIcon } from '../asset/search.svg';
 
 function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
   const dispatch = useDispatch();
-  const recruitList = useSelector((state) => state.recruitList);
   const handleOnClickSearch = () => {
     dispatch(update({ key: 'keyword', value: keyword }));
   };
@@ -18,14 +16,14 @@ function SearchBar({ handleInputMoblie, keyword, handleInputKeyword }) {
     }
   };
 
-  useEffect(() => {
-    project.getList(recruitList).then((response) => {
-      dispatch(update({ key: 'recruit', value: response.data.articleList }));
-    });
-    // return () => {
-    //   dispatch(update({key: "keyword", value: "default"}));
-    // };
-  }, [recruitList.keyword]);
+  // useEffect(() => {
+  //   project.getList(user.userId, recruitList).then((response) => {
+  //     dispatch(update({ key: 'recruit', value: response.data.articleList }));
+  //   });
+  //   // return () => {
+  //   //   dispatch(update({key: "keyword", value: "default"}));
+  //   // };
+  // }, [recruitList.keyword]);
 
   return (
     <>

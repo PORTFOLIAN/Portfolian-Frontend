@@ -1,18 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import HeaderProfile from '../HeaderProfile/headerProfile';
 import { ReactComponent as Alert } from '../asset/alert.svg';
 import { ReactComponent as Chatting } from '../asset/chatting.svg';
-import DropDown from '../DropDown/dropDown';
-import ChatContainer from '../ChatContainer/chatContainer';
 
 function UserOn({ handleLogout, handleChat }) {
-  const user = useSelector((state) => state.user);
-
-  const [alertSwitch, setalertSwitch] = useState(false);
-
   return (
     <Container>
       <HeaderProfile handleLogout={handleLogout} />

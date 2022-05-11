@@ -25,6 +25,10 @@ function RecruitCard({ recruitElem }) {
         setBookMarkMode(!bookMarkMode);
       });
   };
+
+  useEffect(() => {
+    setBookMarkMode(recruitElem.bookMark);
+  }, [recruitElem.bookMark]);
   return (
     <CardContainer onClick={handleOnClick}>
       <BookMarkIcon
@@ -52,29 +56,6 @@ function RecruitCard({ recruitElem }) {
           </ApplyBtn>
         </UnitInfo>
       </CardContents>
-      {/* <div className={style.bookmarkIcon} onClick={() => {
-        props.dispatch( {type: 'bookMark', data: {id: props.a.projectIdx}} )
-      }}>
-        {props.a.bookMark === false
-        ? <img alt="bookmark" src="img/bookmark_false.svg"></img>
-        : <img alt="bookmark" src="img/bookmark_true.svg"></img>}
-      </div>
-
-      <div className={style.contentsArea}>
-          <div className={style.details}>
-            <div className={style.title}>{ props.a.title }</div>
-            <div className={style.tagArea}>
-              {
-                props.a.stackList.map((stack)=>{
-                  return (<MakeTagDiv stack={stack}/>)
-                })
-              }
-            </div>
-            <div className={style.description}>
-              {props.a.description}
-            </div>
-          </div>
-      </div> */}
     </CardContainer>
   );
 }

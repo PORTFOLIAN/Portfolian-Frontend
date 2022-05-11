@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { update } from '../../modules/recruitList';
-import { ReactComponent as Close } from '../asset/close.svg';
 
 function InputMoblie({ handleInputMoblie, keyword, handleInputKeyword }) {
   const dispatch = useDispatch();

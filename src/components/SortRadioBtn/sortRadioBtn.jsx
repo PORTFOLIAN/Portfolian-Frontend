@@ -28,6 +28,7 @@ const RadioImg = styled.img`
 function SortRadioBtn() {
   const dispatch = useDispatch();
   const recruitList = useSelector((state) => state.recruitList);
+  const user = useSelector((state) => state.user);
   const radioValue = ['최신순', '조회순', '북마크'];
   const [radioState, setRadioState] = useState('최신순');
   const handleClickRadio = (name) => {
@@ -42,9 +43,21 @@ function SortRadioBtn() {
 
   useEffect(() => {
     // console.log("recruitList.sort: ", recruitList.sort)
-    project.getList(recruitList).then((response) => {
-      dispatch(update({ key: 'recruit', value: response.data.articleList }));
-    });
+    if (user.userId) {
+      project.getList(user.userId, recruitList).then((response) => {
+        dispatch(update({ key: 'recruit', value: response.data.articleList }));
+      });
+    } else {
+      if (recruitList.sort === 'bookMark') {
+        dispatch(update({ key: 'recruit', value: [] }));
+      } else {
+        project.getList(null, recruitList).then((response) => {
+          dispatch(
+            update({ key: 'recruit', value: response.data.articleList }),
+          );
+        });
+      }
+    }
   }, [recruitList.sort]);
 
   return (

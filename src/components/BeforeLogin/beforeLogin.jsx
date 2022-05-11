@@ -3,12 +3,7 @@ import KakaoLogin from 'react-kakao-login';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import KakaoButton from '../KakaoButton/kakaoButton';
-import GoogleLogin from 'react-google-login';
-import user, {
-  fetchUserById,
-  fetchUserByRefreshToken,
-  setUserInfo,
-} from '../../modules/user';
+import user, { fetchUserById, setUserInfo } from '../../modules/user';
 import { nextStep, setSignUpUser } from '../../modules/loginStep';
 import { useSelector } from 'react-redux';
 
@@ -24,7 +19,7 @@ const LoginTxt = styled.div`
 
 const LoginBtn = styled.div`
   display: flex;
-  justify-contents: center;
+  justify-content: center;
 `;
 
 //이건 나중에 컴포넌트로 따로 빼줄거임
