@@ -6,7 +6,6 @@ import UnitInfo from '../UnitInfo/unitInfo';
 import { ReactComponent as BookMarKTrue } from '../asset/projectBookmark.svg';
 import { ReactComponent as BookMarkFalse } from '../asset/projectBookmarkFalse.svg';
 import { useHistory } from 'react-router-dom';
-import ChatContainer from '../ChatContainer/chatContainer';
 
 function ProjectManager({
   leader,

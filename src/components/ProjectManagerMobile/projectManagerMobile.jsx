@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import user from '../../modules/user';
 import { ReactComponent as BookMarKTrue } from '../asset/projectBookmark.svg';
 import { ReactComponent as BookMarkFalse } from '../asset/projectBookmarkFalse.svg';
 import StackTagDiv from '../StackTagDiv/stackTagDiv';
@@ -10,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function ProjectManagerMobile({ leader, capacity, view, status, bookMark }) {
-  const [bookmark, setBookmark] = useState(bookMark);
   const user = useSelector((state) => state.user);
   const history = useHistory();
   const onClickProfile = () => {

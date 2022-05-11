@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import ProjectManager from '../ProjectManager/projectManager';
 import ProjectControl from '../ProjectControl/projectControl';
 import ProjectStackList from '../ProjectStackList/projectStackList';
 import ProjectTemplate from '../ProjectTemplate/projectTemplate';
-import { useMediaQuery } from 'react-responsive';
 import ProjectManagerMobile from '../ProjectManagerMobile/projectManagerMobile';
 import ChatContainer from '../ChatContainer/chatContainer';
 import ChatRoom from '../ChatRoom/chatRoom';
@@ -96,7 +95,7 @@ const DetailContainer = styled.div`
 `;
 const ProjectContents = styled.div`
   /* width: 100%; */
-  /* max-width: 600px; */
+  max-width: 600px;
 `;
 
 const OwnerContents = styled.div`

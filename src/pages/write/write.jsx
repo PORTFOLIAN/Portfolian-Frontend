@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import style from './Write.module.scss';
 import Modal from '../../components/Modal/modal';
 import RecruitTemplate from '../../components/RecruitTemplate/recruitTemplate';
 import SetOwnerStack from '../../components/SetOwnerStack/setOwnerStack';
-import style from './Write.module.scss';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { wholeStack } from '../../modules/wholeStack';
 import StackTagDiv from '../StackTagDiv/stackTagDiv';
 
 function RecruitStacksView({ stackList }) {

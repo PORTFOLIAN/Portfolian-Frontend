@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ProjectStackList from '../ProjectStackList/projectStackList';
 import RecruitStacksSelection from '../RecruitStacksSelection/recruitStacksSelection';
@@ -7,9 +7,11 @@ import { ReactComponent as GithubIcon } from '../asset/github.svg';
 import { ReactComponent as MailIcon } from '../asset/mail.svg';
 import { ReactComponent as CloseIcon } from '../asset/close.svg';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function EditProfile({ userId, profileRead, setEditMode }) {
   // const dispatch = useDispatch();
+  const history = useHistory();
   const [profiles, setProfiles] = useState({
     photo: profileRead.photo,
     stackList: profileRead.stackList,
@@ -46,6 +48,17 @@ function EditProfile({ userId, profileRead, setEditMode }) {
 
     // dispatch(리듀스만들어서디스패치해{key: name, value: e.target.value})); <= 엥 이건 다 고치고 저장할 때!
   };
+
+  useEffect(() => {
+    //유저정보 없으면 로그인하라고 알려주고 홈으로 가기
+    if (!userId) {
+      toast.error('로그인이 필요한 페이지입니다.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      history.push('/');
+    }
+  }, [userId]);
 
   return (
     <>

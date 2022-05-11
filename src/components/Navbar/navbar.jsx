@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import GoogleButton from './GoogleButton'
 import style from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 import Modal from '../Modal/modal';
 import LoginModal from '../LoginModal/loginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import authService from '../../service/auth_service';
-import {
-  clearUser,
-  fetchUserByRefreshToken,
-  setUserInfo,
-} from '../../modules/user';
+import { clearUser, fetchUserByRefreshToken } from '../../modules/user';
 import { clearStep } from '../../modules/loginStep';
 import UserOn from '../UserOn/userOn';
 import SearchBar from '../SearchBar/searchBar';
@@ -74,18 +69,18 @@ function Navbar() {
     if (user.nickName) {
       dispatch(fetchUserByRefreshToken(user.userId)).then((response) => {
         //안에 내용 적어주~(리프레시토큰 만료됐을 때 메인페이지로 넘겨주는거~~)
-        // if (response.payload.code !== 1) {
-        //   history.push('/');
-        //   dispatch(clearUser());
-        //   toast.error("로그인이 만료되었습니다.", {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //   })
-        // }
+        if (response.payload.code !== 1) {
+          history.push('/');
+          dispatch(clearUser());
+          toast.error('로그인이 만료되었습니다.', {
+            position: 'top-center',
+            autoClose: 3000,
+          });
+        }
         // console.log("fetchUserByRefeshToken response: ", response);
       });
     }
-  }, []);
+  }, [user.nickName]);
 
   return (
     <>

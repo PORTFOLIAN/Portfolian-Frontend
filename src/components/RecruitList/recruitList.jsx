@@ -8,15 +8,20 @@ import project from '../../service/project_service';
 function RecruitList() {
   const dispatch = useDispatch();
   const recruit_list = useSelector((state) => state.recruitList);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    project.getList(recruit_list).then((response) => {
-      dispatch(update({ key: 'recruit', value: response.data.articleList }));
-    });
+    if (!user.userId) {
+      dispatch(update({ key: 'recruit', value: [] }));
+    } else {
+      project.getList(user.userId, recruit_list).then((response) => {
+        dispatch(update({ key: 'recruit', value: response.data.articleList }));
+      });
+    }
     // return () => {
     //   dispatch(update({key: "keyword", value: "default"}));
     // };
-  }, []);
+  }, [user]);
 
   return (
     <>

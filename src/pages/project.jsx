@@ -1,14 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useEffect } from 'react';
-import style from './Project.module.scss';
 import { useDispatch } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
-import Navbar from '../../components/Navbar/navbar';
-import ProjectDetail from '../../components/ProjectDetail/projectDetail';
-import ProjectManagerMobile from '../../components/ProjectManagerMobile/projectManagerMobile';
-import { clearRead, readProject } from '../../modules/projectRead';
-import Footer from '../../components/Footer/footer';
+import Navbar from '../components/Navbar/navbar';
+import ProjectDetail from '../components/ProjectDetail/projectDetail';
+import { clearRead, readProject } from '../modules/projectRead';
+import Footer from '../components/Footer/footer';
 
 function Project() {
   const dispatch = useDispatch();
@@ -17,6 +15,7 @@ function Project() {
 
   useEffect(() => {
     dispatch(readProject(projectId));
+    window.scrollTo(0, 0);
     return () => {
       dispatch(clearRead());
     };
@@ -24,13 +23,19 @@ function Project() {
 
   return (
     <>
-      <div className={style.projectContainer}>
+      <ProjectContainer>
         <Navbar />
         <ProjectDetail projectId={projectId} />
         <Footer></Footer>
-      </div>
+      </ProjectContainer>
     </>
   );
 }
 
 export default Project;
+
+const ProjectContainer = styled.div`
+  min-height: calc(100vw - 160px);
+  position: relative;
+  padding-bottom: 2rem;
+`;

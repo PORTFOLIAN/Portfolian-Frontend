@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -41,6 +41,7 @@ const StackTagSelection = React.memo(() => {
   // const [selectStacks, setSelectStacks] = useState(); //근데 선택된 스택 어차피 리듀서로 관리할껀데 이거 해줄 필요있나? -> 없음 -> 리듀서 만들고오자 -> 만들고옴
   const selectStacks = useSelector((state) => state.stackList);
   const recruitList = useSelector((state) => state.recruitList);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   //선택 된 스택태그 select값 false로 바꿔주면서 동시에 전체선택 전체취소 부분 컨트롤해줘야함!
@@ -65,7 +66,7 @@ const StackTagSelection = React.memo(() => {
   );
 
   useEffect(() => {
-    project.getList(recruitList).then((response) => {
+    project.getList(user.userId, recruitList).then((response) => {
       // console.log("recruit.getList response: ",response);
       dispatch(update({ key: 'recruit', value: response.data.articleList }));
       // console.log("recruitList.stack: ", recruitList.stack);

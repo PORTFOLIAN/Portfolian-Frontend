@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { nextStep, previousStep, setSignUpUser } from '../../modules/loginStep';
 import { addUserNickName } from '../../modules/user';
-import userService from '../../service/user_service';
 import { ReactComponent as Prev } from '../asset/prev.svg';
 
 const NicNameContainer = styled.div`

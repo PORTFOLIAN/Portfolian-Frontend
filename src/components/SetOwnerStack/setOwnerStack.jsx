@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import OwnerStackSelection from '../OwnerStackSelection/ownerStackSelection';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function SetOwnerStack({
   handleOwnerStackModal,
@@ -9,7 +9,6 @@ function SetOwnerStack({
   handleClickSubmit,
 }) {
   const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
